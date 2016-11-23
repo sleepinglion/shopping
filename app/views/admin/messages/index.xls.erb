@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>     	
+        <Cell><Data ss:Type="String"><%=t(:message_status)%></Data></Cell>        
+        <Cell><Data ss:Type="String"><%=t(:message_phone)%></Data></Cell>
+        <Cell><Data ss:Type="String"><%=t(:message_text)%></Data></Cell>
+        <Cell><Data ss:Type="String"><%=t(:message_sendtime)%></Data></Cell>
+      </Row>
+      <% @messages.each do |message| %>
+      <Row>      	
+        <Cell><Data ss:Type="Number"><%= message.msg_status %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= message.msg_phone %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= message.msg_text %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= message.msg_sendtime %></Data></Cell>
+      </Row>
+      <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

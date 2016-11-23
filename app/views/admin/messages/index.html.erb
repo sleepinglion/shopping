@@ -1,0 +1,75 @@
+<div class="row">
+	<h3 class="col-xs-12 col-sm-6"><%= @controller_name %> <%= actionNameChange controller.action_name %></h3>
+</div>
+<div class="box">
+	<div class="box-header">
+		<h2><i class="glyphicon glyphicon-align-justify"></i><span class="break"></span><%= t(:search)%></h2>
+		<div class="box-icon">
+			<a href="#" class="btn-minimize"><i class="glyphicon glyphicon-chevron-down"></i></a>
+			<a class="btn-close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+		</div>
+	</div>
+	<div style="display:none" class="box-content">
+		<%= render 'search_form' %>
+	</div>
+</div>
+<div class="table-responsive">
+	<table class="table table-bordered table-striped">
+		<colgroup>
+			<col style="width:80px;" />
+			<col />
+			<col />
+			<col />
+			<col style="width:120px;" />
+			<col style="width:120px;" />
+			<% if can? :delete, Message %>
+			<col style="width:90px;" />
+			<% end %>
+		</colgroup>
+		<thead>
+			<tr>
+				<th><%= t(:label_number) %></th>
+				<th><%= t(:label_message_status) %></th>
+				<th><%= t(:label_message_phone) %></th>
+				<th><%= t(:label_message_text) %></th>
+				<th><%= t(:label_message_sendtime) %></th>
+				<th><%= t(:label_message_rsttime) %></th>
+				<% if can? :delete, Message %>
+				<th><%= t(:label_manage) %></th>
+				<% end %>
+			</tr>
+		</thead>
+		<tbody>
+			<% unless @messages.empty? %>
+			<% @messages.each do |message| %>
+			<tr>
+				<td><%= link_to message.id,message_path(message,params) %></td>
+				<td><%= link_to message.msg_status,message_path(message,params) %></td>
+				<td><%= link_to message.msg_phone,message_path(message,params) %></td>
+				<td><%= link_to message.msg_text.truncate(25),message_path(message,params) %></td>
+				<td><%= message.msg_sendtime %></td>
+				<td><%= message.msg_rslttime %></td>
+				<% if can? :delete, message %>
+				<td> <%= link_to message, :method => :delete, :data => { :confirm => t(:delete_confirm) },:class=>"btn btn-danger" do %> <i class="glyphicon glyphicon-trash"></i> <%= t(:link_delete) %>
+				<% end %> </td>
+				<% end %>
+			</tr>
+			<% end %>
+			<% else %>
+			<tr>
+				<td colspan="11"><%= t(:no_data)%></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+<div class="row">
+	<div class="col-xs-6 col-sm-3 col-md2">
+		<% if can? :create, Message %>
+		<%= link_to new_admin_message_path,:class=>"btn btn-primary" do %>
+		<i class="glyphicon glyphicon-plus"></i> <%= t(:link_new) %>
+		<% end %>
+		<% end %>
+	</div>
+	<%= paginate @messages %>
+</div>

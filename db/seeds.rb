@@ -1,0 +1,43 @@
+Admin.create(:id=>1,:login_id=>'toughjjh',:email => 'toughjjh@gmail.com',:nickname=>'잠자는-사자',:password => '123456', :password_confirmation => '123456',:photo=>File.open(Rails.root.join("app", "assets", "images", "dog.png")))
+Admin.create(:id=>2,:login_id=>'admin',:email => 'jpark@myseven.co.kr',:nickname=>'Jon Doe',:password => '111111', :password_confirmation => '111111',:photo=>File.open(Rails.root.join("app", "assets", "images", "dog.png")))
+Admin.create(:id=>3,:parent_id=>2,:login_id=>'admin2',:email => 'jpark1@myseven.co.kr',:nickname=>'Jon Doe1',:password => '111111', :password_confirmation => '111111',:photo=>File.open(Rails.root.join("app", "assets", "images", "dog.png")))
+Admin.create(:id=>4,:parent_id=>2,:login_id=>'operator',:email => 'jpark2@myseven.co.kr',:nickname=>'Operator',:password => '123456', :password_confirmation => '123456',:photo=>File.open(Rails.root.join("app", "assets", "images", "dog.png")))
+Admin.create(:id=>5,:parent_id=>2,:login_id=>'sub_operator',:email => 'jpark5@myseven.co.kr',:nickname=>'SubOperator',:password => '123456', :password_confirmation => '123456',:photo=>File.open(Rails.root.join("app", "assets", "images", "dog.png")))
+Admin.create(:id=>6,:parent_id=>2,:login_id=>'reader',:email => 'jpark4@myseven.co.kr',:nickname=>'Reader',:password => '123456', :password_confirmation => '123456',:photo=>File.open(Rails.root.join("app", "assets", "images", "dog.png")))
+Admin.create(:id=>7,:parent_id=>2,:login_id=>'sponsor',:email => 'jpark6@myseven.co.kr',:nickname=>'Sponsor',:password => '123456', :password_confirmation => '123456',:photo=>File.open(Rails.root.join("app", "assets", "images", "dog.png")))
+Admin.create(:id=>8,:parent_id=>2,:login_id=>'ad_manager',:email => 'jpark4@mysrheven.co.kr',:nickname=>'ad_manager',:password => '123456', :password_confirmation => '123456',:photo=>File.open(Rails.root.join("app", "assets", "images", "dog.png")))
+Admin.create(:id=>9,:parent_id=>2,:login_id=>'store_manager',:email => 'jpark6@myserheven.co.kr',:nickname=>'store_manager',:password => '123456', :password_confirmation => '123456',:photo=>File.open(Rails.root.join("app", "assets", "images", "dog.png")))
+Admin.create(:id=>10,:parent_id=>2,:login_id=>'cs_manager',:email => 'jpark6@myserhevwegen.co.kr',:nickname=>'cs',:password => '123456', :password_confirmation => '123456',:photo=>File.open(Rails.root.join("app", "assets", "images", "dog.png")))
+
+Role.create(:id=>1,:title=>'administrator')
+Role.create(:id=>2,:title=>'operator')
+Role.create(:id=>3,:title=>'store_manager')
+Role.create(:id=>4,:title=>'cs_manager')
+Role.create(:id=>5,:title=>'reader')
+
+
+RolesAdmin.create(:role_id=>1,:admin_id=>1)
+RolesAdmin.create(:role_id=>1,:admin_id=>2)
+RolesAdmin.create(:role_id=>1,:admin_id=>3)
+RolesAdmin.create(:role_id=>2,:admin_id=>4)
+RolesAdmin.create(:role_id=>3,:admin_id=>5)
+RolesAdmin.create(:role_id=>4,:admin_id=>6)
+RolesAdmin.create(:role_id=>5,:admin_id=>7)
+RolesAdmin.create(:role_id=>6,:admin_id=>8)
+RolesAdmin.create(:role_id=>7,:admin_id=>9)
+RolesAdmin.create(:role_id=>8,:admin_id=>10)
+
+User.create(:id=>1,:name=>'user1',:email => 'toughjjh@gmail.com',:password => '123456', :password_confirmation => '123456', :birthday=>'2016-07-03', :phone=>'010-4141-3726',:sex=>1,:height=>180,:weight=>80,:enable=>true)
+User.create(:id=>2,:name=>'user2',:email => 'toughjjh@gmail.com',:password => '123456', :password_confirmation => '123456', :birthday=>'2016-07-03', :phone=>'010-4141-3726',:sex=>1,:enable=>true)
+User.create(:id=>3,:name=>'user3',:email => 'toughjjh@gmail.com',:password => '123456', :password_confirmation => '123456', :birthday=>'2016-07-03', :phone=>'010-4141-3726',:height=>160,:weight=>55,:enable=>true)
+User.create(:id=>4,:name=>'user4',:email => 'toughjjh@gmail.com',:password => '123456', :password_confirmation => '123456', :birthday=>'2016-07-03', :phone=>'010-4141-3726',:sex=>1,:enable=>true)
+User.create(:id=>5,:name=>'user5',:email => 'toughjjh@gmail.com',:password => '123456', :password_confirmation => '123456', :birthday=>'2016-07-03', :phone=>'010-4141-3726',:enable=>true)
+User.create(:id=>6,:name=>'user6',:email => 'toughjjh@gmail.com',:password => '123456', :password_confirmation => '123456', :birthday=>'2016-07-03', :phone=>'010-4141-3726',:height=>170,:weight=>65,:enable=>true)
+
+Payment.create(:title=>'카드결제',:enable=>true)
+Payment.create(:title=>'핸드폰결제',:enable=>false)
+Payment.create(:title=>'계좌이체',:enable=>false)
+Payment.create(:title=>'가상계좌',:enable=>false)
+Payment.create(:title=>'무통장입금',:enable=>false)
+
+Product.create(:title=>'Check Service',:description=>'Good Service',:price=>150000,:shipping_price=>3000,:enable=>true);

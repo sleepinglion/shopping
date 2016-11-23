@@ -1,0 +1,968 @@
+zh:
+  service_name : '积点'
+  admin_profile : '修改我的信息'
+  amount : '数量'
+  active : '活跃'
+  end : '종료'
+  home : '主页'
+  search : '搜索'
+  update : '更新'
+  ad : '广告'
+  ad_name : '广告名'
+  sponsor : '广告主'
+  image : '图片'
+  target : '目标'
+  default :  '默认值'
+  use : '使用'
+  user : '用户'
+  user_id : '用户ID'
+  count_thing : '件'
+  count_people : '名'
+  rank_fail : '人品不够'
+  subject : '题目'
+  summary : '全部概要'
+  for : '为'
+  id : 'ID'
+  login : '登录'
+  logout : '退出'
+  flag_true : '使用'
+  flag_false : '终止'
+  show_all : '전체 보기'
+  day : '일'
+  week : '주'
+  month : '월'
+  
+  login_title : '积点管理员登录'
+  login_p_id : '请输入ID'
+  login_p_password : '请输入密码'
+  login_l_remember : '请记住'
+  
+  no_data : '无内容'
+  no_exist_user : '用户不存在'
+  no_exist_image : '图片不存在'
+  no_insert_data : '输入未成功'
+  no_exist_ad : '广告不存在'
+  no_relative : '无相关' 
+  no_exist_type : '类型不存在'
+
+  period_today : '今天'
+  period_week : '一星期'
+  period_month : '一个月'
+  period_month3 : '三个月'
+  period_month6 : '六个月'
+  period_all : '全部'
+  
+  period_daily : '일간'
+  period_weekly : '주간'
+  period_monthly : '월간'
+  
+  
+  success_title : '恭喜!!'  
+  message_success_insert : '已成功录入'
+  message_success_update : '已成功更新'
+  delete_confirm : '确定要删除吗?'
+  delete_cascade_confirm : "重要提示!!\n 删除此内容会导致包括此内容信息在内的所有的数据都会被删除。\n依然要进行删除吗?"
+  delete_sponsor_cascade_confirm : "删除广告主的同时，广告主的广告也会被删除。\n 依然要进行删除吗?"
+  delete_user_cascade_confirm : "删除会员的同时，与会员相关的所有信息都会被删除。\n依然要进行删除吗?"
+  alert_no_auth_title : '해당 행동에 대한 권한이 없습니다.'
+  alert_no_auth_description : '만약 당신이 권한이 있음에도 이 메세지가 나온다면 관리자에게 문의하십시오.'
+  
+  all_point : '현재 총 적립금액'
+  all_request : '현재 총 요청금액'
+  all_paid : '지급된 금액'
+  all_select : '전체선택'
+  all_deselect : '전체해지'
+  user_id_find  : '用户ID 搜索'
+  address_id_find  : '地址ID 搜索'
+  
+  form_ad_default : '기본정보'
+  form_ad_option : '추가옵션'
+  form_ad_count : '수량설정'
+  
+  menu_home : '管理者主页'
+  menu_ad : '广告管理'
+  menu_sponsor : '广告主管理'
+  menu_stat : '统计'
+  menu_point : '积点管理'
+  menu_message : 'message 管理'
+  menu_game : '游戏管理'
+  menu_roulette_game : '游戏管理'  
+  menu_store : '商城管理'
+  menu_stats : '统计'
+  menu_board : '公告栏管理'
+  menu_user : '会员管理'
+  menu_attendance : '출석체크'
+  menu_version : '版本管理'
+  menu_basic : '默认值管理'
+  menu_quiz : 'QUIZ'
+
+  submenu_all_graph : '全部图表'   
+  submenu_ad_log_all : '全部广告日志'  
+  submenu_ad_log_daily : '之前的日期-时间段日志'
+  submenu_point : '积点明细'
+  submenu_request : '现金兑换申请管理'
+  submenu_game_amount : '베팅금액설정'
+  submenu_game_setting : '游戏设置'
+  submenu_game : '游戏运行记录'
+  submenu_quiz : 'QUIZ'
+  submenu_quizzes_user_address_book : '퀴즈 상품 배송 관리'  
+  
+  submenu_roulette_betting : '베팅금액설정'
+  submenu_roulette_setting : '游戏设置'
+  submenu_roulette_play : '游戏运行记录'  
+  submenu_roulette_background : '배경1'
+  submenu_roulette_present : '룰렛 상품 관리' 
+  submenu_roulette_plays_user_address_book : '룰렛 상품 배송 정보'
+  
+  submenu_product : '商品管理'
+  submenu_order : '订单管理'
+  submenu_stats : '全部统计表'
+  submenu_operator : '运营者管理'  
+  submenu_admin : '管理者管理'
+  submenu_user : '会员管理'  
+  submenu_user_login_log : '会员登录管理'  
+  submenu_deleted_user : '注销会员管理'
+  submenu_notice : '公告'
+  submenu_faq : 'FAQ'
+  submenu_attendance : '출석체크'
+  submenu_attendance_setting : '출석체크 설정'
+  submenu_attendance_picture : '출석체크 배경 설정'  
+  submenu_ad_type : '广告分类管理'
+  submenu_ad_file_type : '广告文件分类管理'
+  submenu_ad_log_type : '广告日志分类管理'  
+  submenu_point_type : '积点分类管理'
+  submenu_bank : '运营商管理'
+  submenu_request_setting : '现金兑换数量管理'
+  submenu_request_type : '现金兑换状态管理'
+  submenu_address : '地址管理'
+  submenu_address_section : '地址 – 号码段管理'
+  submenu_target_type : '目标分类管理'
+  submenu_target : '目标管理'
+  submenu_app_log_type: '日志分类管理'
+  submenu_store_order_status: '订单状态区分管理'
+  submenu_market : 'MARKET'
+  submenu_user_address_book : '배송주소록 관리'
+  submenu_stat_market : 'MARKET 统计'
+  submenu_stat_user : '회원 统计'
+  submenu_stat_receive : '接打电话 统计'
+  submenu_stat_receive_and_call : '拨打和接听电话 统计'
+  submenu_stat_app : 'app 广告 统计'
+  submenu_stat_banner : 'banner 广告 统计'
+  submenu_quiz_log : 'QUIZ 기록'
+
+  action_index : '目录'
+  action_show : '详情'
+  action_edit : '修改'
+  action_new : '生成'
+  link_delete_admin : '계정삭제 ' 
+  link_list : '目录'
+  link_show : '详情'
+  link_new : '新建'
+  link_edit : '修改'
+  link_delete : '删除'
+  link_download_excel : '下载excel'  
+  link_point_search: '积点查询'
+  link_request_search: '现金兑换申请查询'
+  link_game_search: '游戏查询'
+  
+  
+  label_all : '전체'
+  label_ad_log_type_id : '광고 기록 유형'
+  label_ad_count : '광고갯수'
+  label_market : '마켓선택'
+  label_stats_type : '유형 출력'
+  label_auth_member : '인증회원'
+  label_no_auth_member : '미인증회원'
+  label_number : '号码' 
+  label_count : '个数'
+  label_date : '日期'
+  label_hour : '时间' 
+  label_client_point : '用户积点'
+  label_client_time : '用户时间'
+  label_user : '用户'
+  label_receiver_name: '수령인 이름'
+  label_address_id : '주소 ID'
+  label_roulette_id : '룰렛 play ID'
+  label_nick_name : '用户名'
+  label_email : 'E-Mail'
+  label_mobile_num : '手机号码'  
+  label_status : '状态'
+  label_image : '图片'
+  label_period_search : '时期搜索' 
+  label_nation_num : '国家编号'
+  label_password : '密码'
+  label_password_confirm : '密码确认'   
+  label_percentage : '概率'
+  label_get_amount : '获得数量'
+  label_bet_amount : '베팅 数量'    
+  label_sponsor : '广告主'
+  label_version : '版本'
+  label_bank : '运营商'
+  label_period : '时期'
+  label_lastlogin : '最后登录'
+  label_login_count : '登录次数'
+  label_current_password : '现在密码'
+  label_parent_address : '父地址'
+  label_address : '地址'
+  label_full_address : '全部地址' 
+  label_section : '号码段'
+  label_out_date : '注销日期'
+  label_relation_ad : '相关广告'
+  label_select : '选择' 
+  label_account_num : '账户号码'
+  label_bankname : '运营商'
+  label_request_amount : '申请金额'
+  label_update_date : '更新日期'
+  label_version : '版本'
+  label_target : '目标'
+  label_target_address : '目标地址' 
+  label_get_point : '获得积点'  
+  label_rank : '名次' 
+  label_device_id : '设备ID'
+  label_ip : 'IP'
+  label_privilege : '权限'
+  label_sign_in_count : '로그인 횟수'
+  label_last_login : '마지막 로그인'
+  label_weekday : '요일지정'
+  label_category : '分类'
+  label_manage : '管理'
+  label_title : '标题'
+  label_description : '说明'
+  label_content : '内容'
+  label_user_id : '用户账户'
+  label_point : '积点'
+  label_ad : '广告'
+  label_prefix : '파일접두어'
+  label_max_file : '최대파일'
+  label_memo : '备注'
+  label_bank_code : '银行代码'
+  label_amount : '数量'
+  label_coupon : '优惠券'
+  label_login_id : '登录账户'
+  label_times : '倍'
+  label_limit : '유저 제한'
+  label_correct : '정답여부'
+  label_message_status : '발송상태'
+  label_message_phone : '전화번호'
+  label_message_text : '메세지 내용'
+  label_message_sendtime : '요청시간'
+  label_message_rsttime : '발송시간'
+  label_description_short : '简要说明'
+  label_sale_price : '销售金额'
+  label_sale_type : '销售类型'  
+  label_stock_count : '库存数量'
+  label_order_count : '订单数量'
+  label_sale_period: '销售时期'
+  label_proirity_flag : '优先'
+  label_primary_flag : '기본'
+  label_flag : '使用与否'
+  label_hot_flag : '热卖'
+  label_new_flag : '新品'
+  label_start_time : '시작시간'
+  label_end_time : '종료시간'
+  label_quiz_id : '퀴즈 ID'
+  label_quiz_answer_id : '퀴즈 답변 ID'
+  label_full_description : '전체 설명'
+  label_price : '가격'
+  label_photo : '사진'
+  label_budget : 'budget'
+  label_balance : 'valance'
+  label_sponsor_url : 'sponsor url'
+  label_created_at : '注册日期'
+  label_updated_at : '修改日期'
+  
+  option_auth_member : '인증회원'
+  option_no_auth_member : '미인증회원'
+  
+  option_ad_log_type1 : '노출'
+  option_ad_log_type2 : '클릭'
+  option_ad_log_type3 : '수신'
+  option_ad_log_type4 : '발신'
+  option_ad_log_type5 : '만료'
+  option_ad_log_type6 : '설치'
+  option_ad_log_type7 : '웹이동'
+  option_ad_log_type8 : 'Expose'
+  option_ad_log_type9 : '전화연결'
+       
+  status : '状态'
+  status_use : '使用中'
+  status_stop : '终止'
+  status_wait : '待机'
+  status_live : '进行中'
+  status_end : '终了'
+  
+  stats_point : '积点统计'
+  stats_user : '会员统计'
+  stats_call : '接打电话统计'
+  stats_max_point : '达到最多积点值的会员统计'     
+  current_users : '现有用户数'
+  current_active_users : '活跃用户数'
+  current_disable_users : '休眠用户数'
+  
+  user_recommends : '나를 추천한 사용자들' 
+  make_dist_file : '배포 파일 제작'
+  
+  find_by_id : 'ID로 찾기'
+  find_by_login_id : 'login_id로 찾기'
+  find_by_user_id : 'user_id로 찾기'
+  find_by_email : 'email로 찾기'
+  find_by_title : '제목으로 찾기'
+  find_by_description : '설명으로 찾기'
+  find_by_content : '메모로 찾기'
+  
+  show_5 : '5개씩 보기'
+  show_10 : '10개씩 보기'
+  show_20 : '20개씩 보기'
+  
+  maxium_select_6 : '최대 6개 까지 선택가능합니다.'
+  maxium_select_10 : '최대 10개 까지 선택가능합니다.'
+    
+  weekly_new_user: '一周新增会员'
+  weekly_expose_count: '一周展示次数'
+  weekly_deposit_point_count: '一周获得积点'
+  weekly_use_point_count: '一周使用积点'
+  
+  total_user_count: '全部用户数'
+  active_user_count: '活跃用户数'
+  inactive_user_count: '休眠用户数'
+  active_user_point: '活跃用户积点'
+
+  call_stats: '接打电话统计'
+  
+  weekly_outbound_call_average: '一周平均拨打次数'
+  weekly_incomming_call_average: '一周平均接听次数'
+  
+  maximum_point_leached_user_count: '达到最多积点值的会员统计'
+  weekly_maximum_point_leached_user: '一周达到最多积点值的会员'
+  
+  banner_ad: 'banner广告'
+  call_ad: '电话广告'
+  front_ad: '全屏广告'
+  app_ad: 'APP广告'
+
+
+  
+  base_info: '基本信息'
+  
+  priority: '优先执行'
+  
+  more_options: '附加选择项'
+  
+  cpi_use: 'CPI使用'
+  cpi_reward_type: 'CPI奖励形态'
+  cpi_market: 'CPI市场'
+  cpi_package: 'CPI包名'
+  cpi_message: 'CPI信息'
+  web_use: 'WEB使用'
+  web_addr: 'WEB连接地址'
+  web_message: 'WEB信息'
+  callback_use: 'call back使用'
+  callback_number: 'call back号码'
+  callback_message: 'call back信息'
+  is_video: '是否使用视频'
+  is_html: 'HTML广告'
+  set_quantity: '数量设置'  
+  division: '区分'
+  target: '目标'
+  daily_limit: '期限'
+  budget: '预算'
+  cost: '费用'
+  reward: '奖励'
+  total: '总计'
+  today: '今天'
+  expose: '展示'
+  view: '视图'
+  install: '安装'
+  extra: '补充'
+
+
+  call_ad_summary: '接打电话广告概要'
+  banner_ad_summary: 'banner广告概要'
+  front_ad_summary: '前端广告'
+
+ 
+
+  ad_budget: '广告预算'
+  full_expose: '全部的展示'
+  today_expose: '今天的展示'
+  click_count: '点击次数'
+
+
+
+  current_total_point: '现在积累的总金额'    
+  
+
+
+  current_request_amount: '现在的总需求金额'
+  paid_amount: '支付金额'  
+  requested_amount: '申请结束'  
+  select_all: '全部选择'  
+  deselect_all: '全部解除'  
+  with_selected: '所选项' 
+  process_completed: '处理结束'  
+  request_completed: '申请结束'  
+
+
+  request_type: '需求类型'
+  bank: '银行'
+  bank_account_number: '银行账户'
+
+  prize_1st: '第1名'
+  prize_2nd: '第2名'
+  prize_3rd: '第3名'
+  prize_4th: '第4名'
+  prize_5th: '第5名'
+  prize_norank: '很遗憾'
+  odd: '概率/剩余概率'
+  recollected_point: '回收的积点'
+  prized_point: '发放的积点'
+  
+  quiz_question_insert : '퀴즈 질문 입력'  
+  quiz_question_update : '퀴즈 질문 수정'    
+  quiz_answer_insert  : '퀴즈 답변 입력'
+  quiz_answer_update  : '퀴즈 답변 수정'    
+  is_correct_false : '오답'
+  is_correct_true : '정답'
+  
+
+  store_good: '库存商品'  
+  customer_tel: '客户电话'  
+  delivery_tel: '送货电话'  
+  delivery_zipcode: '邮政编码'  
+  delivery_address_1: '送货地址1' 
+  delivery_address_2: '送货地址2' 
+  delivery_note: '送货备注'  
+  status: '状态'  
+  label_shipping_method: '配送方法'  
+  shipping_track_number: '配送跟踪号码'  
+  shipping_time: '配送时间'  
+  shipping_flag: '配送编码'  
+  return_reason: '返还原因'  
+  return_time: '返还时间'  
+  return_flag: '返还编码'  
+  false: '错误'
+  file_prefix: '文件前缀'  
+  max_file_count: '文件计数'
+  prefix_number: '前缀编号'
+  address_id: '地址ID'
+  new_address_section: '新增地址区域'
+  new_target: '新增目标' 
+
+  views :
+    pagination :
+      truncate : '&nbsp;...&nbsp;'
+      previous : '上一页'
+      last : '最后一页'
+      next : '下一页'
+      first : '第一页'
+  date:
+    abbr_day_names:
+    - 日
+    - 一
+    - 二
+    - 三
+    - 四
+    - 五
+    - 六
+    abbr_month_names:
+    - 
+    - 1月
+    - 2月
+    - 3月
+    - 4月
+    - 5月
+    - 6月
+    - 7月
+    - 8月
+    - 9月
+    - 10月
+    - 11月
+    - 12月
+    day_names:
+    - 日
+    - 一
+    - 二
+    - 三
+    - 四
+    - 五
+    - 六
+    formats:
+      default: ! '%Y-%m-%d'
+      long: ! '%Y年%b%d日'
+      short: ! '%b%d日'
+    month_names:
+    - 
+    - 一月
+    - 二月
+    - 三月
+    - 四月
+    - 五月
+    - 六月
+    - 七月
+    - 八月
+    - 九月
+    - 十月
+    - 十一月
+    - 十二月
+    order:
+    - :year
+    - :month
+    - :day
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: 大约一小时
+        other: 大约 %{count} 小时
+      about_x_months:
+        one: 大约一个月
+        other: 大约 %{count} 个月
+      about_x_years:
+        one: 大约一年
+        other: 大约 %{count} 年
+      almost_x_years:
+        one: 接近一年
+        other: 接近 %{count} 年
+      half_a_minute: 半分钟
+      less_than_x_minutes:
+        one: 不到一分钟
+        other: 不到 %{count} 分钟
+      less_than_x_seconds:
+        one: 不到一秒
+        other: 不到 %{count} 秒
+      over_x_years:
+        one: 一年多
+        other: ! '%{count} 年多'
+      x_days:
+        one: 一天
+        other: ! '%{count} 天'
+      x_minutes:
+        one: 一分钟
+        other: ! '%{count} 分钟'
+      x_months:
+        one: 一个月
+        other: ! '%{count} 个月'
+      x_seconds:
+        one: 一秒
+        other: ! '%{count} 秒'
+    prompts:
+      day: 日
+      hour: 时
+      minute: 分
+      month: 月
+      second: 秒
+      year: 年
+  errors: &errors
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: 必须是可被接受的
+      blank: 不能为空字符
+      confirmation: 与确认值不匹配
+      empty: 不能留空
+      equal_to: 必须等于 %{count}
+      even: 必须为双数
+      exclusion: 是保留关键字
+      greater_than: 必须大于 %{count}
+      greater_than_or_equal_to: 必须大于或等于 %{count}
+      inclusion: 不包含于列表中
+      invalid: 是无效的
+      less_than: 必须小于 %{count}
+      less_than_or_equal_to: 必须小于或等于 %{count}
+      not_a_number: 不是数字
+      not_an_integer: 必须是整数
+      odd: 必须为单数
+      record_invalid: ! '验证失败: %{errors}'
+      taken: 已经被使用
+      too_long: 过长（最长为 %{count} 个字符）
+      too_short: 过短（最短为 %{count} 个字符）
+      wrong_length: 长度非法（必须为 %{count} 个字符）
+    template:
+      body: 如下字段出现错误：
+      header:
+        one: 有 1 个错误发生导致「%{model}」无法被保存。
+        other: 有 %{count} 个错误发生导致「%{model}」无法被保存。
+  helpers:
+    select:
+      prompt: 请选择
+    submit:
+      create: 新增%{model}
+      submit: 储存%{model}
+      update: 更新%{model}
+  number:
+    currency:
+      format:
+        delimiter: ! ','
+        format: ! '%u %n'
+        precision: 2
+        separator: .
+        significant: false
+        strip_insignificant_zeros: false
+        unit: CN¥
+    format:
+      delimiter: ! ','
+      precision: 3
+      separator: .
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          billion: 十亿
+          million: 百万
+          quadrillion: 千兆
+          thousand: 千
+          trillion: 兆
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 1
+        significant: false
+        strip_insignificant_zeros: false
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ! ', 和 '
+      two_words_connector: ! ' 和 '
+      words_connector: ! ', '
+  time:
+    am: '上午'
+    formats:
+      default: ! '%Y年%b%d日 %A %H:%M:%S %Z'
+      long: ! '%Y年%b%d日 %H:%M'
+      short: ! '%b%d日 %H:%M'
+    pm: '下午'
+  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
+  activemodel:  
+    errors:
+      <<: *errors
+  activerecord:
+    models:
+      admin : '管理者'
+      ad_file_type : '广告文件分类'
+      ad_file : '广告文件'
+      ad_log_type : '广告日志分类'
+      ad_log : '广告日志'
+      ad_daily_stat : '之前的日期-时间段日志'
+      ad_schedule : '广告时间表'
+      ad_target_address : '广告目标地址'
+      ad_target_cid : '广告 CID'
+      ad_target : '广告 目标'
+      ad_type : '广告分类'
+      app_log_type : 'app_log_type'
+      app_log : 'app_log'
+      address_section : '区域编号管理'
+      address : '地址'
+      ad : '广告'
+      attendance : '출석체크'
+      attendance_setting : '출석체크 설정'
+      attendance_picture : '출석체크 배경설정'
+      bank : '运营商'
+      faq : 'FAQ'
+      game_setting : '游戏设置'
+      game : '游戏'
+      game_amount : '베팅 금액 설정'
+      
+      roulette_setting : '룰렛 세팅'
+      roulette_betting : '룰렛 베팅'
+      roulette_background : '룰렛배경 1'
+      roulette_present : '룰렛 상품 이미지'
+      roulette_play : '룰렛 기록'
+      roulette_plays_user_address_book : '룰렛 상품 배송정보'
+      quizzes_user_address_book : '퀴즈 상품 배송정보'
+      notice : '公告'
+      point_type : '积点类型' 
+      point : '积点'
+      request_setting : '兑换现金设置'
+      request_type : '兑换现金类型'
+      request : '兑换需求'
+      sponsor : '广告主'
+      stats : '统计'
+      target : '目标'
+      target_type : '目标分类'
+      user_target : '用户目标'
+      user_target_address : '用户目标地址'
+      user_referral : '추천 아이디'
+      user : '用户'  
+      user_log : '登录日志'
+      user_address_book : '사용자 배송주소록'      
+      operator : '运营者'
+      application_version : '版本 '
+      store_good : '商品'      
+      store_order : '订单'
+      store_good_picture : '商城商品图片'
+      store_order_status : '상품 주문 상태'
+      quiz : 'QUIZ'
+      quiz_question : 'QUIZ 질문'
+      quiz_answer : 'QUIZ 답변'      
+      message : 'message'
+      delete_user : '삭제회원'
+      market : '마켓'
+    attributes :
+      admin :
+        login_id : '登录账户'
+        nickname : ' 用户名'
+        email : 'E-Mail'
+        password : '新密码'
+        password_confirmation : '新密码确认'
+        current_password : '密码'
+        photo : '图片'
+        flag : '使用与否'     
+      operator : 
+        login_id : '登录账户'
+        nickname : ' 用户名'
+        email : 'E-Mail'
+        password : '密码'
+        password_confirmation : ' 密码确认'
+      address :
+        parent_address_id : '上一级地址'
+        name : '地址'
+        full_address : '全部地址'          
+        flag : '使用与否'
+      address_section :
+        address_id : '地址'        
+        section : '号码段'
+        flag : '使用与否'         
+      ad :
+        ad_type_id : ' 分类'
+        sponsor_id : '广告主'
+        title : '标题'
+        description : '说明'
+        agent_id : '담당'
+        priority :  '우선집행'
+        flag : '使用与否'
+      ad_memo :
+        content : '备注'
+      ad_option :
+        cpi_flag : 'CPI 사용'
+        cpi_type : 'CPI 리워드 형태'
+        cpi_market : 'CPI 마켓'
+        cpi_pkg : 'CPI 패키지명'
+        cpi_comment : 'CPI 메세지'
+        web_flag : 'WEB 사용'
+        web_addr : 'WEB 연결주소' 
+        web_comment : 'WEB 메세지'
+        callback_flag : '콜백 사용'
+        callback_number : '콜백 번호'
+        callback_comment : '콜백 메세지'
+        video_flag : '영상 사용여부'
+        html_data : 'HTML 광고'
+      ad_schedule :
+        title : '标题'
+        start_time : '시작일시'
+        end_time : '종료일시'
+        expire_time : '만료일시'
+        end_hour : '시간지정'
+        cpi_only_flag : '지정번호 전용'        
+        flag : '使用与否'
+        weekday0 : 日
+        weekday1 : 一
+        weekday2 : 二
+        weekday3 : 三
+        weekday4 : 四
+        weekday5 : 五
+        weekday6 : 六        
+      ad_target_cid : 
+        cid : 'CID'
+        flag : '使用与否'
+      ad_file_type :
+        title : '标题'        
+        flag : '使用与否'        
+      ad_file :
+        ad_file_type_id : '广告文件分类'
+        photo : '图片'
+        flag : '使用与否'
+      attendance : 
+        user_id : '用户ID'
+        today : '오늘'
+        count : '카운트'
+        flag : '使用与否'  
+      attendance_setting : 
+        title : '标题'
+        headtext : '머릿말'
+        prize5 : '5일 상품'
+        prize10 : '10일 상품'
+        prize15 : '15일 상품'
+        prize20 : '20일 상품'
+        prize25 : '25일 상품'
+        prize30 : '30일 상품'
+        flag : '使用与否'      
+      attendance_picture :
+        attendance_setting_id : '출석설정'
+        title : '标题'
+        start_date : '시작시간'
+        photo : '图片'
+        flag : '使用与否'
+      sponsor :
+        title : '标题'
+        flag : '使用与否'
+      target_type :
+        title : '标题'
+        flag : '使用与否'
+      target :
+        target_type_id : '目标分类'
+        title : '标题'
+        flag : '使用与否'
+      point_type :
+        title : '标题'
+        amount : '数量'
+        flag : '使用与否'
+      point :
+        user_id : '用户ID'
+        point_type_id : '分类'
+        amount : '积点'
+      request :
+        user_id : '用户ID'
+        request_setting_id : '兑换现金设置'
+        request_type_id : '兑换现金类型'   
+        bank_id : '运营商'
+        account_number : '账户号码'
+      game :
+        user_id : '用户ID'
+        game_setting_id : '游戏设置'
+      game_setting :
+        title : '标题'
+        amount : '倍'
+      game_amount :
+        amount : '베팅금액'
+        flag : '使用与否'
+      roulette_plate :
+        title : '标题'
+        photo : '图片'
+        flag : '使用与否'        
+      roulette_background :
+        title : '标题'
+        photo : '图片'
+        flag : '使用与否'
+      roulette_present :
+        title : '标题'
+        photo : '图片'
+        flag : '使用与否'                     
+      roulette_setting :
+        title : '标题'
+        percentage : '概率'   
+        amount : '获得积点'
+        limit : '유저 제한'
+      roulette_betting :
+        amount : '数量'
+        flag : '使用与否' 
+      roulette_plays_user_address_book :
+        roulette_play_id : '룰렛 play ID'
+        user_address_book_id : '사용자 주소록 ID'
+      roulette_play : 
+        user_id : '用户ID'
+        roulette_setting_id : 'r_setting_id'
+      user_address_book :
+        user_id : 'user_id'
+        address_id : 'address_id'
+        address : '地址'
+        name : '用户名'
+        mobilephone : '手机号码'
+      quiz :
+        quiz_type : '타입'
+        title : '标题'
+        description : '说明'
+        full_description : 'full 说明'
+        sponsor : '스폰서'
+        sponsor_url : '스폰서 URL'
+        start_time : '시작시간'
+        end_time : '종료시간'
+        photo : '图片'
+        flag : '使用与否'
+      quiz_question :
+        title : '标题'
+      quiz_answer :
+        title : '标题'
+        is_correct : '정답여부'        
+      quizzes_user_address_book : 
+        quiz_id : '퀴즈 ID'
+        user_address_book_id : '사용자 주소록 ID'
+      request_setting :
+        title : '标题'
+        amount : '数量'
+        flag : '使用与否'
+      request_type :
+        title : '标题'
+        flag : '使用与否'
+      notice :
+        title : '标题'
+        flag : '使用与否'
+      notice_content :
+        content : '内容'
+      faq :
+        title : '标题'
+        flag : '使用与否'
+      faq_content :
+        content : '内容'           
+      user :
+        username : '登录账户'
+        email : 'E-Mail'
+        password : '密码'
+        password_confirmation : ' 密码确认'
+        service_provider : 'Service Provider'
+        device_id : '设备ID'
+        point : '积点'
+        photo : '图片'
+        flag : '使用与否'
+      store_good :
+        title : '标题'
+        description_short : '简要说明'
+        description : '商品说明'
+        stock_count : '库存数量'
+        order_count : '订单数量'
+        sale_start_time : '판매시작시간'
+        sale_end_time : '销售终了时间'
+        sale_price : '销售金额'
+        sale_type : '销售类型'
+        proirity_flag : '优先'
+        hot_flag : '热卖'
+        new_flag : '新品'
+        flag : '使用与否'
+      store_order : 
+        store_good_id : 'Store Good ID'
+        user_id : '用户ID'
+        amount : '수량'
+        customer_tel : 'customer_tel'
+        delivery_tel : '배송 번호'
+        delivery_name : '배송 이름'
+        delivery_zipcode : '배송 Zipcode'
+        delivery_address_1 : '배송주소 1'
+        delivery_address_2 : '배송주소 2'
+        delivery_note : '배송'
+        store_order_status_id : '주문상태'
+        shipping_method : '배송방법'
+        shipping_track_number : '배송번호'
+        shipping_time : '배송시간'
+        shipping_flag : '배송'
+        return_reason : '반송이유'
+        return_time : '반송시간'
+        return_flag : '반송'
+      store_good_picture :
+        title : '标题'
+        photo : '图片'
+        flag : '使用与否'
+      store_order_status : 
+        title : '标题'
+        flag : '使用与否'                
+      delete_user : 
+        username : 'Login ID'
+        nickname : '별명'
+        email : 'E-mail'
+        nation_num : '국가번호'
+        mobile_num : '번호'
+    errors:
+      <<: *errors

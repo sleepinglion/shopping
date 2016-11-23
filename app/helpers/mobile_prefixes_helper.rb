@@ -1,0 +1,2 @@
+module MobilePrefixesHelper
+end

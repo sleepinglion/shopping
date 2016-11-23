@@ -1,0 +1,12 @@
+<div class="page-header" itemscope itemtype="http://schema.org/WebPage">
+	<h2 itemprop="mainContentOfPage" itemscope="" itemtype="http://schema.org/WebPageElement"><span itemprop="headline"><%=actionNameChange controller.action_name %></span></h2>
+	
+	<ol class="breadcrumb">
+		<li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><%= link_to t(:home),root_path %></li>
+		<% if(@category.present?) %>
+							<li><a href="#"><%= @category %></a><% if(@sub_menu) %><% end %></li>
+							<% end %>	
+							<li><a href="#"><%= @sub_menu %></a></li>
+							<li><a href="#"><%=actionNameChange controller.action_name %></a></li>
+						</ol>	
+</div>

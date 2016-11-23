@@ -1,0 +1,57 @@
+<%= form_for [:admin,@message] do |f| %>
+<% if @message.errors.any? %>
+<div id="error_explanation" class="alert alert-danger">
+	<h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+	<ul>
+		<% @message.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<div class="form-group">
+	<%= f.label :msg_status %>
+	<%= f.number_field :msg_status,:class=>"form-control" %>
+</div>
+<div class="form-group">
+	<%= f.label :msg_phone %>
+	<%= f.text_field :msg_phone,:class=>"form-control" %>
+</div>
+<div class="form-group">
+	<%= f.label :msg_callback %>
+	<%= f.text_field :msg_callback,:class=>"form-control" %>
+</div>
+<div class="form-group">
+	<%= f.label :msg_charset %>
+	<%= f.text_field :msg_charset,:class=>"form-control" %>
+</div>
+<div class="form-group">
+	<%= f.label :msg_text %>
+	<%= f.text_field :msg_text,:class=>"form-control" %>
+</div>
+<div class="form-group">
+	<%= f.label :msg_sendtime %>
+	<%= f.datetime_select :msg_sendtime,:class=>"form-control" %>
+</div>
+<div class="form-group">
+	<%= f.label :msg_rslttime %>
+	<%= f.datetime_select :msg_rslttime,:class=>"form-control" %>
+</div>
+<div class="form-group">
+	<%= f.label :msg_lasttime %>
+	<%= f.datetime_select :msg_lasttime,:class=>"form-control" %>
+</div>
+<div class="form-group">
+	<%= f.label :msg_rsltcode %>
+	<%= f.number_field :msg_rsltcode,:class=>"form-control" %>
+</div>
+<div class="form-group">
+	<%= f.label :msg_priority %>
+	<%= f.number_field :msg_priority,:class=>"form-control" %>
+</div>
+<div class="form-group actions">
+	<%= f.submit :class=>"btn btn-primary" %>
+</div>
+<% end %>

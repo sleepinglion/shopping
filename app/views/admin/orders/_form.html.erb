@@ -1,0 +1,30 @@
+<%= form_for [:admin,@order] do |f| %>
+<% if @order.errors.any? %>
+<div id="error_explanation" class="alert alert-danger">
+	<a href="#" class="close" data-dismiss="alert">&times;</a>
+	<h2><%= pluralize(@order.errors.count, "error") %> prohibited this request from being saved:</h2>
+	<ul>
+		<% @order.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<div class="form-group">
+	<%= f.label :user_id %>
+	<%= f.number_field :user_id,:class=>"form-control" %>
+</div>
+<div class="form-group">
+	<%= f.label :shipping_id %>
+	<%= f.number_field :shipping_id,:class=>"form-control" %>
+</div>
+<div class="form-group">
+	<%= f.label :enable %>
+	<%= f.check_box :enable %>
+</div>
+<div class="form-group actions">
+	<%= f.submit :class=>"btn btn-primary" %>
+</div>
+<% end %>

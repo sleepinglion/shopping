@@ -1,0 +1,46 @@
+<% if notice %>
+<%= render :partial => 'layouts/notice',:locals=>{:notice=>notice} %>
+<% end %>
+<div class="sl_show">
+	<p>
+		<b>Msg status</b>
+		<%= @message.msg_status %>
+	</p>
+	<p>
+		<b>Msg phone</b>
+		<%= @message.msg_phone %>
+	</p>
+	<p>
+		<b>Msg callback</b>
+		<%= @message.msg_callback %>
+	</p>
+	<p>
+		<b>Msg charset</b>
+		<%= @message.msg_charset %>
+	</p>
+	<p>
+		<b>Msg text</b>
+		<%= @message.msg_text %>
+	</p>
+	<p>
+		<b>Msg sendtime</b>
+		<%= @message.msg_sendtime %>
+	</p>
+	<p>
+		<b>Msg rslttime</b>
+		<%= @message.msg_rslttime %>
+	</p>
+	<p>
+		<b>Msg lasttime</b>
+		<%= @message.msg_lasttime %>
+	</p>
+	<p>
+		<b>Msg rsltcode</b>
+		<%= @message.msg_rsltcode %>
+	</p>
+	<p>
+		<b>Msg priority</b>
+		<%= @message.msg_priority %>
+	</p>
+</div>
+<%= link_to t(:link_list), admin_messages_path(list_param(params)) %>

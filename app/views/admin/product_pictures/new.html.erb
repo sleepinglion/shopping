@@ -1,0 +1,12 @@
+<% if @ad_file.errors.any? %>
+<div id="error_explanation" class="alert alert-danger">
+	<a href="#" class="close" data-dismiss="alert">&times;</a>
+	<h2><%= pluralize(@ad_file.errors.count, "error") %> prohibited this ad from being saved:</h2>
+	<ul>
+	<% @ad_file.errors.full_messages.each do |msg| %>
+	<li><%= msg %></li>
+	<% end %>
+	</ul>
+</div>
+<% end %>
+<%= render 'form' %>

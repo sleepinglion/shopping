@@ -1,0 +1,30 @@
+<% if notice %>
+<%= render :partial => 'layouts/notice',:locals=>{:notice=>notice} %>
+<% end %>
+<div class="sl_show">
+	<p>
+		<b><%=t(:label_title) %></b>
+		<%= @product.title %>
+	</p>
+	<p>
+		<b><%=t(:label_content) %></b>
+		<%=simple_format @product.description %>
+	</p>
+	<p>
+		<b><%=t(:label_flag) %></b>
+		<%=raw flagToString(@product.enable) %>
+	</p>
+	<p>
+  	<b><%=t(:label_created_at) %></b>
+  	<%= @product.created_at %>
+  </p>
+  <p>
+  	<b><%=t(:label_updated_at) %></b>
+  	<%= @product.created_at %>
+  </p>
+  <%= render "admin/product_pictures/index" %>  
+</div>
+<% if can? :update, Notice %>		
+<%= link_to t(:link_edit), edit_admin_product_path(@product) %> |
+<% end %>
+<%= link_to t(:link_list), admin_products_path() %>

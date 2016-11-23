@@ -1,0 +1,21 @@
+<div class="input-group">
+	<div class="input-group-btn">
+		<button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button"><%=t(:label_title)%> &nbsp; <span class="caret"></span></button>
+		<ul role="menu" class="dropdown-menu">
+			<li><a href="?search_type=title"><%=t(:label_title)%></a></li>
+			<li><a href="?search_type=content"><%=t(:label_description )%></a></li>
+			<li><a href="?search_type=titlencontent"><%=t(:label_memo)%></a></li>
+     		<!--	<li><a href="http://www.sleepinglion.pe.kr/communities?search_type=nickname">작성자</a></li> -->
+     	</ul>
+     </div>
+     <select style="display:none" name="search_type">
+     	<option value="title"><%=t(:label_title)%></option>
+     	<option value="description"><%=t(:label_description )%></option>
+     	<option value="memo"><%=t(:label_memo)%></option>
+     	<!--	<option value="nickname" >작성자</option> -->
+     </select>
+     <input type="search" required="required" maxlength="60" placeholder="검색어를 써주세요" value="<%=params[:search_value] %>" class="form-control" name="search_value" />
+     <span class="input-group-btn">
+     	<%=button_tag t(:search),:type=>'submit',:class=>"btn btn-default" %>
+     </span>
+</div>

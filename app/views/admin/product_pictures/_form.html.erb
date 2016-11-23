@@ -1,0 +1,24 @@
+<%= form_for [:admin,@product,ProductPicture.new],:html=>{:class=>"form-horizontal"} do |f| %>
+<div class="box">
+	<div class="box-header">
+		<h2><i class="glyphicon glyphicon-align-justify"></i><span class="break"></span><%= t('activerecord.models.product_picture')%></h2>
+		<div class="box-icon">
+			<a href="#" class="btn-minimize"><i class="glyphicon glyphicon-chevron-up"></i></a>
+		</div>
+	</div>
+	<div class="box-content">
+		<div class="form-group">
+			<%= f.label :photo %>
+			<%= f.file_field :photo,:required=>"required" %>
+			<%= f.hidden_field :photo_cache %>
+		</div>
+		<div class="form-group">
+			<%= f.label :enable %>
+			<%= f.check_box :enable %>
+		</div>
+		<div class="actions">
+			<%= f.submit :class=>"btn btn-primary" %>
+		</div>
+	</div>
+</div>
+<% end %>

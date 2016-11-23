@@ -1,0 +1,27 @@
+<% if notice %>
+<%= render :partial => 'layouts/notice',:locals=>{:notice=>notice} %>
+<% end %>
+<div class="sl_show">
+	<p>
+		<b>User</b>
+		<%= @user_login_log.user %>
+	</p>
+	<p>
+		<b>Device:</b>
+		<%= @user_login_log.device_id %>
+	</p>
+	<p>
+		<b>Client ip:</b>
+		<%= @user_login_log.client_ip %>
+	</p>
+	<p>
+		<b>Flag:</b>
+		<%= @user_login_log.flag %>
+	</p>
+	<p>
+		<b>Created at:</b>
+		<%= @user_login_log.created_at %>
+	</p>
+</div>
+<%= link_to t(:link_edit), edit_admin_user_login_log_path(@user_login_log) %> |
+<%= link_to t(:link_list), admin_user_login_logs_path(list_param(params)) %>

@@ -1,0 +1,116 @@
+<%= form_tag '/admin/users/user_id_select_search_result',:method=>'get',:id=>'user_id_search_form',:class=>"form-inline" do |f| %>
+<div class="form-group">
+<select name="find_method" class="form-control">
+	<option value="login_id" <% if params[:login_id].present? %>selected="selected"<% end %>><%= t(:find_by_login_id) %></option>
+	<option value="email" <% if params[:email].present? %>selected="selected"<% end %>><%= t(:find_by_email) %></option>
+	<option value="user_id" <% if params[:user_id].present? %>selected="selected"<% end %>><%= t(:find_by_user_id) %></option>
+</select>
+</div>
+<div class="form-group">
+	<%= search_field_tag :search,'',{:class=>"form-control",:required=>"required"} %>
+</div>
+<div class="form-group">
+	<%= button_tag t(:search),:type=>'submit',:class=>"btn btn-default" %>
+</div>
+<select id="perpage">
+	<option value="5"><%= t(:show_5) %></option>
+	<option value="10"><%= t(:show_10) %></option>
+	<option value="20"><%= t(:show_20) %></option>
+</select>
+<div id="clear_check_list_layer"></div>
+<% end %>
+<ul id="user_id_list"></ul>
+<% if params[:no_layout] %>
+<div id="pagination" class="js_pagination"></div>
+<style type="text/css">
+	#user_id_search_form {
+		padding:10px;
+	}
+
+	#user_id_list li {
+		position: relative;
+		clear: both;
+		margin: 0;
+		padding: 3px
+	}
+	#user_id_list label, #user_id_list input {
+		vertical-align: top
+	}
+	#user_id_list label {
+		position: relative
+	}
+
+	.js_pagination {
+		clear: both;
+		margin: 0;
+		padding: 17px 0;
+		text-align: center;
+		display: block;
+		font-family: "Tahoma", Arial, sans-serif;
+		font-size: 12px;
+		line-height: 18px;
+		text-decoration: none;
+		text-transform: uppercase;
+	}
+	.js_pagination a, .js_pagination strong, .js_pagination span {
+		display: inline;
+		padding: 0.3em 0.5em;
+		margin-right: 5px;
+		margin-bottom: 5px;
+	}
+	.js_pagination .current.prev, .js_pagination .current.next {
+		display: none;
+	}
+	.js_pagination a:hover {
+		color: #303030
+	}
+	.js_pagination a:active {
+		color: #585858
+	}
+	.js_pagination a {
+		border: 1px solid #ddd;
+		border-radius: 5px
+	}
+	.js_pagination a:hover {
+		border-color: #d0d0d0;
+		box-shadow: 0px 0px 5px rgba(0,0,0,0.2)
+	}
+	.js_pagination .current {
+		color: #333
+	}
+	.js_pagination .current:hover {
+		box-shadow: none
+	}
+	.js_pagination .current:active {
+		box-shadow: 0px 1px 1px rgba(255,255,255,0.3), inset 0px 1px 2px rgba(0,0,0,0.15)
+	}
+	/* BLUE PAGINATION STYLE */
+	.js_pagination.blue, .js_pagination.blue a {
+		color: #4fa3e0
+	}
+	.js_pagination.blue a.current {
+		background-color: #4fa3e0;
+		border-color: #4b9ec9 #2e7fb4 #206fa8;
+		text-shadow: 0px 1px 1px #206fa8;
+		background: -moz-linear-gradient(top,#b5dfef,#7fc3df 5%,#4fa3e0);
+		background: -webkit-gradient(linear, left top, left bottom,from(#b5dfef),color-stop(0.05, #7fc3df),to(#4fa3e0));
+		filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#7fc3df', EndColorStr='#4fa3e0')
+	}
+	.js_pagination.blue a.number.current:hover {
+		border-color: #4092c0 #1f68a1 #175e97;
+		background-color: #3f91c0;
+		background: -moz-linear-gradient(top,#aad9ec,#72bad9 5%,#3f91c0);
+		background: -webkit-gradient(linear, left top, left bottom,from(#aad9ec),color-stop(0.05, #72bad9),to(#3f91c0));
+		filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#72bad9', EndColorStr='#3f91c0')
+	}
+	.js_pagination.blue a.number.current:active {
+		border-color: #206fa8 #2e7fb4 #4b9ec9;
+		text-shadow: 0px -1px 1px #1f68a1;
+		background: -moz-linear-gradient(top,#3f91c0,#72bad9);
+		background: -webkit-gradient(linear, left top, left bottom,from(#3f91c0),to(#72bad9));
+		filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#3f91c0', EndColorStr='#aad9ec')
+	}
+</style>
+<script src="/assets/plugin/jquery.pagination.js"></script>
+<script src="/assets/users/user_id_select.js"></script>
+<% end %>

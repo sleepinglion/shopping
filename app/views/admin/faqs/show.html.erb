@@ -1,0 +1,29 @@
+<% if notice %>
+<%= render :partial => 'layouts/notice',:locals=>{:notice=>notice} %>
+<% end %>
+<div class="sl_show">
+	<p>
+		<b><%=t(:label_title) %></b>
+		<%= @faq.title %>
+	</p>
+	<p>
+		<b><%=t(:label_content) %></b>
+		<%=simple_format @faq.faq_content.content %>
+	</p>
+	<p>
+		<b><%=t(:label_flag) %></b>
+		<%=raw flagToString(@faq.enable) %>
+	</p>
+	<p>
+  	<b><%=t(:label_created_at) %></b>
+  	<%= @faq.created_at %>
+  </p>
+  <p>
+  	<b><%=t(:label_updated_at) %></b>
+  	<%= @faq.created_at %>
+  </p>
+</div>
+<% if can? :update, Faq %>
+<%= link_to t(:link_edit), edit_admin_faq_path(@faq) %> |
+<% end %>
+<%= link_to t(:link_list), admin_faqs_path() %>

@@ -1,0 +1,180 @@
+<section id="sl_user_add_form" class="sl_user_form">
+	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+  	<%= devise_error_messages! %>
+	<input type="hidden" id="message_required" value="<?php echo _('The %s field is required.') ?>" />
+	<input type="hidden" id="message_no_email" value="<?php printf(_('The %s field is required.'),_('Email')) ?>" />
+	<input type="hidden" id="message_invalid_email" value="<?php printf(_('The %s field must contain a valid email address.'),_('Email')) ?>" />
+	<input type="hidden" id="message_exists_email" value="<?php printf(_('%s field must contain a unique value.'),_('Email')) ?>" />
+	<input type="hidden" id="message_available_email" value="<%=t(:Available Email) %>" />
+	<article>
+		<h4><%=t(:User Data Default Insert) %></h4>
+		<div class="innser_section">
+		<div class="form-group<?php if(form_error('email')){echo ' has-error';} %>">
+			<label class="control-label col-sm-2" for="sl_email"><%=t(:Email) %></label>
+			<div class="col-sm-6">
+					<input type="text" class="form-control" id="sl_email" name="email" maxlength="255" value="<?php echo set_value('email'); %>" />
+			</div>					
+			<div class="col-sm-4">
+					<input type="button" id="check_email_available_button" class="form-control btn btn-success" value="<%=t(:check_email_available) %>" />
+			</div>
+		</div>
+		<div class="form-group<?php if(form_error('password')){echo ' has-error';} %>">
+			<label class="control-label col-sm-2" for="sl_password"><%=t(:Password) %></label>
+			<div class="col-sm-10">
+				<input type="password" class="form-control" id="sl_password" name="password" value="<?php echo set_value('password'); %>" maxlength="255" <?php /*  required="required" */ %> />
+			</div>
+		</div>
+		<div class="form-group<?php if(form_error('password_confirm')){echo ' has-error';} %>">
+			<label class="control-label col-sm-2" for="sl_password_confirm"><%=t(:Password Confirm) %></label>
+			<div class="col-sm-10">
+				<input type="password" class="form-control" id="sl_password_confirm" name="password_confirm" value="<?php echo set_value('password_confirm'); %>" maxlength="255"   maxlength="255" <?php /*  required="required" */ %> />
+			</div>
+		</div>
+		<div class="form-group<?php if(form_error('name')){echo ' has-error';} %>">
+			<label class="control-label col-sm-2" for="sl_name"><%=t(:Name) %></label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="sl_name" name="name" maxlength="60" value="<?php echo set_value('name'); %>" maxlength="255"  />
+			</div>
+		</div>
+		<div class="form-group<?php if(form_error('phone')){echo ' has-error';} %>">
+			<label class="control-label col-sm-2" for="sl_phone"><%=t(:Phone) %></label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="sl_phone" name="phone" value="<?php echo set_value('phone'); %>" maxlength="255"   maxlength="255" <?php /*  required="required" */ %> />
+			</div>
+		</div>
+		<div class="form-group<?php if(form_error('birthday')){echo ' has-error';} %>">
+			<label class="control-label col-sm-2" for="sl_birthday"><%=t(:Birthday) %></label>
+			<div class="col-sm-10">
+				<input type="date" class="form-control datepicker" data-date-end-date="-6570d" id="sl_birthday" name="birthday" value="<?php echo set_value('birthday'); %>" <?php /*  required="required" */ %> />
+			</div>
+		</div>
+		<div class="radio">
+			<label class="control-label col-sm-2" for="sl_sex"><%=t(:Sex) %></label>
+			<div class="col-sm-10<?php if(form_error('sex')){echo ' has-error';} %>">		
+			<label class="radio-inline">
+				<input type="radio" name="sex" value="1" <?php echo set_radio('sex', 1,true) %> /> <%=t(:Male'); %>
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="sex" value="0" <?php echo set_radio('sex',0) %> /> <%=t(:Female) %>
+			</label>
+			</div>
+		</div>
+		</div>
+  	</article>
+  	<article>
+		<h4><%=t(:User Data Optional Insert) %></h4>
+		<div class="innser_section">
+		<div class="form-group<?php if(form_error('height')){echo ' has-error';} %>">
+			<label class="control-label col-sm-2" for="sl_height"><%=t(:Height) %></label>
+			<div class="col-sm-10">
+				<input type="text" min="50" class="form-control" id="sl_height" name="height" value="<?php echo set_value('height'); %>" />
+			</div>
+		</div>
+		<div class="form-group<?php if(form_error('weight')){echo ' has-error';} %>">
+			<label class="control-label col-sm-2" for="sl_weight"><%=t(:Weight) %></label>
+			<div class="col-sm-10">
+				<input type="text" min="30" class="form-control" id="sl_weight" name="weight" value="<?php echo set_value('weight'); %>" />
+			</div>
+		</div>
+		</div>
+  	</article>
+	<article>
+		<h4><%=t(:User Agree) %></h4>
+		<div class="innser_section">		
+		<div class="col-md-offset-2<?php if(form_error('agree[over_age_18]')){echo ' has-error';} %>">		
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="agree[over_age_18]" value="1" <?php echo set_checkbox('agree[over_age_18]', '1', FALSE); %> /> <span><%=t(:OverAge18 Agreement) %></span>
+				</label>
+			</div>
+		</div>		
+		<div class="col-md-offset-2<?php if(form_error('agree[service]')){echo ' has-error';} %>">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="agree[service]" value="1" <?php echo set_checkbox('agree[service]', '1', FALSE); %> /> <span><%=t(:Service Agreement) %></span> <?php echo anchor('users/see_agree_service', _('See It'),array('data-target'=>"#myModal",'data-toggle'=>"modal",'class'=>"modal_link")) %>
+				</label>
+			</div>
+		</div>
+		<div class="col-md-offset-2<?php if(form_error('agree[information]')){echo ' has-error';} %>">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="agree[information]" value="1" <?php echo set_checkbox('agree[information]', '1', FALSE); %> /> <span><%=t(:Personal Information Agreement) %></span> <?php echo anchor('users/see_agree_information', _('See It'),array('data-target'=>"#myModal",'data-toggle'=>"modal",'class'=>"modal_link")) %>
+				</label>
+			</div>
+		</div>
+		</div>		
+	</article>
+	<div class="section_bottom">
+		<%= f.submit :class=>"btn btn-primary btn-lg" %>
+	</div>
+	<% end %>	
+</section>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+  <%= devise_error_messages! %>
+	  <div class="form-group">
+	  	<%= f.label :login_id %>
+	    <div class="controls">
+	  	<%= f.text_field :login_id,:class=>"form-control", :autofocus => true %>
+		</div>
+	  </div>  	
+	  <div class="form-group">
+	  	<%= f.label :nickname %>
+	    <div class="controls">
+	  	<%= f.text_field :nickname,:class=>"form-control",:autofocus => true %>
+		</div>
+	  </div>
+	  <div class="form-group">
+	  	<%= f.label :email,t(:label_email) %>
+	    <div class="controls">
+	  	<%= f.email_field :email,:class=>"form-control", :autofocus => true %>
+		</div>
+	  </div> 
+	  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+	    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+	  <% end %>
+	  <div class="form-group">
+	  	<%= f.label :password %> 
+	    <div class="controls">
+	  	<%= f.password_field :password,:class=>"form-control", :autocomplete => "off" %>
+	  	<span class="help-block">(비밀번호 변경시만 입력)</span>
+		</div>
+	  </div> 
+	  <div class="form-group">
+	  	<%= f.label :password_confirmation %>
+	    <div class="controls">
+	  	<%= f.password_field :password_confirmation,:class=>"form-control" %>
+	  	<span class="help-block">(비밀번호 변경시만 입력)</span>
+		</div>
+	  </div> 
+	  <div class="form-group">
+	  	<%= f.label :current_password %> 
+	    <div class="controls">
+	  	<%= f.password_field :current_password,:class=>"form-control", :required=>"required" %>
+	  	<span class="help-block">(변경시  입력)</span>
+		</div>
+	  </div> 
+	  <div class="form-group">
+		<%= f.label :photo %>	
+	    <div class="controls">
+			<% if resource.photo? %>
+				<%= image_tag(resource.photo.small_thumb) %>
+				<br />
+			<% end %>
+			<%= f.file_field :photo %>
+			<%= f.hidden_field :photo_cache %>
+		</div>
+	  </div>
+	  <div class="form-group">
+	  	<%= f.label :flag %> 
+	    <div class="controls">
+	  	<%= f.check_box :flag %>
+		</div>
+	  </div>
+	 <div class="form-actions">
+	 		<%= f.submit :class=>"btn btn-primary" %>
+		</div>
+<% end %>
+<div class="pull-right">
+<%= button_to t(:link_delete_admin), registration_path(resource_name), :data => { :confirm => t(:delete_cascade_confirm)}, :method => :delete, :class=>"btn btn-danger" %>
+</div>

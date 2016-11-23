@@ -1,0 +1,53 @@
+<div class="row">
+	<h3 class="col-xs-12 col-sm-6"><%= @controller_name %> <%= actionNameChange controller.action_name %></h3>
+</div>
+<table class="table table-bordered table-striped">
+	<colgroup>
+		<col style="width:80px;" />
+		<col />
+		<col />
+		<col style="width:200px;" />
+		<% if can? :delete, UserLoginLog %>
+		<col style="width:90px;" />
+		<% end %>
+	</colgroup>
+	<thead>
+		<tr>
+			<th><%=t(:label_number) %></th>
+			<th><%=t(:label_user_id) %></th>
+			<th><%=t(:label_ip)%></th>
+			<th><%=t(:label_created_at) %></th>
+			<% if can? :delete, UserLoginLog %>
+			<th><%=t(:label_manage) %></th>
+			<% end %>
+		</tr>
+	</thead>
+	<tbody>
+		<% unless @user_login_logs.empty? %>
+		<% @user_login_logs.each do |user_login_log| %>
+		<tr>
+			<td><%=user_login_log.id %></td>
+			<td><%=link_to user_login_log.user_id,admin_user_path(user_login_log.user_id),:class=>'modal_link',:'data-target'=>"#modal",:'data-toggle'=>"modal" %></td>
+			<td><%=IPAddr.new(user_login_log.client_ip, Socket::AF_INET).to_s %></td>
+			<td><%=user_login_log.created_at %></td>
+			<% if can? :delete, user_login_log %>
+			<td>
+				<%= link_to admin_user_login_log_path(user_login_log), :method => :delete, :data => { :confirm => t(:delete_confirm)},:class=>"btn btn-danger" do %>
+				<i class="glyphicon glyphicon-trash"></i> <%=t(:link_delete) %>
+				<% end %>		
+			</td>
+			<% end %>
+		</tr>
+		<% end %>
+		<% else %>
+		<tr>
+			<td colspan="5"><%=t(:no_data)%></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<div class="row">
+	<div class="col-xs-6 col-sm-3 col-md2">
+	</div>
+	<%= paginate @user_login_logs %>
+</div>

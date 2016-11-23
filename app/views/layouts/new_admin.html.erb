@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<title><%=t(:service_name)%></title>
+		<meta name="description" content="Mynm Admin System">
+		<meta name="author" content="Sleeping-Lion">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="/assets/favicon.ico">
+		<%= stylesheet_link_tag "application", :media => "all" %>
+		<%= csrf_meta_tags %>
+		<!--[if lt IE 8 ]>
+		<link id="ie-style" href="/mynm/css/style-ie.css" rel="stylesheet">
+		<![endif]-->
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+<body>
+<!-- start: Header -->
+<header class="navbar">
+	<div class="navbar-inner">
+		<div class="container-fluid">
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
+				<span class="glyphicon glyphicon-bar"></span>
+				<span class="glyphicon glyphicon-bar"></span>
+				<span class="glyphicon glyphicon-bar"></span>
+			</a>
+			<%=link_to root_path,:class=>"brand" do %><span class="hidden-phone"><%=t(:service_name)%> ADMIN 3</span><% end %>
+			</div>
+		</div>
+</header>
+<!-- start: Header -->
+
+	<div class="container-fluid">
+			<div class="row-fluid">		
+				<div id="content" class="span10">
+					<% if(!params[:no_layout]) %>
+					<div>
+						<hr />
+						<ul class="breadcrumb">
+							<li>
+								<%= link_to t(:home),root_path %> <span class="divider">/</span>
+							</li>
+							<% if(@category.present?) %>
+							<li>
+								<a href="#"><%= @category %></a> <% if(@sub_menu) %> <span class="divider">/</span>		<% end %>					
+							</li>
+							<% end %>	
+							<li>
+								<a href="#"><%= @sub_menu %></a> <span class="divider">/</span>
+							</li>
+							<li>
+								<a href="#"><%=actionNameChange controller.action_name %></a>
+							</li>
+						</ul>
+						<hr />
+					</div>
+					<% end %>
+	<div class="container-fluid" style="margin-bottom: 20px;">
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+  
+  <div><%= f.label :login_id %>
+  <%= f.text_field :login_id, :autofocus => true %></div>  
+  
+  <div><%= f.label :nickname %>
+  <%= f.text_field :nickname %></div>    
+
+  <div><%= f.label :email %>
+  <%= f.email_field :email %></div>
+
+  <div><%= f.label :password %>
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.submit %></div>
+<% end %>
+	</div>
+				</div><!--/#content.span10-->
+		<div class="clearfix">&nbsp;</div>							
+			</div><!--/fluid-row-->
+
+			<div class="modal hide fade" id="myModal" style="width:700px">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						×
+					</button>
+					<h3>Settings</h3>
+				</div>
+				<div class="modal-body">
+					<p>
+						Here settings can be configured...
+					</p>
+				</div>
+				<div class="modal-footer">
+					<a href="#" class="btn" data-dismiss="modal">Close</a>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<%= render :partial => 'layouts/footer' %>
+		</div>
+		<%= javascript_include_tag @script %>
+</body>
+</html>

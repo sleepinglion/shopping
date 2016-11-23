@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+  	<Table>
+  		<Row>
+  			<Cell><Data ss:Type="String"><%=t(:label_period) %></Data></Cell>
+				<% unless @ad_log_types.empty? %>
+				<% @ad_log_types.each do |ad_log_type| %>
+				<% if ad_log_type.title.nil? %>
+				<Cell><Data ss:Type="String">null</Data></Cell>
+				<% else %>
+				<Cell><Data ss:Type="String"><%=ad_log_type.title %></Data></Cell>			
+				<% end %>
+				<% end %>
+				<% end %>
+			</Row>
+			<% unless @stats.empty? %>
+			<% @stats.each do |stat| %>
+      <Row>
+				<Cell><Data ss:Type="String"><%=stat.period %><%=period_format(params[:period])%></Data></Cell>
+				<% unless @ad_log_types.empty? %>
+				<% @ad_log_types.each_with_index do |ad_log_type,index| %>
+				<% stat.attributes.each do |value| %>
+				<% if value[0]==ad_log_type.title.to_s+'_count' %>
+				<Cell><Data ss:Type="String"><% if value[1].nil? %>0<% else %><%=value[1] %><% end %></Data></Cell>
+				<% end -%>
+				<% end -%>
+				<% end -%>
+				<% end -%>
+			</Row>
+		<% end -%>
+		<% else -%>
+		<Row>
+			<Cell><Data ss:Type="String"><%=t(:no_data)%></Data></Cell>
+		</Row>
+		<% end -%>
+    </Table>
+  </Worksheet>
+</Workbook>

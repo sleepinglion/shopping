@@ -1,0 +1,5 @@
+<% if @ad_file.ad_file_type_id==1%>
+<%=image_tag(@ad_file.photo.small_thumb) %>
+<% else %>
+<%=image_tag(@ad_file.photo.client_480) %>
+<% end %>

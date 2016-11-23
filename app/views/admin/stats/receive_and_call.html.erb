@@ -1,0 +1,107 @@
+<div class="row-fluid">
+	<h3 class="pull-left"><%= @controller_name %> <%=actionNameChange controller.action_name %></h3>
+</div>
+<div class="box">
+	<div class="box-header">
+		<h2><i class="glyphicon glyphicon-align-justify"></i><span class="break"></span><%=t(:search)%></h2>
+		<div class="box-icon">
+			<a href="#" class="btn-minimize"><i class="glyphicon glyphicon-chevron-up"></i></a>
+			<a class="btn-close" href="#"><i class="glyphicon glyphicon-remove"></i></a>	
+		</div>
+	</div>
+	<div class="box-content">
+		<%= render 'search_receive_and_call_form' %>
+	</div>
+</div>
+<div id="chart1" style="margin-bottom:30px"></div>
+<script>
+	var title_text='<%=@controller_name %>';
+<% stats_count=@stats.length %>
+<% ad_log_types_count=@ad_log_types.length %>
+<% if(stats_count) %>
+	var show_chart=true;
+<% else %>
+	var show_chart=false;
+<% end %>
+	var period=[<% @stats.reverse.each_with_index do |stat,index| %>'<%=stat.period %><%=period_format(params[:period])%>'<% if(stats_count>(index+1)) %>,<% end %><% end %>];
+	var series=[
+	<% unless @ad_log_types.empty? %>
+	<% @ad_log_types.each_with_index do |ad_log_type,index| %>
+	{
+		name:'<% if ad_log_type.title.nil? %>null<% else %><%=ad_log_type.title%><% end %>',
+		color: '<% if index==1 %>#ff0000<% else %>#0000ff<% end %>',
+		type: 'column',
+		data: [<% @stats.reverse.each_with_index do |stat,index2| %>
+			<% stat.attributes.each do |value| %>
+			<% if value[0]==ad_log_type.title.to_s+'_count' %>
+			<% if value[1].nil? %>
+			0
+			<% else %>
+			<%=value[1] %>
+			<% end %>
+			<% end %>
+		<% end %>
+		<% if(stats_count>(index2+1)) %>,<% end %><% end %>],
+		tooltip: {valueSuffix: ' <%=t(:count_thing) %>' }
+     }
+	<% if(ad_log_types_count>(index+1)) %>,<% end %>	     
+	<% end %>
+	<% end %>
+	];
+</script>
+<table class="table table-bordered table-striped">
+	<colgroup>
+		<col style="width:100px;" />
+		<% unless @ad_log_types.empty? %>
+		<% @ad_log_types.each do |ad_log_type| %>					
+		<col />
+		<% end %>
+		<% end %>
+	</colgroup>
+	<thead>
+		<tr>
+			<th><%=t(:label_period) %></th>
+			<% unless @ad_log_types.empty? %>
+			<% @ad_log_types.each do |ad_log_type| %>
+			<% if ad_log_type.title.nil? %>
+			<th>null</th>
+			<% else %>
+			<th><%=ad_log_type.title %></th>			
+			<% end %>
+			<% end %>
+			<% end %>
+		</tr>
+	</thead>
+	<tbody>
+		<% unless @stats.empty? %>
+		<% @stats.each do |stat| %>
+		<tr>
+			<td><%=stat.period %> <%=period_format(params[:period])%></td>
+			<% unless @ad_log_types.empty? %>
+			<% @ad_log_types.each_with_index do |ad_log_type,index| %>
+			<% stat.attributes.each do |value| %>
+			<% if value[0]==ad_log_type.title.to_s+'_count' %>
+			<td><% if value[1].nil? %>0<% else %><%=value[1] %><% end %></td>
+			<% end %>
+			<% end %>
+			<% end %>
+			<% end %>
+		</tr>
+		<% end %>
+		<% else %>
+		<tr>
+			<td colspan="3"><%=t(:no_data)%></td>
+		</tr>
+		<% end %>
+		</tbody>
+	</table>
+<div class="row-fluid">
+	<div class="pull-left">
+		<% unless @stats.empty? %>
+		<%=link_to admin_stats_path(:format=>"xls",:params=>params), :class=>"btn btn-default" do %>
+		<i class="glyphicon glyphicon-file"></i> <%=t(:link_download_excel) %>
+		<% end %>
+		<% end %>
+	</div>
+<%= paginate @stats %>
+</div>

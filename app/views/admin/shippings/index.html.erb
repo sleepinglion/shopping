@@ -1,0 +1,80 @@
+<div class="row">
+	<h3 class="col-xs-12 col-sm-6"><%= @controller_name %> <%= actionNameChange controller.action_name %></h3>
+	<div class="col-xs-12 col-sm-6">
+		<%=form_tag admin_shippings_path,:method=>:get,:class=>"form-search pull-right" do %>
+		<%= render :partial => 'layouts/admin/search_form' %>
+		<% end %>
+	</div>
+</div>
+<div class="table-responsive">
+	<table class="table table-bordered table-striped">
+		<colgroup>
+			<col style="width:80px;" />
+			<col />
+			<col />
+			<col />
+			<col />
+			<col style="width:110px;" />											
+			<col style="width:80px;" />
+			<col style="width:100px;" />
+			<% if can?(:update, Shipping) || can?(:delete, Shipping) %>
+			<col <%= raw manage_width(Shipping) %> />
+			<% end %>
+		</colgroup>
+		<thead>
+			<tr>
+				<th><%= t(:label_number) %></th>
+				<th><%= t(:label_name) %></th>
+				<th><%= t(:label_email) %></th>
+				<th><%= t(:label_phone) %></th>								
+				<th><%= t(:label_address) %></th>
+				<th><%= t(:label_same_order) %></th>						
+				<th><%= t(:label_flag) %></th>
+				<th><%= t(:label_created_at) %></th>
+				<% if can?(:update, Shipping) || can?(:delete, Shipping) %>
+				<th><%= t(:label_manage) %></th>
+				<% end %>
+			</tr>
+		</thead>
+		<tbody>
+			<% unless @shippings.empty? %>
+			<% @shippings.each do |shipping| %>
+			<tr>
+				<td><%= link_to shipping.id,admin_shipping_path(shipping) %></td>
+				<td class="mw"><%= link_to shipping.name,admin_shipping_path(shipping) %></td>
+				<td><%= shipping.email %></td>
+				<td><%= shipping.phone %></td>				
+				<td><%= shipping.address_default %><%= shipping.zip_code %> / <%= shipping.address_detail %></td>
+				<td><%= raw sameOrderToString(shipping.same_order) %></td>				
+				<td><%= raw flagToString(shipping.enable) %></td>
+				<td><%= shipping.created_at.to_date %></td>
+				<% if can?(:update, Shipping) || can?(:delete, Shipping) %>
+				<td> <% if can? :update, shipping %>
+				<%= link_to edit_admin_shipping_path(shipping),:class=>"btn btn-default" do %> <i class="glyphicon glyphicon-pencil"></i> <%= t(:link_edit) %>
+				<% end %>
+				<% end %>
+				<% if can? :delete, shipping %>
+				<%= link_to admin_shipping_path(shipping), :method => :delete, :data => { :confirm => t(:delete_confirm) },:class=>"btn btn-danger" do %> <i class="glyphicon glyphicon-trash"></i> <%= t(:link_delete) %>
+				<% end %>
+				<% end %> </td>
+				<% end %>
+			</tr>
+			<% end %>
+			<% else %>
+			<tr>
+				<td colspan="9"><%= t(:no_data)%></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+<div class="row">
+	<div class="col-xs-6 col-sm-3 col-md2">
+		<% if can? :create, Shipping %>
+		<%= link_to new_admin_shipping_path,:class=>"btn btn-primary" do %>
+		<i class="glyphicon glyphicon-plus"></i> <%= t(:link_new) %>
+		<% end %>
+		<% end %>
+	</div>
+	<%= paginate @shippings %>
+</div>
