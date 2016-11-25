@@ -1,4 +1,3 @@
-# encoding: utf-8
 class CreateProductPictures < ActiveRecord::Migration
   def change
     create_table :product_pictures do |t|
@@ -12,6 +11,6 @@ class CreateProductPictures < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :product_pictures, :product_id
+    add_foreign_key :product_pictures, :products, on_delete: :cascade, on_update: :cascade 
   end
 end

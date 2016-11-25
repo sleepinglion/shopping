@@ -15,7 +15,6 @@ Role.create(:id=>3,:title=>'store_manager')
 Role.create(:id=>4,:title=>'cs_manager')
 Role.create(:id=>5,:title=>'reader')
 
-
 RolesAdmin.create(:role_id=>1,:admin_id=>1)
 RolesAdmin.create(:role_id=>1,:admin_id=>2)
 RolesAdmin.create(:role_id=>1,:admin_id=>3)
@@ -23,9 +22,6 @@ RolesAdmin.create(:role_id=>2,:admin_id=>4)
 RolesAdmin.create(:role_id=>3,:admin_id=>5)
 RolesAdmin.create(:role_id=>4,:admin_id=>6)
 RolesAdmin.create(:role_id=>5,:admin_id=>7)
-RolesAdmin.create(:role_id=>6,:admin_id=>8)
-RolesAdmin.create(:role_id=>7,:admin_id=>9)
-RolesAdmin.create(:role_id=>8,:admin_id=>10)
 
 User.create(:id=>1,:name=>'user1',:email => 'toughjjh@gmail.com',:password => '123456', :password_confirmation => '123456', :birthday=>'2016-07-03', :phone=>'010-4141-3726',:sex=>1,:height=>180,:weight=>80,:enable=>true)
 User.create(:id=>2,:name=>'user2',:email => 'toughjjh@gmail.com',:password => '123456', :password_confirmation => '123456', :birthday=>'2016-07-03', :phone=>'010-4141-3726',:sex=>1,:enable=>true)

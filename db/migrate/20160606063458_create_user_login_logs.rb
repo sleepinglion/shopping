@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class CreateUserLoginLogs < ActiveRecord::Migration
   def change
     create_table :user_login_logs do |t|
@@ -9,6 +7,6 @@ class CreateUserLoginLogs < ActiveRecord::Migration
       t.timestamps
     end
     
-    add_index :user_login_logs, :user_id
+    add_foreign_key :user_login_logs, :users, on_delete: :cascade, on_update: :cascade 
   end
 end

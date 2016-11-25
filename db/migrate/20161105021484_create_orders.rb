@@ -1,4 +1,3 @@
-# encoding: utf-8
 class CreateOrders < ActiveRecord::Migration
   def change
     create_table :orders do |t|
@@ -9,5 +8,9 @@ class CreateOrders < ActiveRecord::Migration
       t.boolean :enable, :null=>false, :default=>false
       t.timestamps
     end
+    
+    add_foreign_key :orders, :users, on_delete: :cascade, on_update: :cascade 
+    add_foreign_key :orders, :shippings, on_delete: :cascade, on_update: :cascade 
+    add_foreign_key :orders, :payments, on_delete: :cascade, on_update: :cascade   
   end
 end

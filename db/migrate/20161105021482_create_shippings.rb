@@ -1,4 +1,3 @@
-# encoding: utf-8
 class CreateShippings < ActiveRecord::Migration
   def change
     create_table :shippings do |t|
@@ -14,5 +13,7 @@ class CreateShippings < ActiveRecord::Migration
       t.boolean :enable, :null=>false, :default=>false
       t.timestamps
     end
+    
+    add_foreign_key :shippings, :users
   end
 end

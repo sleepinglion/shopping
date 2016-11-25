@@ -1,4 +1,3 @@
-# encoding: utf-8
 class CreateGuests < ActiveRecord::Migration
   def change
     create_table :guests do |t|
@@ -9,5 +8,7 @@ class CreateGuests < ActiveRecord::Migration
       t.boolean :enable, :null=>false, :default=>false
       t.timestamps
     end
+    
+    add_foreign_key :guests, :orders, on_delete: :cascade, on_update: :cascade    
   end
 end
