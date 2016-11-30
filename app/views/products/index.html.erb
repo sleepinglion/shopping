@@ -1,0 +1,13 @@
+<section id="product_index">
+	<% unless @products.empty? %>
+	<% @products.each do |product| %>
+	<article class="panel panel-default product">
+		<div class="panel-heading">
+			<h3 class="panel-title"><%= product.title %></h3>
+		</div>
+	</article>
+	<% end %>
+	<% else %>
+	<h4><%= t(:no_data)%></h4>
+	<% end %>
+</section>

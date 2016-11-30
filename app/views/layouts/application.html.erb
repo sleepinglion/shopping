@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title><%=t(:service_name)%></title>
-	<meta name="description" content="<%=t(:service_name)%> Admin System">
+	<meta name="description" content="<%=t(:service_name)%>">
 	<meta name="author" content="Sleeping-Lion">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" href="<%=asset_path 'favicon.ico' %>">
@@ -21,36 +21,16 @@
 	<%= render :partial => 'layouts/header' %>
 	<div id="mom">
 		<div id="main" class="container">
-			<div id="content">
-				<% if current_page?(root_path) %>
-					<br />
-					<% else %>
-					<% if(!params[:no_layout] and !current_page?(root_path)) %>
-					<%= render :partial => 'layouts/page_header' %>
-					<% end %>
-					<% end %>
-					
-		<%= yield %>
-					</div>
-				</div><!--/#content.span10-->						
+			<% if(!params[:no_layout] and !current_page?(root_path)) %>
+			<%= render :partial => 'layouts/page_header' %>
+			<% end %>			
+			<div class="sub_main">
+			<%= yield %>
 			</div>
+		</div>
+	</div>
 	<%= render :partial => 'layouts/footer' %>
-<div class="modal fade" id="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->	
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"></div>	
 	<%= javascript_include_tag @script %>				
 </body>
 </html>

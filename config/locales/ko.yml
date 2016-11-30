@@ -14,6 +14,13 @@ ko:
   user: '사용자'
   password : '비밀번호'
   login_page : '로그인 페이지'
+  email : '이메일'
+  sex : '성별'
+  male : '남자'
+  female : '여자'
+  available_email : '이메일사용가능'
+  check_email_available : '이메일 사용가능여부 확인'
+  user_data_default_insert : '기본정보 입력'  
    
   user_id: '사용자 ID'
   count_thing : '건'
@@ -34,6 +41,7 @@ ko:
   login_p_password : '비밀번호를 입력하세요'
   login_remember : '기억해줘'
   login_id : 아이디
+  
   
   no_data : '해당 데이터가 없습니다.'
   no_exist_user : '존재하지 않는 회원'
