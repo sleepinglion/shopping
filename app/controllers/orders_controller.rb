@@ -28,6 +28,13 @@ class OrdersController < ApplicationController
   # GET /order/new
   # GET /order/new.json
   def new
+    if(params[:product_id])
+      @products = Product.order('id desc').where(:enable=>true).page(params[:page]).per(10)
+    else 
+      @products = Product.order('id desc').where(:enable=>true).page(params[:page]).per(10)
+    end
+    @payments = Payment.order('id desc').where(:enable=>true).page(params[:page]).per(10)    
+    
     @order = Order.new
 
     respond_to do |format|
