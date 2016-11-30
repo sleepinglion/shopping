@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  load_and_authorize_resource
-  skip_load_resource :only => [:create]
+#  load_and_authorize_resource
+  #skip_load_resource :only => [:create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   def initialize(*params)
     super(*params)

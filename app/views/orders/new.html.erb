@@ -1,0 +1,207 @@
+<section id="sl_order_add">
+	<%= form_for(@order,:html=>{:class => 'form-horizontal',:id=>'order_form'}) do |f| %>
+	<article class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><%=t(:product) %></h3>
+		</div>
+		<div class="panel-body">
+			<?php foreach($data['list'] as $index=>$product): ?>
+			<div class="product">
+				<?php echo form_hidden('product['.$index.'][id]',$product['id']) ?>
+				<div class="product_image">
+					<?php if(isset($product['photo_list'][0])): ?>
+					<figure>
+						<img src="<?php echo base_url() ?>uploads/product_picture/<?php echo $product['photo_list'][0]['id'] ?>/medium_thumb_<?php echo $product['photo_list'][0]['photo'] ?>" width="" height="" />
+						<figcaption><?php echo $product['title'] ?></figcaption>
+					</figure>
+					<?php else: ?>
+					이미지 없음
+					<?php endif ?>
+				</div>
+				<div class="product_text">
+					<h4><?php echo $product['title'] ?></h4>
+					<div class="product_price">
+						<label for="product_price_input_<?php echo $index ?>"><?php echo _('Quantity') ?></label>
+						<input type="text" id="product_price_input_<?php echo $index ?>" name="product[<?php echo $index ?>][quantity]" value="<?php echo set_value('product['.$index.'][quantity]',$data['product_quantity']) ?>" min="1" max="100" />
+					</div>
+					<div class="product_description">
+						<?php echo $product['description'] ?>
+					</div>
+				</div>
+			</div>
+			<?php endforeach ?>
+			<div id="calculator_table">
+				<table class="table table-striped table-bordered"">
+					<caption><?php echo _('Calculator Table') ?></caption>
+					<colgroup>
+						<col />
+						<col />
+						<col />
+						<col />
+						<col />
+					</colgroup>
+					<thead>
+						<tr>
+							<th class="active"><?php echo _('Product Name') ?></th>							
+							<th class="active"><?php echo _('Product Price') ?></th>
+							<th class="active"><?php echo _('Quantity') ?></th>							
+							<th class="active"><?php echo _('Shipping Cost') ?></th>
+							<th class="active"><?php echo _('Total Cost') ?></th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php $total_cost=0 ?>
+						<?php foreach($data['list'] as $index=>$product): ?>
+						<?php 
+							$total_cost=$total_cost+($product['price']+$product['shipping_price'])*$data['product_quantity'];
+						?>	
+						<tr>
+							<th scope="row"><?php echo $product['title'] ?></th>
+							<td><input type="hidden" value="<?php echo $product['price']?>"><span class="price"><?php echo product_price($product['price']) ?></span><?php if(!empty($product['price'])): ?><span class="current"><?php echo _('Currency') ?></span><?php endif ?></td>
+							<td><span class="quantity"><?php echo $data['product_quantity'] ?></span></td>							
+							<td><input type="hidden" value="<?php echo $product['shipping_price']?>"><span class="price"><?php echo product_price($product['shipping_price']) ?></span><?php if(!empty($product['shipping_price'])): ?><span class="current"><?php echo _('Currency') ?></span><?php endif ?></td>
+							<td><span class="price"><?php echo product_price($product['price']+$product['shipping_price']) ?></span><?php if(!empty($total_cost)): ?><span class="current"><?php echo _('Currency') ?></span><?php endif ?></td>
+						</tr>
+						<?php endforeach ?>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="4"><?php echo _('All Total Cost') ?></td>
+							<td><span class="price total_price"><?php echo product_price($total_cost) ?></span><?php if(!empty($total_cost)): ?><span class="current"><?php echo _('Currency') ?></span><?php endif ?></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>			
+		</div>
+	</article>
+	<?php echo $Layout->element('form_error_message') ?>
+	<?php echo $this->session->flashdata('error_message'); ?>		
+	<article class="panel panel-default" <% if(current_user) %>style="display:none"<% end %>>
+		<div class="panel-heading">			
+			<h3 class="panel-title"><%=t(:order_info) %></h3>
+		</div>
+			<div class="panel-body">							
+			<div class="form-grou">
+				<label class="control-label col-sm-2" for="sl_order_name"><%=t(:name) %></label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="sl_order_name" name="order[name]"  />
+				</div>
+			</div>		
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="sl_order_email"><%=t(:email) %></label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="sl_order_email" name="order[email]" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="sl_order_phone"><%=t(:phone) %></label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="sl_order_phone" name="order[phone]"  />
+				</div>
+			</div>
+			</div>
+		</article>
+		<article class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"><%=t(:shipping_info) %></h3>
+			</div>
+			<div class="panel-body">
+			<div class="form-group">
+				<div class="col-sm-10 col-sm-offset-2">
+					<label class="radio-inline">
+						<input type="radio" name="shipping[same_order]" value="1"  <?php if($this -> session -> userdata('user_id')): ?><?php echo _('Same Member') ?><?php else: ?><?php echo _('Same Order') ?><?php endif ?>
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="shipping[same_order]" value="0" <?php if($this -> session -> userdata('user_id')): ?><?php echo _('Not Same Member') ?><?php else: ?><?php echo _('Not Same Order') ?><?php endif ?>
+					</label>
+ 				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="sl_shipping_name"><%=t(:name) %></label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="sl_shipping_name" name="shipping[name]" readonly="readonly" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-xs-12  col-sm-2" for="sl_shipping_address"><%=t(:address) %></label>
+				<div class="col-xs-6 col-sm-3">
+					<input type="text" class="form-control" id="sl_shipping_zip" name="shipping[zip_code]" placeholder="<?php echo _('Zip Code') ?>"  maxlength="5"  />
+				</div>
+				<div class="col-xs-6 col-sm-3" id="find_zip">
+					<input type="button" class="btn btn-default" value="<%=t(:find_zip) %>" />					
+				</div>
+				<div class="col-sm-10 col-sm-offset-2">
+					<div id="wrap" style="display:none;border:1px solid;width:100%;height:300px;margin:5px 0;position:relative">
+						<img src="//i1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" alt="접기 버튼">
+					</div>					
+				</div>
+				<div class="col-sm-10 col-sm-offset-2" style="clear:both;padding-top:10px">
+					<input type="text" class="form-control" id="sl_shipping_address_default" name="shipping[address_default]" placeholder="<?php echo _('Default Address') ?>" />
+				</div>
+				<div class="col-sm-10 col-sm-offset-2" style="margin-top:10px">
+					<input type="text" class="form-control" id="sl_shipping_address_detail" name="shipping[address_detail]" placeholder="<?php echo _('Detail Address') ?>" />
+				</div>								
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="sl_shipping_email"><%=t(:email) %></label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="sl_shipping_email" name="shipping[email]" readonly="readonly" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="sl_shipping_phone"><%=t(:phone) %></label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="sl_shipping_phone" name="shipping[phone]" readonly="readonly" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="sl_shipping_message"><%=t(:shipping_message) %></label>
+				<div class="col-sm-10">
+					<textarea class="form-control" id="sl_shipping_message" name="shipping[message]"></textarea>
+				</div>
+			</div>
+			</div>	
+		</article>
+		<article class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"><%=t(:agree_order) %></h3>
+			</div>
+			<div class="panel-body">
+			<% if(current_user) %>				
+			<div class="col-md-offset-2">
+				<div class="checkbox">			
+					<label>
+						<input type="checkbox" name="agree[no_user]" value="1" /> <span><%=t(:no_user_agreement) %></span>
+					</label>
+				</div>
+			</div>
+			<% end %>
+			<div class="checkbox col-md-offset-2">
+				<div class="checkbox">				
+					<label>
+						<input type="checkbox" name="agree[order]" value="1" /> <span><%=t(:order_agreement) %></span>
+					</label>
+				</div>
+			</div>	
+		</article>
+		<article class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"><%=t(:payment) %></h3>
+			</div>
+			<div class="panel-body">			
+			<div class="col-md-offset-2">
+				<div class="radio">
+				<?php foreach($data['payments'] as $index=>$payment): ?>				
+				<label class="radio-inline">
+					<input type="radio" name="order[payment_id]" value="<?php echo $payment['id'] ?>" <?php if(empty($index)): ?>checked="checked"<?php endif ?> /> <?php echo $payment['title']; ?>
+				</label>
+				<?php endforeach ?>
+				</div>
+			</div>
+			</div>
+		</article>
+	<div class="section_bottom">
+		<%= f.submit t(:order_form_submit),:class=>"btn btn-primary" %>
+	</div>
+	<% end %>
+</section>

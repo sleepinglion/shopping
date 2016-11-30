@@ -1,5 +1,5 @@
 <section id="sl_user_add_form" class="sl_user_form">
-	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put,:class => 'form-horizontal',:id=> 'user_form'}) do |f| %>
 	<%= devise_error_messages! %>
 	<input type="hidden" id="message_required" value="" />
 	<input type="hidden" id="message_no_email" value="" />
@@ -10,7 +10,7 @@
 		<div class="panel-heading">
 			<h3 class="panel-title"><%= t(:user_data_default_insert) %></h3>
 		</div>
-		<div class="pannel-body">
+		<div class="panel-body">
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="sl_email"><%= t(:email) %></label>
 				<div class="col-sm-6">
@@ -27,7 +27,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="sl_password_confirm"><%= t(:password_Confirm) %></label>
+				<label class="control-label col-sm-2" for="sl_password_confirm"><%= t(:password_confirm) %></label>
 				<div class="col-sm-10">
 					<input type="password" class="form-control" id="sl_password_confirm" name="password_confirm" value="" maxlength="255"   maxlength="255"  />
 				</div>
@@ -63,7 +63,7 @@
 		<div class="panel-heading">
 			<h3 class="panel-title"><%= t(:user_data_optional_insert) %></h3>
 		</div>
-		<div class="pannel-body">
+		<div class="panel-body">
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="sl_height"><%= t(:height) %></label>
 				<div class="col-sm-10">
@@ -80,34 +80,34 @@
 	</article>
 	<article class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title"><%= t(:uer_agree) %></h3>
+			<h3 class="panel-title"><%= t(:user_agree) %></h3>
 		</div>
-		<div class="pannel-body">
+		<div class="panel-body">
 			<div class="col-md-offset-2">
 				<div class="checkbox">
 					<label>
 						<input type="checkbox" name="agree[over_age_18]" value="1"  />
-						<span><%= t(:OverAge18_Agreement) %></span> </label>
+						<span><%= t(:over_age18_agreement) %></span> </label>
 				</div>
 			</div>
 			<div class="col-md-offset-2">
 				<div class="checkbox">
 					<label>
 						<input type="checkbox" name="agree[service]" value="1"  />
-						<span><%= t(:Service_Agreement) %></span> <?php echo anchor('users/see_agree_service', _('See It'),array('data-target'=>"#myModal",'data-toggle'=>"modal",'class'=>"modal_link")) %> </label>
+						<span><%= t(:service_agreement) %></span> <%=link_to t(:see_it),:class=>'modal_link',:'data-toggle'=>"modal",:'data-target'=>"#myModal" %>
 				</div>
 			</div>
 			<div class="col-md-offset-2">
 				<div class="checkbox">
 					<label>
 						<input type="checkbox" name="agree[information]" value="1"  />
-						<span><%= t(:Personal_Information_Agreement) %></span> <?php echo anchor('users/see_agree_information', _('See It'),array('data-target'=>"#myModal",'data-toggle'=>"modal",'class'=>"modal_link")) %> </label>
+						<span><%= t(:personal_information_agreement) %></span> <%=link_to t(:see_it),'/home/popup',:class=>'modal_link',:'data-toggle'=>"modal",:'data-target'=>"#myModal" %>
 				</div>
 			</div>
 		</div>
 	</article>
 	<div class="section_bottom">
-		<%= f.submit :class=>"btn btn-primary btn-lg" %>
+		<%= f.submit t(:user_form_submit),:class=>"btn btn-primary btn-lg" %>
 	</div>
 	<% end %>
 </section>
