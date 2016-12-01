@@ -1,9 +1,7 @@
 //= require application
 //= require jquery-ui
-//= require jquery-ui/datepicker
 
 $(document).ready(function(){
-	$('.datepicker').datepicker();
 	
 	$(".btn-minimize").click(function(){
 		var i=$(this).parent().find('i:first');

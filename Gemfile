@@ -6,7 +6,7 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'mysql2'
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma', '3.6.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -34,7 +34,7 @@ gem 'kaminari'
 gem 'carrierwave'
 gem 'devise'
 gem 'impressionist'
-gem 'rmagick'
+#gem 'rmagick'
 gem 'mini_magick'
 gem 'cancan'
 gem 'ckeditor', :path=>"vendor/gems/ckeditor"
