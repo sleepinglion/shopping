@@ -34,11 +34,13 @@ ko:
   over_age18_agreement : '18세 미만의 미성년자의 경우 제로믹스 서비스를 이용하실 수 없습니다'
   service_agreement : '서비스 이용약관'
   personal_information_agreement : '개인정보 처리방침'
+  order_agreement : '상기 주문 내역에 대한 모든 정보(서비스명, 가격, 배송정보)를 확인하였으며, 구매진행에 동의합니다'
   zip_code : '우편번호'
   find_zip : '우편번호 찾기'
   default_address : '기본주소'
-  detail_address : '상세주소' 
-  
+  detail_address : '상세주소'
+  shipping_message : '배송메세지'
+  remember_me : '이메일 저장'
   see_it : '보기'
   
   product : '제품'
