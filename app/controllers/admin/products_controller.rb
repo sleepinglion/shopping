@@ -36,6 +36,8 @@ class Admin::ProductsController < Admin::AdminController
   # GET /product/new.json
   def new
     @product = Product.new
+    
+    @script='admin/products/new.js'    
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,6 +47,7 @@ class Admin::ProductsController < Admin::AdminController
 
   # GET /product/1/edit
   def edit
+    @script='admin/products/new.js'     
     @product = Product.find(params[:id])
   end
 
