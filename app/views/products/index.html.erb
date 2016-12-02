@@ -1,7 +1,7 @@
 <section id="product_index">
 	<% unless @products.empty? %>
 	<% @products.each_with_index do |product,index| %>
-	<%=form_tag({controller: "orders", action: "new"}, method: "get", class: "form-horizontal", id: "order_form") do %>
+	<%=form_tag({controller: "orders", action: "new"}, method: "get", class: "form-horizontal order_form") do %>
 	<article class="panel panel-default product">
 		<div class="panel-heading">
 			<h3 class="panel-title"><%=product.title %></h3>
@@ -14,7 +14,7 @@
 						<% if(product.product_picture) %>
 						<figure>
 							<img src="uploads/product_picture/<%= product.product_picture %>/medium_thumb_<%= product.product_picture %>" width="" height="" class="img-rounded" />
-							<figcaption><?php echo $product['title'] ?></figcaption>
+							<figcaption><%=product.title %></figcaption>
 						</figure>
 						<% else %>
 						<figure>
@@ -27,11 +27,11 @@
 				<div class="media-body">
 					<h4 class="media-heading"><%=product.title %></h4>
 					<div class="product_price">
-						<label for="product_price_input_<%=index %>"><?php echo _('Quantity') ?></label>
+						<label for="product_price_input_<%=index %>"><%=t(:quantity) %></label>
 						<input type="text" id="product_price_input_<%=index %>" name="product[quantity]" value="" min="1" max="100" />
 					</div>
 					<div class="product_description">
-						<%=product.description %>
+						<%=raw(product.description) %>
 					</div>
 				</div>
 			</div>
