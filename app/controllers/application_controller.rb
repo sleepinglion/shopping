@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base 
   protect_from_forgery with: :exception
   layout :layout
-  before_filter :set_locale
+  before_action :set_locale
   
   def initialize(*params)
     super(*params)

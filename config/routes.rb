@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root :to => 'home#index'
-  mount Ckeditor::Engine => '/ckeditor'  
+  mount Ckeditor::Engine => 'ckeditor'  
   
   devise_for :admins, :controllers => { :sessions => "admins/sessions",:registrations => "admins/registrations" }, :path_names =>  {:sign_up=>'new',:sign_in => 'login', :sign_out => 'logout'} do
     get '/admins', :to => 'admins::Registrations#index'

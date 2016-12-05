@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 
+window['CKEDITOR_BASEPATH']='/ckeditor/';
+
 $(document).ready(function(){
 	$('#myModal').on('show.bs.modal', function (e) {
   		if (!data) return e.preventDefault(); // stops modal from being shown  
