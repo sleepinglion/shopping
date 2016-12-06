@@ -17,7 +17,7 @@ set :bundle_env_variables, { nokogiri_use_system_libraries: 1 }
 # set :format, :airbrussh
 
 set :default_env, {"RAILS_RELATIVE_URL_ROOT" => "/GeneAdmin"}
-
+set :passenger_restart_with_touch, true
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
 # set :format_options, command_output: true, log_file: 'log/capistrano.log', color: :auto, truncate: :auto
