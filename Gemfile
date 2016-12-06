@@ -37,7 +37,7 @@ gem 'impressionist'
 #gem 'rmagick'
 gem 'mini_magick'
 gem 'cancan'
-gem 'ckeditor', :path=>"vendor/gems/ckeditor"
+gem 'ckeditor'
 gem 'fancybox2-rails', :path=>"vendor/gems/fancybox2-rails"
 gem 'json'
 
