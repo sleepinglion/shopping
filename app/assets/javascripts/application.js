@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 
-// window['CKEDITOR_BASEPATH']='/ckeditor/';
+window['CKEDITOR_BASEPATH']='/ckeditor/';
 
 $(document).ready(function(){
 	$('#myModal').on('show.bs.modal', function (e) {
