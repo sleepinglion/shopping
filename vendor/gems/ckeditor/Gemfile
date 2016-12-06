@@ -2,7 +2,7 @@ source "http://rubygems.org"
 
 gemspec
 
-gem "rails", "3.2.3"
+gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 
 platforms :mri_18 do
   group :test do
@@ -12,12 +12,6 @@ platforms :mri_18 do
 end
 
 platforms :ruby do
-  gem "sqlite3"
-
-  group :development do
-    gem "unicorn", "~> 4.0.1"
-  end
-
   group :development, :test do
     gem "capybara", ">= 0.4.0"
     gem "mynyml-redgreen", "~> 0.7.1", :require => 'redgreen'
@@ -28,12 +22,5 @@ platforms :ruby do
     gem "carrierwave"
     gem "dragonfly"
     gem "mini_magick"
-  end
-
-  group :mongoid do
-    gem "mongoid"
-    gem "bson_ext"
-    gem 'mongoid-paperclip', :require => 'mongoid_paperclip'
-    gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
   end
 end
