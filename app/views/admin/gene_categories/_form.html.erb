@@ -1,0 +1,34 @@
+<%= form_for [:admin,@gene_category] do |f| %>
+<% if @gene_category.errors.any? %>
+<div id="error_explanation" class="alert alert-danger">
+	<a href="#" class="close" data-dismiss="alert">&times;</a>
+	<h2><%= pluralize(@gene_category.errors.count, "error") %> prohibited this request from being saved:</h2>
+	<ul>
+		<% @gene_category.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<div class="form-group">
+	<%= f.label :title %>
+	<%= f.text_field :title,:class=>"form-control",:required=>"required" %>
+</div>
+<div class="form-group">
+	<%= f.label :sub_title %>
+	<%= f.text_field :sub_title,:class=>"form-control",:required=>"required" %>
+</div>
+<div class="form-group">
+	<%= f.label :tip %>
+	<%= f.text_area :tip,:id=>"sl_content",:class=>"form-control",:required=>"required" %>
+</div>
+<div class="form-group">
+	<%= f.label :enable %>
+	<%= f.check_box :enable %>
+</div>
+<div class="form-group actions">
+	<%= f.submit :class=>"btn btn-primary" %>
+</div>
+<% end %>

@@ -42,6 +42,11 @@
 				</ul>
 			</li>
 			<% end %>
+			<% if can? :read, GeneCategory %>
+			<li>
+				<%=link_to admin_gene_categories_path do %><i class="glyphicon glyphicon-road glyphicon-white"></i><span class="hidden-tablet"> <%=t(:menu_gene_category)%></span><% end %>
+			</li>
+			<% end %>				
 			<% if can? :read, Payment %>
 			<li>
 				<%=link_to admin_payments_path do %><i class="glyphicon glyphicon-usd glyphicon-white"></i><span class="hidden-tablet"> <%=t(:menu_payment)%></span><% end %>

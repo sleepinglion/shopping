@@ -1,0 +1,33 @@
+<% if notice %>
+<%= render :partial => 'layouts/notice',:locals=>{:notice=>notice} %>
+<% end %>
+<div class="sl_show">
+	<p>
+		<b><%=t(:label_title) %></b>
+		<%= @gene_category.title %>
+	</p>
+	<p>
+		<b><%=t(:label_sub_title) %></b>
+		<%= @gene_category.sub_title %>
+	</p>	
+	<p>
+		<b><%=t(:label_content) %></b>
+		<%=simple_format @gene_category.tip %>
+	</p>
+	<p>
+		<b><%=t(:label_flag) %></b>
+		<%=raw flagToString(@gene_category.enable) %>
+	</p>
+	<p>
+  	<b><%=t(:label_created_at) %></b>
+  	<%= @gene_category.created_at %>
+  </p>
+  <p>
+  	<b><%=t(:label_updated_at) %></b>
+  	<%= @gene_category.created_at %>
+  </p>
+</div>
+<% if can? :update, GeneCategory %>		
+<%= link_to t(:link_edit), edit_admin_gene_category_path(@gene_category) %> |
+<% end %>
+<%= link_to t(:link_list), admin_gene_categories_path() %>

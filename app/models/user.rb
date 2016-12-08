@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
   has_many :order, :dependent=>:destroy
   has_many :user_login_log, :dependent=>:destroy
   
-  #def password=(pass)
-  #  require 'digest/sha1'
-  #  @password=Digest::SHA1.hexdigest(pass);
-  #end  
+ # def password=(pass)
+ #   require 'digest/sha1'
+ #   @password=Digest::SHA1.hexdigest(pass);
+ # end  
 end

@@ -23,10 +23,14 @@ Rails.application.routes.draw do
   resources :notices
   resources :faqs
  
+
+    
   # 관리자
   namespace :admin do
     get '/' => 'admin#index'
-    
+  resources :gene_categories
+  resources :genes
+      
     resources :orders
     resources :shippings
     resources :products do

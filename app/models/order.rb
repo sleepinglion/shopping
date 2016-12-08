@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  validates_presence_of :title
+  validates_presence_of :payment_id,:shipping_id,:user_id
   belongs_to :payment
   belongs_to :shipping
   belongs_to :user
