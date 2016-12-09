@@ -1,0 +1,25 @@
+<% if notice %>
+<%= render :partial => 'layouts/notice',:locals=>{:notice=>notice} %>
+<% end %>
+<div class="sl_show">
+	<p>
+		<b><%=t(:label_title) %></b>
+		<%= @report_category.title %>
+	</p>
+	<p>
+		<b><%=t(:label_color) %></b>
+		<%= @report_category.color %>
+	</p>	
+	<p>
+  	<b><%=t(:label_created_at) %></b>
+  	<%= @report_category.created_at %>
+  </p>
+  <p>
+  	<b><%=t(:label_updated_at) %></b>
+  	<%= @report_category.created_at %>
+  </p>
+</div>
+<% if can? :update, GeneCategory %>		
+<%= link_to t(:link_edit), edit_admin_report_category_path(@report_category) %> |
+<% end %>
+<%= link_to t(:link_list), admin_report_categories_path %>

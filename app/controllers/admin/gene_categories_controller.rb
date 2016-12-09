@@ -5,9 +5,9 @@ class Admin::GeneCategoriesController < Admin::AdminController
   def initialize(*params)
     super(*params)
 
-    @category=t(:menu_board)
-    @sub_menu=t(:submenu_notice)
-    @controller_name=t('activerecord.models.notice')
+    @category=t(:menu_gene)
+    @sub_menu=t(:submenu_gene_category)
+    @controller_name=t('activerecord.models.gene_category')
   end
 
   # GET /notices
@@ -47,8 +47,7 @@ class Admin::GeneCategoriesController < Admin::AdminController
   # GET /notices/new.json
   def new
     @gene_category = GeneCategory.new
-
-    @script='boards/new'
+    @script='admin/new.js'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -58,6 +57,7 @@ class Admin::GeneCategoriesController < Admin::AdminController
 
   # GET /notices/1/edit
   def edit
+    @script='admin/new.js'    
   end
 
   # POST /notices
@@ -65,11 +65,9 @@ class Admin::GeneCategoriesController < Admin::AdminController
   def create
     @gene_category = GeneCategory.new(gene_category_params)
 
-    @script='boards/new'
-
     respond_to do |format|
       if @gene_category.save
-        format.html { redirect_to admin_notice_path(@gene_category), :notice => @controller_name +t(:message_success_insert)}
+        format.html { redirect_to admin_gene_category_path(@gene_category), :notice => @controller_name +t(:message_success_insert)}
         format.json { render :json => @gene_category, :status => :created, :location => @gene_category }
       else
         format.html { render :action => "new" }
@@ -82,8 +80,8 @@ class Admin::GeneCategoriesController < Admin::AdminController
   # PATCH/PUT /notices/1.json
   def update
     respond_to do |format|
-      if @gene_category.update(notice_params)
-        format.html { redirect_to admin_notice_path(@gene_category), :notice => @controller_name +t(:message_success_update)  }
+      if @gene_category.update(gene_category_params)
+        format.html { redirect_to admin_gene_category_path(@gene_category), :notice => @controller_name +t(:message_success_update)  }
         format.json { render :show, status: :ok, location: @gene_category }
       else
         format.html { render :edit }
@@ -97,7 +95,7 @@ class Admin::GeneCategoriesController < Admin::AdminController
   def destroy
     @gene_category.destroy
     respond_to do |format|
-      format.html { redirect_to admin_notices_path }
+      format.html { redirect_to admin_gene_categories_path }
       format.json { head :no_content }
     end
   end
@@ -111,6 +109,6 @@ class Admin::GeneCategoriesController < Admin::AdminController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def gene_category_params
-    params.require(:gene_category).permit(:title,:sub_title,:tip)
+    params.require(:gene_category).permit(:title,:sub_title,:tip,:enable)
   end
 end

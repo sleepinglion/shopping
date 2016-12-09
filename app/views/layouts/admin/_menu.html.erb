@@ -42,11 +42,35 @@
 				</ul>
 			</li>
 			<% end %>
-			<% if can? :read, GeneCategory %>
+			<% if can?(:read, GeneCategory) || can?(:read, Gene)  || can?(:read, GeneRelation) %>
 			<li>
-				<%=link_to admin_gene_categories_path do %><i class="glyphicon glyphicon-road glyphicon-white"></i><span class="hidden-tablet"> <%=t(:menu_gene_category)%></span><% end %>
-			</li>
-			<% end %>				
+				<a class="dropmenu" href="#"><i class="glyphicon glyphicon-list-alt glyphicon-white"></i><span class="hidden-tablet"> <%=t(:menu_gene)%></span></a>
+				<ul <% if params[:controller]=='admin/gene_categories' || params[:controller]=='admin/genes' || params[:controller]=='admin/gene_relations' %>class="current"<% end %>>
+					<% if can? :read, GeneCategory %>					
+					<li><%=link_to admin_gene_categories_path do %><i class="glyphicon glyphicon-th-list glyphicon-white"></i><span class="hidden-tablet"> <%=t(:submenu_gene_category)%></span><% end %></li>
+					<% end %>
+					<% if can? :read, Gene %>					
+					<li><%=link_to admin_genes_path do %><i class="glyphicon glyphicon-th-list glyphicon-white"></i><span class="hidden-tablet"> <%=t(:submenu_gene)%></span><% end %></li>
+					<% end %>
+					<% if can? :read, GeneRelation %>					
+					<li><%=link_to admin_gene_relations_path do %><i class="glyphicon glyphicon-th-list glyphicon-white"></i><span class="hidden-tablet"> <%=t(:submenu_gene_relation)%></span><% end %></li>
+					<% end %>					
+				</ul>
+			</li>						
+			<% end %>
+			<% if can?(:read, ReportCategory) || can?(:read, Report) %>
+			<li>
+				<a class="dropmenu" href="#"><i class="glyphicon glyphicon-list-alt glyphicon-white"></i><span class="hidden-tablet"> <%=t(:menu_report)%></span></a>
+				<ul <% if params[:controller]=='admin/report_categories' || params[:controller]=='admin/reports' %>class="current"<% end %>>
+					<% if can? :read, ReportCategory %>					
+					<li><%=link_to admin_report_categories_path do %><i class="glyphicon glyphicon-th-list glyphicon-white"></i><span class="hidden-tablet"> <%=t(:submenu_report_category)%></span><% end %></li>
+					<% end %>
+					<% if can? :read, Report %>					
+					<li><%=link_to admin_reports_path do %><i class="glyphicon glyphicon-th-list glyphicon-white"></i><span class="hidden-tablet"> <%=t(:submenu_report)%></span><% end %></li>
+					<% end %>
+				</ul>
+			</li>						
+			<% end %>
 			<% if can? :read, Payment %>
 			<li>
 				<%=link_to admin_payments_path do %><i class="glyphicon glyphicon-usd glyphicon-white"></i><span class="hidden-tablet"> <%=t(:menu_payment)%></span><% end %>

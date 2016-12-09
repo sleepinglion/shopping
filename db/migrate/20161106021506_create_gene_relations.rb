@@ -1,8 +1,7 @@
-class CreateReportCategories < ActiveRecord::Migration
+class CreateGeneRelations < ActiveRecord::Migration
   def change
-    create_table :report_categories do |t|
+    create_table :gene_relations do |t|
       t.string :title, :null=>false, :limit=>60
-      t.string :color, :null=>false, :limit=>20      
       t.boolean :enable, :null=>false, :default=>false
       t.timestamps
     end

@@ -21,3 +21,4 @@ coffee        = Dir["#{js_prefix}**/*.coffee"].map { |x| x.gsub(js_prefix, '') }
 Rails.application.config.assets.precompile = (javascripts + css + scss + coffee + image)
 Rails.application.config.assets.precompile += Ckeditor.assets
 Rails.application.config.assets.precompile += %w( ckeditor/* )
+Rails.application.config.assets.precompile += %w( admin/new.js )

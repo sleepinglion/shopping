@@ -5,13 +5,13 @@ class Admin::GenesController < Admin::AdminController
   def initialize(*params)
     super(*params)
 
-    @category=t(:menu_board)
-    @sub_menu=t(:submenu_notice)
-    @controller_name=t('activerecord.models.notice')
+    @category=t(:menu_gene)
+    @sub_menu=t(:submenu_gene)
+    @controller_name=t('activerecord.models.gene')
   end
 
-  # GET /notices
-  # GET /notices.json
+  # GET /genes
+  # GET /genes.json
   def index
     unless params[:per_page].present?
       params[:per_page]=10
@@ -19,17 +19,17 @@ class Admin::GenesController < Admin::AdminController
 
     if params[:search_type].present?
       if(params[:search_type]=='content')
-        likesql='notice_contents.content like ?'
+        likesql='gene_contents.content like ?'
         likep = '%'+params[:search_value].strip+'%'
       elsif(params[:search_type]=='title')
-        likesql='notices.title like ?'
+        likesql='genes.title like ?'
         likep= '%'+params[:search_value].strip+'%'
       end
     end
 
     if(params[:search_type] && params[:search_value])
       if(params[:search_type]=='content')
-        @genes = Gene.joins(:notice_content).where(likesql,likep).order('id desc').page(params[:page]).per(params[:per_page])
+        @genes = Gene.joins(:gene_content).where(likesql,likep).order('id desc').page(params[:page]).per(params[:per_page])
       else
         @genes = Gene.where(likesql,likep).order('id desc').page(params[:page]).per(params[:per_page])
       end
@@ -38,18 +38,15 @@ class Admin::GenesController < Admin::AdminController
     end
   end
 
-  # GET /notices/1
-  # GET /notices/1.json
+  # GET /genes/1
+  # GET /genes/1.json
   def show
   end
 
-  # GET /notices/new
-  # GET /notices/new.json
+  # GET /genes/new
+  # GET /genes/new.json
   def new
     @gene = Gene.new
-    @gene.build_notice_content
-
-    @script='boards/new'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -57,20 +54,22 @@ class Admin::GenesController < Admin::AdminController
     end
   end
 
-  # GET /notices/1/edit
+  # GET /genes/1/edit
   def edit
   end
 
-  # POST /notices
-  # POST /notices.json
+  # POST /genes
+  # POST /genes.json
   def create
-    @gene = Gene.new(notice_params)
-
-    @script='boards/new'
+    @gene = Gene.new(gene_params)
+    @gene_categories = GeneCategory.find(params[:gene][:gene_category_ids]);
+    @gene_relations = GeneRelation.find(params[:gene][:gene_category_ids]);     
 
     respond_to do |format|
       if @gene.save
-        format.html { redirect_to admin_notice_path(@gene), :notice => @controller_name +t(:message_success_insert)}
+        @gene.gene_category=@gene_categories
+        @gene.gene_relation=@gene_relations  
+        format.html { redirect_to admin_gene_path(@gene), :gene => @controller_name +t(:message_success_insert)}
         format.json { render :json => @gene, :status => :created, :location => @gene }
       else
         format.html { render :action => "new" }
@@ -79,12 +78,18 @@ class Admin::GenesController < Admin::AdminController
     end
   end
 
-  # PATCH/PUT /notices/1
-  # PATCH/PUT /notices/1.json
+  # PATCH/PUT /genes/1
+  # PATCH/PUT /genes/1.json
   def update
+    @gene_categories = GeneCategory.find(params[:gene][:gene_category_ids]);
+    @gene_relations = GeneRelation.find(params[:gene][:gene_category_ids]);    
+    
     respond_to do |format|
-      if @gene.update(notice_params)
-        format.html { redirect_to admin_notice_path(@gene), :notice => @controller_name +t(:message_success_update)  }
+      if @gene.update(gene_params)
+        @gene.gene_category=@gene_categories
+        @gene.gene_relation=@gene_relations
+                 
+        format.html { redirect_to admin_gene_path(@gene), :gene => @controller_name +t(:message_success_update)  }
         format.json { render :show, status: :ok, location: @gene }
       else
         format.html { render :edit }
@@ -93,12 +98,12 @@ class Admin::GenesController < Admin::AdminController
     end
   end
 
-  # DELETE /notices/1
-  # DELETE /notices/1.json
+  # DELETE /genes/1
+  # DELETE /genes/1.json
   def destroy
     @gene.destroy
     respond_to do |format|
-      format.html { redirect_to admin_notices_path }
+      format.html { redirect_to admin_genes_path }
       format.json { head :no_content }
     end
   end
@@ -112,6 +117,6 @@ class Admin::GenesController < Admin::AdminController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def gene_params
-    params.require(:gene).permit(:title,:sub_title,:tip)
+    params.require(:gene).permit(:title,:sub_title,:gene_category_ids,:gene_relation_ids,:description,:enable)
   end
 end

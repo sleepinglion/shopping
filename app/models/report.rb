@@ -3,5 +3,4 @@ class Report < ActiveRecord::Base
   belongs_to :order
   belongs_to :report_category
   belongs_to :gene_category
-  has_many :gene
 end

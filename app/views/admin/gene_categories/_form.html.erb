@@ -25,6 +25,12 @@
 	<%= f.text_area :tip,:id=>"sl_content",:class=>"form-control",:required=>"required" %>
 </div>
 <div class="form-group">
+<%= f.collection_check_boxes(:gene_ids, Gene.where(:enable=>true).all, :id, :title,{:include_hidden=>false}) do |gene| %>
+  <%= gene.check_box %>
+  <%= gene.label :style=>'margin-right:20px' %>  
+<% end %>
+</div>
+<div class="form-group">
 	<%= f.label :enable %>
 	<%= f.check_box :enable %>
 </div>

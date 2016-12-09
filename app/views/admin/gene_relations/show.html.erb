@@ -1,0 +1,25 @@
+<% if notice %>
+<%= render :partial => 'layouts/notice',:locals=>{:notice=>notice} %>
+<% end %>
+<div class="sl_show">
+	<p>
+		<b><%=t(:label_title) %></b>
+		<%= @gene_relation.title %>
+	</p>
+	<p>
+		<b><%=t(:label_flag) %></b>
+		<%=raw flagToString(@gene_relation.enable) %>
+	</p>
+	<p>
+  	<b><%=t(:label_created_at) %></b>
+  	<%= @gene_relation.created_at %>
+  </p>
+  <p>
+  	<b><%=t(:label_updated_at) %></b>
+  	<%= @gene_relation.created_at %>
+  </p>
+</div>
+<% if can? :update, GeneRelation %>		
+<%= link_to t(:link_edit), edit_admin_gene_relation_path(@gene_relation) %> |
+<% end %>
+<%= link_to t(:link_list), admin_gene_relations_path %>

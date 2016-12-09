@@ -8,8 +8,9 @@ class CreateReports < ActiveRecord::Migration
       t.timestamps
     end
     
+    add_index :reports, [:order_id, :report_category_id, :gene_category_id], :unique=>true, :name=>:reports_unique   
     add_foreign_key :reports, :orders, on_delete: :cascade, on_update: :cascade
-    add_foreign_key :reports, :report_categories, on_delete: :cascade, on_update: :cascade    
-    add_foreign_key :reports, :gene_categories, on_delete: :cascade, on_update: :cascade                
+    add_foreign_key :reports, :report_categories, on_delete: :cascade, on_update: :cascade
+    add_foreign_key :reports, :gene_categories, on_delete: :cascade, on_update: :cascade              
   end
 end
