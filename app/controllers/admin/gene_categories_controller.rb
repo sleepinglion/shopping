@@ -64,9 +64,12 @@ class Admin::GeneCategoriesController < Admin::AdminController
   # POST /notices.json
   def create
     @gene_category = GeneCategory.new(gene_category_params)
-
+    @genes = Gene.find(params[:gene_category][:gene_ids])
+    
     respond_to do |format|
       if @gene_category.save
+        @gene_category.genes=@genes
+        
         format.html { redirect_to admin_gene_category_path(@gene_category), :notice => @controller_name +t(:message_success_insert)}
         format.json { render :json => @gene_category, :status => :created, :location => @gene_category }
       else
@@ -79,8 +82,12 @@ class Admin::GeneCategoriesController < Admin::AdminController
   # PATCH/PUT /notices/1
   # PATCH/PUT /notices/1.json
   def update
+    @genes = Gene.find(params[:gene_category][:gene_ids])    
+    
     respond_to do |format|
       if @gene_category.update(gene_category_params)
+        @gene_category.genes=@genes
+        
         format.html { redirect_to admin_gene_category_path(@gene_category), :notice => @controller_name +t(:message_success_update)  }
         format.json { render :show, status: :ok, location: @gene_category }
       else

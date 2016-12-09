@@ -62,8 +62,8 @@ class Admin::GenesController < Admin::AdminController
   # POST /genes.json
   def create
     @gene = Gene.new(gene_params)
-    @gene_categories = GeneCategory.find(params[:gene][:gene_category_ids]);
-    @gene_relations = GeneRelation.find(params[:gene][:gene_category_ids]);     
+    @gene_categories = GeneCategory.find(params[:gene][:gene_category_ids])
+    @gene_relations = GeneRelation.find(params[:gene][:gene_category_ids])   
 
     respond_to do |format|
       if @gene.save
@@ -81,8 +81,8 @@ class Admin::GenesController < Admin::AdminController
   # PATCH/PUT /genes/1
   # PATCH/PUT /genes/1.json
   def update
-    @gene_categories = GeneCategory.find(params[:gene][:gene_category_ids]);
-    @gene_relations = GeneRelation.find(params[:gene][:gene_category_ids]);    
+    @gene_categories = GeneCategory.find(params[:gene][:gene_category_ids])
+    @gene_relations = GeneRelation.find(params[:gene][:gene_category_ids])  
     
     respond_to do |format|
       if @gene.update(gene_params)
