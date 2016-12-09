@@ -16,7 +16,7 @@ set :bundle_env_variables, { nokogiri_use_system_libraries: 1 }
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
-set :default_env, {"RAILS_RELATIVE_URL_ROOT" => "/GeneAdmin"}
+#set :default_env, {"RAILS_RELATIVE_URL_ROOT" => "/GeneAdmin"}
 set :passenger_restart_with_touch, true
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
