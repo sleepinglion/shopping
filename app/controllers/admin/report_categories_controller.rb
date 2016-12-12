@@ -110,6 +110,6 @@ class Admin::ReportCategoriesController < Admin::AdminController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def report_category_params
-    params.require(:report_category).permit(:title,:color,:enable)
+    params.require(:report_category).permit(:title,:sub_title,:color,:enable)
   end
 end

@@ -41,9 +41,9 @@ Product.create(:title=>'Check Service',:description=>'Good Service',:price=>1500
 Shipping.create(:id=>1,:name=>'정종호',:zip_code=>'123535',:address_default=>'123521',:address_detail=>'1235235',:phone=>'2351235',:email=>'123512@tgaweg.net',:enable=>true)
 Order.create(:id=>1,:user_id=>1,:shipping_id=>1,:payment_id=>1,:total_price=>20000,:enable=>true)
 
-ReportCategory.create(:id=>1,:title=>'중점관리',:color=>'red',:enable=>true)
-ReportCategory.create(:id=>2,:title=>'관리',:color=>'yellow',:enable=>true)
-ReportCategory.create(:id=>3,:title=>'양호',:color=>'blue',:enable=>true)
+ReportCategory.create(:id=>1,:title=>'중점관리',:sub_title=>'중점관리가 필요함',:color=>'red',:enable=>true)
+ReportCategory.create(:id=>2,:title=>'관리',:sub_title=>'관리가 필요함',:color=>'yellow',:enable=>true)
+ReportCategory.create(:id=>3,:title=>'양호',:sub_title=>'양호',:color=>'blue',:enable=>true)
 
 GeneCategory.create(:id=>1,:title=>'색소침착',:sub_title=>'pigmentation',:enable=>true,:tip=>'햇빛이 강한날에 야외활동을 오래한다면 누구나 피부에 색소침착이 생길 수 있으나, 이는 개개인에 따라 정도와 가능성에 차이가 있습니다. 이러한 색소침착의 작용은 피부에 분포하는 멜라닌이라고 불리는 색소에 의해 조절됩니다. 멜라닌이란 흑갈색의 색소로, 자외선을 흡수하여 피부로 침투되는 자외선을 차단하는 역할을 합니다. 이러한 멜라닌의 양은 개개인의 피부색을 결정짓는 요소이기도 합니다. 색소침착관련 유전자에 주의 유전형이 있다는 것은 <b>멜라닌의 합성작용에 이상이 생겨 햇빛에 대한 비부보호능이 감소</b>하거나, <b>색소침착의 가능성이 높아질 수 있다는 것</b>을 의미합니다.')
 GeneCategory.create(:id=>2,:title=>'혈당',:sub_title=>'blood sugar',:enable=>true,:tip=>'혈당은 혈액속에 포함된 포도당을 의미하며, 건강한 일반인의 경우 혈당은 혈액 속에서 적절한 농도를 유지하고 있습니다. 포도당은 뇌세포의 에너지원으로 매우 주요한 성분이지만 적절한 농도를 유지하지 못하고 수치가 상승할 경우 당뇨병등이 발병될 수 있어 적절한 수치유지가 중요합니다. 우리몸의 췌장 베타세포는 혈당의 수치를 감지하고, 인슐린을 적절히 분비하여 혈당수치를 유지하는 기능을 합니다. 혈당 관련 유전자에 주의유전형이 있다는 것은<b>췌장의 베타세포기능 및 당분분해효소에 이상이 생겨 인슐린의 분비능력 저하 및 포도당의 대사에 문제가 생길 수 있다는 것을 의미</b>합니다. 고혈당 상태가 계속 유지될 경우 <b>당뇨병 및 각종 합병증 발생</b>의 가능성이 높아지게 됩니다.')
