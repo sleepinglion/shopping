@@ -122,7 +122,7 @@ class Admin::UsersController < Admin::AdminController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(set_user)
+    @user = User.new(user_params)
 
     respond_to do |format|
       if @user.save
@@ -139,7 +139,7 @@ class Admin::UsersController < Admin::AdminController
   # PUT /users/1.json
   def update
     respond_to do |format|
-      if @user.update_attributes(set_user)
+      if @user.update_attributes(user_params)
         format.html { redirect_to admin_user_path(@user), :notice => @controller_name +t(:message_success_update)}
         format.json { head :no_content }
       else

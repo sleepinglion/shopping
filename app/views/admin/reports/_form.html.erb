@@ -21,8 +21,8 @@
 	<%= f.select :report_category_id,options_from_collection_for_select(ReportCategory.where(:enable=>true).all(), 'id', 'title',@report.report_category_id), {:class=>"form-control"} %>
 </div>
 <div class="form-group">
-	<%= f.label :gene_category_id %>
-	<%= f.select :gene_category_id,options_from_collection_for_select(GeneCategory.where(:enable=>true).all(), 'id', 'title',@report.gene_category_id), {:class=>"form-control"} %>
+	<%= f.label :action_id %>
+	<%= f.select :action_id,options_from_collection_for_select(Action.where(:enable=>true).all(), 'id', 'title',@report.action_id), {:class=>"form-control"} %>
 </div>
 <div class="form-group">
 	<%= f.label :enable %>

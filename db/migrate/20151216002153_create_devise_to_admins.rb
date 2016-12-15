@@ -11,7 +11,7 @@ class CreateDeviseToAdmins < ActiveRecord::Migration
       t.string :encrypted_password, :null => false, :limit=>60
       t.string :photo
 
-      t.boolean :flag, :null => false, :default => true
+      t.boolean :enable, :null => false, :default => true
 
       ## Recoverable
       # t.string   :reset_password_token

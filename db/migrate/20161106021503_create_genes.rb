@@ -3,6 +3,8 @@ class CreateGenes < ActiveRecord::Migration
     create_table :genes do |t|
       t.string :title, :null=>false, :limit=>60
       t.string :sub_title, :null=>false, :limit=>60
+      t.string :genotype, :null=>false
+      t.string :factor, :null=>false
       t.text :description, :null=>false
       t.boolean :enable, :null=>false, :default=>false
       t.timestamps

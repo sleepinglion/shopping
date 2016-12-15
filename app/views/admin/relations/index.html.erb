@@ -13,8 +13,8 @@
 			<col />
 			<col style="width:80px;" />
 			<col style="width:100px;" />
-			<% if can?(:update, GeneRelation) || can?(:delete, GeneRelation) %>
-			<col <%= raw manage_width(GeneRelation) %> />
+			<% if can?(:update, Relation) || can?(:delete, Relation) %>
+			<col <%= raw manage_width(Relation) %> />
 			<% end %>
 		</colgroup>
 		<thead>
@@ -23,26 +23,26 @@
 				<th><%= t(:label_title) %></th>
 				<th><%= t(:label_flag) %></th>
 				<th><%= t(:label_created_at) %></th>
-				<% if can?(:update, GeneRelation) || can?(:delete, GeneRelation) %>
+				<% if can?(:update, Relation) || can?(:delete, Relation) %>
 				<th><%= t(:label_manage) %></th>
 				<% end %>
 			</tr>
 		</thead>
 		<tbody>
-			<% unless @gene_relations.empty? %>
-			<% @gene_relations.each do |gene| %>
+			<% unless @relations.empty? %>
+			<% @relations.each do |gene| %>
 			<tr>
-				<td><%= link_to gene.id,admin_gene_relation_path(gene) %></td>
-				<td class="mw"><%= link_to gene.title,admin_gene_relation_path(gene) %></td>
+				<td><%= link_to gene.id,admin_relation_path(gene) %></td>
+				<td class="mw"><%= link_to gene.title,admin_relation_path(gene) %></td>
 				<td><%= raw flagToString(gene.enable) %></td>
 				<td><%= gene.created_at.to_date %></td>
-				<% if can?(:update, GeneRelation) || can?(:delete, GeneRelation) %>
+				<% if can?(:update, Relation) || can?(:delete, Relation) %>
 				<td> <% if can? :update, gene %>
-				<%= link_to edit_admin_gene_relation_path(gene),:class=>"btn btn-default" do %> <i class="glyphicon glyphicon-pencil"></i> <%= t(:link_edit) %>
+				<%= link_to edit_admin_relation_path(gene),:class=>"btn btn-default" do %> <i class="glyphicon glyphicon-pencil"></i> <%= t(:link_edit) %>
 				<% end %>
 				<% end %>
 				<% if can? :delete, gene %>
-				<%= link_to admin_gene_relation_path(gene), :method => :delete, :data => { :confirm => t(:delete_confirm) },:class=>"btn btn-danger" do %> <i class="glyphicon glyphicon-trash"></i> <%= t(:link_delete) %>
+				<%= link_to admin_relation_path(gene), :method => :delete, :data => { :confirm => t(:delete_confirm) },:class=>"btn btn-danger" do %> <i class="glyphicon glyphicon-trash"></i> <%= t(:link_delete) %>
 				<% end %>
 				<% end %> </td>
 				<% end %>
@@ -58,11 +58,11 @@
 </div>
 <div class="row">
 	<div class="col-xs-6 col-sm-3 col-md2">
-		<% if can? :create, GeneRelation %>
-		<%= link_to new_admin_gene_relation_path,:class=>"btn btn-primary" do %>
+		<% if can? :create, Relation %>
+		<%= link_to new_admin_relation_path,:class=>"btn btn-primary" do %>
 		<i class="glyphicon glyphicon-plus"></i> <%= t(:link_new) %>
 		<% end %>
 		<% end %>
 	</div>
-	<%= paginate @gene_relations %>
+	<%= paginate @relations %>
 </div>

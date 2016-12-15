@@ -1,10 +1,10 @@
-<%= form_for [:admin,@gene_relation] do |f| %>
-<% if @gene_relation.errors.any? %>
+<%= form_for [:admin,@relation] do |f| %>
+<% if @relation.errors.any? %>
 <div id="error_explanation" class="alert alert-danger">
 	<a href="#" class="close" data-dismiss="alert">&times;</a>
-	<h2><%= pluralize(@gene_relation.errors.count, "error") %> prohibited this request from being saved:</h2>
+	<h2><%= pluralize(@relation.errors.count, "error") %> prohibited this request from being saved:</h2>
 	<ul>
-		<% @gene_relation.errors.full_messages.each do |msg| %>
+		<% @relation.errors.full_messages.each do |msg| %>
 		<li>
 			<%= msg %>
 		</li>

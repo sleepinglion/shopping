@@ -4,22 +4,22 @@
 <div class="sl_show">
 	<p>
 		<b><%=t(:label_title) %></b>
-		<%= @report.title %>
+		<%= @relation.title %>
 	</p>
 	<p>
 		<b><%=t(:label_flag) %></b>
-		<%=raw flagToString(@report.enable) %>
+		<%=raw flagToString(@relation.enable) %>
 	</p>
 	<p>
   	<b><%=t(:label_created_at) %></b>
-  	<%= @report.created_at %>
+  	<%= @relation.created_at %>
   </p>
   <p>
   	<b><%=t(:label_updated_at) %></b>
-  	<%= @report.created_at %>
+  	<%= @relation.created_at %>
   </p>
 </div>
-<% if can? :update, Notice %>		
-<%= link_to t(:link_edit), edit_admin_notice_path(@report) %> |
+<% if can? :update, Relation %>		
+<%= link_to t(:link_edit), edit_admin_relation_path(@relation) %> |
 <% end %>
-<%= link_to t(:link_list), admin_notices_path() %>
+<%= link_to t(:link_list), admin_relations_path %>

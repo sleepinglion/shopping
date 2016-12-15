@@ -28,9 +28,9 @@ Rails.application.routes.draw do
   # 관리자
   namespace :admin do
     get '/' => 'admin#index'
-    resources :gene_categories
+    resources :related_actions
     resources :genes
-    resources :gene_relations    
+    resources :relations    
     resources :report_categories
     resources :reports
     

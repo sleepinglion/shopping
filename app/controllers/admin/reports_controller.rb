@@ -111,6 +111,6 @@ class Admin::ReportsController < Admin::AdminController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def report_params
-    params.require(:gene).permit(:title,:report_category_id,:gene_category_id)
+    params.require(:report).permit(:title,:report_category_id,:gene_category_id)
   end
 end

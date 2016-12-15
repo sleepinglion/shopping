@@ -1,5 +1,5 @@
 class Admin::AdminController < ApplicationController
-  before_filter :authenticate_admin!,:only => [:index,:new,:create,:show,:edit, :update, :destroy]
+  before_action :authenticate_admin!,:only => [:index,:new,:create,:show,:edit, :update, :destroy]
   
   def initialize(*params)
     super(*params)
