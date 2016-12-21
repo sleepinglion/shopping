@@ -17,7 +17,11 @@ class ApplicationController < ActionController::Base
   def set_locale
      I18n.locale = 'ko'
      I18n.locale = params[:locale] || I18n.default_locale
-  end 
+  end
+  
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to new_user_session_path, :alert => exception.message
+  end  
   
   def layout
     if(params[:no_layout])

@@ -5,7 +5,11 @@ class Admin::AdminController < ApplicationController
     super(*params)
     
     @style='admin/application'
-  end  
+  end
+  
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to new_admin_session_path, :alert => exception.message
+  end    
   
   def layout
     if(params[:no_layout])
