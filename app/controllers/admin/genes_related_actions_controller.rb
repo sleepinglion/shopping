@@ -126,6 +126,6 @@ class Admin::GenesRelatedActionsController < Admin::AdminController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def genes_related_action_params
-    params.require(:genes_related_action).permit(:gene_id,:related_action_id,:position,:factor,:korean_rate,:paper,:enable)
+    params.require(:genes_related_action).permit(:gene_id,:related_action_id,:position,:genotype,:factor,:korean_rate,:paper,:enable)
   end
 end
