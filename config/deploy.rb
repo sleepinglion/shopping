@@ -1,6 +1,4 @@
 # config valid only for current version of Capistrano
-lock '3.6.1'
-
 set :application, 'shopping_admin'
 set :repo_url, 'git@github.com:sleepinglion/shopping.git'
 set :branch, 'master'
@@ -8,10 +6,9 @@ set :branch, 'master'
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/BiO/Serve/Httpd/Gene/shopping_admin'
+set :deploy_to, '/home/deploy/shopping'
 
 # Default value for :scm is :git
-set :scm, :git
 set :bundle_env_variables, { nokogiri_use_system_libraries: 1 }
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -45,6 +42,6 @@ namespace :deploy do
       execute :touch, release_path.join('tmp/restart.txt')
     end
   end
-  
-  after :finishing, 'deploy:restart'  
-end  
+
+  after :finishing, 'deploy:restart'
+end
