@@ -20,7 +20,6 @@
 /public/uploads
 /public/assets
 /public/sitemap.xml.gz
-/public/fonts
 /config/database.yml
 /db/schema.rb
 .env

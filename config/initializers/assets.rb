@@ -22,3 +22,8 @@ Rails.application.config.assets.precompile = (javascripts + css + scss + coffee 
 Rails.application.config.assets.precompile += Ckeditor.assets
 Rails.application.config.assets.precompile += %w( ckeditor/* )
 Rails.application.config.assets.precompile += %w( admin/new.js )
+Rails.application.config.assets.precompile << Proc.new { |path|
+  if path =~ /\.(eot|svg|ttf|woff)\z/
+    true
+  end
+}
