@@ -34,12 +34,12 @@ gem 'kaminari'
 gem 'carrierwave'
 gem 'devise'
 gem 'impressionist'
-#gem 'rmagick'
 gem 'mini_magick'
 gem 'cancan'
 gem 'ckeditor'
 gem 'fancybox2-rails'
 gem 'json'
+gem 'non-stupid-digest-assets'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
