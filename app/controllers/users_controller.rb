@@ -4,19 +4,19 @@ class UsersController < ApplicationController
   load_and_authorize_resource
   skip_load_resource :only => [:create]
   before_action :set_notice, only: [:show, :edit, :update, :destroy]
-  
+
   def initialize(*params)
     super(*params)
-    
+
     @category=t(:menu_user)
     @sub_menu=t(:submenu_user)
-    @controller_name=t('activerecord.models.user')     
+    @controller_name=t('activerecord.models.user')
   end
-  
+
   def user_id_select
     @script='users/user_id_select'
   end
-  
+
   def user_id_select_search_result
     case params[:find_method]
       when 'login_id'
@@ -28,50 +28,50 @@ class UsersController < ApplicationController
       when 'market'
         condition_sql='market like ?'
     end
-    
+
     unless params[:per_page].present?
       params[:per_page]=20
     end
-    
-    @user_count = User.order('id desc').where(condition_sql,'%'+params[:search].strip+'%').count    
+
+    @user_count = User.order('id desc').where(condition_sql,'%'+params[:search].strip+'%').count
     @users = User.order('id desc').where(condition_sql,'%'+params[:search].strip+'%').page(params[:page]).per(params[:per_page])
 
     @script='users/user_id_select'
-    
+
     if(@user_count.zero?)
       a={:count=>@user_count}
     else
       a={:count=>@user_count,:list=>@users}
-    end 
-    
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => a }
       format.xls
-    end        
-  end  
- 
+    end
+  end
+
   # GET /users
   # GET /users.json
   def index
-    if params[:login_id].present? || params[:cell_phone].present?    
+    if params[:login_id].present? || params[:cell_phone].present?
       likesql='1=1'
       likep=[]
     end
-    
+
     unless params[:per_page].present?
       params[:per_page]=20
     end
-    
+
     if params[:format]=='xls'
       params[:page]=nil
-      params[:per_page]=500000  
+      params[:per_page]=500000
     end
-    
+
     conditions={}
     conditions[:user_id]=params[:user_id] if params[:user_id].present?
     conditions[:flag]=params[:flag] if params[:flag].present?
-    
+
 
     @users = User.where('1=1')
 
@@ -109,19 +109,17 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.json
   def new
-    @script='users/new'    
+    @script='users/new'
   end
 
   # GET /users/1/edit
   def edit
-    @script='users/new'    
+    @script='users/new'
   end
 
   # POST /users
   # POST /users.json
   def create
-    require 'digest/md5'
-    @user.device_id= Digest::MD5.hexdigest(User.random_string(10)).upcase
 
     respond_to do |format|
       if @user.save
@@ -154,7 +152,7 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
    @delete_user=DeleteUser.new({:username=>@user.username,:nickname=>@user.nickname,:email=>@user.email,:nation_num=>@user.nation_num,:mobile_num=>@user.mobile_num})
-    
+
     @delete_user.transaction do
       @user.destroy
       @s_save=@delete_user.save!
@@ -165,7 +163,7 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
 
   private
 
@@ -177,5 +175,5 @@ class UsersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
     params.require(:user).permit(:title)
-  end  
+  end
 end
