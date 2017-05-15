@@ -9,7 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :sex, :null=>false, :default=>false
       t.integer :weight
       t.integer :height
-      t.boolean :enable, :null=>false, :default=>false      
+      t.boolean :enable, :null=>false, :default=>false
       t.timestamps :null=>false
     end
 
