@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="<%=I18n.locale %>">
 <head>
 	<meta charset="utf-8">
 	<title><%=t(:service_name)%></title>
@@ -12,10 +12,6 @@
 	<!--[if IE]>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<![endif]-->
-	<!--[if lt IE 9]>
-	<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <script type="text/javascript" src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-    <![endif]-->
 </head>
 <body>
 	<%= render :partial => 'layouts/header' %>
@@ -23,14 +19,14 @@
 		<div id="main" class="container">
 			<% if(!params[:no_layout] and !current_page?(root_path)) %>
 			<%= render :partial => 'layouts/page_header' %>
-			<% end %>			
+			<% end %>
 			<div class="sub_main">
 			<%= yield %>
 			</div>
 		</div>
 	</div>
 	<%= render :partial => 'layouts/footer' %>
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"></div>	
-	<%= javascript_include_tag @script %>				
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"></div>
+	<%= javascript_include_tag @script %>
 </body>
 </html>
