@@ -13,6 +13,8 @@ ko:
   use: '사용'
   user: '사용자'
   name : '이름'
+  submit : '제출'
+  lion_lair : '아프리카 초원 사자굴'
   password : '비밀번호'
   password_confirm : '비밀번호 확인'
   login_page : '로그인 페이지'
@@ -277,6 +279,10 @@ ko:
   new_address_section: '신규 주소구분'
   new_target: '신규목표'
 
+
+  korean : '한국어'
+  english : 'english'
+  chinese : '中國語'
 
   devise:
     confirmations:

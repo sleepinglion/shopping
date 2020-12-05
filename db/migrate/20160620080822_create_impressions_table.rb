@@ -1,4 +1,4 @@
-class CreateImpressionsTable < ActiveRecord::Migration
+class CreateImpressionsTable < ActiveRecord::Migration[4.2]
   def change
     create_table :impressions, :force => true do |t|
       t.string :impressionable_type, :limit=>100

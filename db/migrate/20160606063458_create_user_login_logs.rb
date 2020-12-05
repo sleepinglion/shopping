@@ -1,4 +1,4 @@
-class CreateUserLoginLogs < ActiveRecord::Migration
+class CreateUserLoginLogs < ActiveRecord::Migration[4.2]
   def change
     create_table :user_login_logs do |t|
       t.references :user

@@ -1,4 +1,4 @@
-class CreateDeviseToAdmins < ActiveRecord::Migration
+class CreateDeviseToAdmins < ActiveRecord::Migration[4.2]
   def change
     create_table :admins do |t|
       t.integer :parent_id
@@ -6,8 +6,8 @@ class CreateDeviseToAdmins < ActiveRecord::Migration
 
       ## Database authenticatable
       t.string :login_id,  :null => false , :limit=>60
-      t.string :email
-      t.string :nickname
+      t.string :email, :limit=>60
+      t.string :nickname, :limit=>60
       t.string :encrypted_password, :null => false, :limit=>60
       t.string :photo
 

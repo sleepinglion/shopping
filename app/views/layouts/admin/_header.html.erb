@@ -7,7 +7,7 @@
 				<li class="dropdown">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 						<% if(current_admin.photo?)  %>
-						<%=image_tag current_admin.photo.small_thumb %>
+						<%=image_tag current_admin.photo.small_thumb.url %>
 						<% end %>&nbsp;
 						<%=current_admin.nickname %>
 						<span class="caret"></span>

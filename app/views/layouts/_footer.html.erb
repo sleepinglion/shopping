@@ -1,5 +1,17 @@
-<footer id="footer" class="footer">
-	<div class="container">
-		<address><br class="visible-xs" />주소 :  경기도 수원시</address>
- 	</div>
+<footer>
+  <div class="container">
+    <div class="row">
+      <address class="col-12">
+        <a href="https://www.sleepinglion.pe.kr" target="_blank"><%=t(:address) %> : <%=t(:lion_lair) %></a>
+        &nbsp;&nbsp; CopyLeft. 2020, SL. All wrongs reserved.
+      </address>
+      <form class="form-inline">
+        <select name="language" class="form-control">
+          <option value="english"><%=t(:english) %></option>
+          <option value="korean"><%=t(:korean) %></option>
+        </select>
+        <input type="submit" class="btn" value="<%=t(:submit) %>" />
+      </form>
+    </div>
+  </div>
 </footer>

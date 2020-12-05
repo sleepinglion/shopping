@@ -1,4 +1,4 @@
-class CreateShippings < ActiveRecord::Migration
+class CreateShippings < ActiveRecord::Migration[4.2]
   def change
     create_table :shippings do |t|
       t.references :user

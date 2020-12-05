@@ -1,4 +1,4 @@
-class CreateProductPictures < ActiveRecord::Migration
+class CreateProductPictures < ActiveRecord::Migration[4.2]
   def change
     create_table :product_pictures do |t|
       t.references :product, :null => false

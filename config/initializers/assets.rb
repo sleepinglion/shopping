@@ -16,12 +16,11 @@ javascripts = Dir["#{js_prefix}**/*.js"].map      { |x| x.gsub(js_prefix,    '')
 css         = Dir["#{style_prefix}**/*.css"].map  { |x| x.gsub(style_prefix, '') }
 image       = Dir["#{image_prefix}**/*"].map  { |x| x.gsub(image_prefix, '') }
 scss        = Dir["#{style_prefix}**/*.scss"].map { |x| x.gsub(style_prefix, '') }
-coffee        = Dir["#{js_prefix}**/*.coffee"].map { |x| x.gsub(js_prefix, '') }
 
-Rails.application.config.assets.precompile = (javascripts + css + scss + coffee + image)
-Rails.application.config.assets.precompile += Ckeditor.assets
-Rails.application.config.assets.precompile += %w( ckeditor/* )
-Rails.application.config.assets.precompile += %w( admin/new.js )
+Rails.application.config.assets.precompile = (javascripts + css + scss  + image)
+Rails.application.config.assets.precompile += %w( admin.scss )
+Rails.application.config.assets.precompile += %w( application.scss )
+Rails.application.config.assets.precompile += %w( admin.js )
 Rails.application.config.assets.precompile << Proc.new { |path|
   if path =~ /\.(eot|svg|ttf|woff)\z/
     true
