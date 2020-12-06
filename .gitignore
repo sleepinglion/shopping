@@ -23,6 +23,8 @@
 /config/database.yml
 /db/schema.rb
 .env
+.project
+.idea
 #Gemfile.lock
 *.sql
 
