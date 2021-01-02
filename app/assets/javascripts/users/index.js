@@ -1,5 +1,4 @@
 //= require application
-//= require jquery-ui
 
 $(document).ready(function(){
 	$(".btn-minimize").click(function(){

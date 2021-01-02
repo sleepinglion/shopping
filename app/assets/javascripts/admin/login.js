@@ -1,5 +1,3 @@
-//= require jquery
-
 $(document).ready(function() {
 	var cookie=getCookie('login_id');
 

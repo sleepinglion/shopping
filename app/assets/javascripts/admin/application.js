@@ -10,14 +10,6 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 
-//= require jquery
-//= require jquery_ujs
-//= require bootstrap/modal
-//= require bootstrap/dropdown
-//= require bootstrap/alert
-//= require plugin/jquery.pagination
-
-
 var sms_clone_count=1;
 var multimedia_clone_count=1;
 

@@ -10,12 +10,6 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 
-//= require jquery
-//= require jquery_ujs
-//= require bootstrap-sprockets
-
-window['CKEDITOR_BASEPATH']='/ckeditor/';
-
 $(document).ready(function(){
 	$('#myModal').on('show.bs.modal', function (e) {
   		if (!data) return e.preventDefault(); // stops modal from being shown  

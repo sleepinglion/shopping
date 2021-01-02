@@ -1,5 +1,4 @@
-class ProductPicture < ActiveRecord::Base
-  validates_presence_of :product_id  
-  belongs_to :product, :autosave => true, :counter_cache => true
-  mount_uploader :photo, ProductPictureUploader
+class ProductPicture < ApplicationRecord
+  belongs_to :product, autosave: true
+  mount_uploader :picture, ProductPictureUploader
 end

@@ -22,7 +22,7 @@ Rails.application.config.assets.precompile += %w( admin.scss )
 Rails.application.config.assets.precompile += %w( application.scss )
 Rails.application.config.assets.precompile += %w( admin.js )
 Rails.application.config.assets.precompile << Proc.new { |path|
-  if path =~ /\.(eot|svg|ttf|woff)\z/
+  if path =~ /\.(eot|svg|ttf|woff|woff2)\z/
     true
   end
 }

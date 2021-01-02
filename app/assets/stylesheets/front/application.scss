@@ -1,7 +1,11 @@
-
+/*
+ * Manifest file for admin styles, to be compiled into admin.scss
+ *
+ *= require_self
+ *= require_tree .
+ */
 
 @charset "utf-8";
-
 @import "bootstrap";
 
 @font-face {
