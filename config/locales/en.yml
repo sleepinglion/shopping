@@ -1,504 +1,350 @@
 en:
-  service_name : 'Mynm'
-  admin_profile : '修改我的信息s'
-  amount: '数量'
-  home : '主页'
-  search : '搜索'
-  update : '更新'
-  ad : '广告'
-  ad_name : '广告名'
-  sponsor : '广告主'
-  image : '图片'
-  target : '目标'
-  default: '默认值'
-  use: '使用'
-  user: '用户'
-  user_id: '用户ID'
-  count_thing : '件'
-  count_people : '名'
-  rank_fail : '人品不够'
-  subject: '题目'
-  summary: '全部概要'
-  for: '为'
-  id: 'ID'
-  logout : '退出'
-  flag_true : '使用'
-  flag_false : '终止'
-  
-  login_title : '积点管理员登录'
-  login_p_id : '请输入ID'
-  login_p_password : '请输入密码'
-  login_l_remember : '请记住'
-  
-  no_data : '无内容'
-  no_exist_user : '用户不存在'
-  no_exist_image : '图片不存在'
-  no_insert_data : '输入未成功'
-  no_exist_ad : '广告不存在'
-  no_relative : '无相关' 
-  no_exist_type : '类型不存在'
+  service_name: "SL Cafe"
+  hello: "Hello world"
 
-  period_today : '今天'
-  period_week : '一星期'
-  period_month : '一个月'
-  period_month3 : '三个月'
-  period_month6 : '六个月'
-  period_all : '全部'
-  
-  success_title : '恭喜!!'  
-  message_success_insert : '已成功录入'
-  message_success_update : '已成功更新'
-  delete_confirm : '确定要删除吗?'
-  delete_cascade_confirm : "重要提示!!\n 删除此内容会导致包括此内容信息在内的所有的数据都会被删除。\n依然要进行删除吗?"
-  delete_sponsor_cascade_confirm : "删除广告主的同时，广告主的广告也会被删除。\n 依然要进行删除吗?"
-  delete_user_cascade_confirm : "删除会员的同时，与会员相关的所有信息都会被删除。\n依然要进行删除吗?"  
-  
-  all_point : '현재 총 적립금액'
-  all_request : '현재 총 요청금액'
-  all_paid : '지급된 금액'
-  all_select : '전체선택'
-  all_deselect : '전체해지'
-  user_id_find  : '用户ID 搜索'
-  
-  form_ad_default : '기본정보'
-  form_ad_option : '추가옵션'
-  form_ad_count : '수량설정'
-  
-  menu_home : '管理者主页'
-  menu_ad : '广告管理'
-  menu_sponsor : '广告主管理'
-  menu_stat : '统计'
-  menu_point : '积点管理'
-  menu_message : 'message 管理'
-  menu_game : '游戏管理'
-  menu_store : '商城管理'
-  menu_stats : '统计'
-  menu_board : '公告栏管理'
-  menu_user : '会员管理'
-  menu_version : '版本管理'
-  menu_basic : '默认值管理'
-  submenu_all_graph : '全部图表'   
-  submenu_ad_log_all : '全部广告日志'  
-  submenu_ad_log_daily : '之前的日期-时间段日志'
-  submenu_point : '积点明细'
-  submenu_request : '现金兑换申请管理'
-  submenu_game_amount : '베팅금액설정'
-  submenu_game_setting : '游戏设置'
-  submenu_game : '游戏运行记录'
-  submenu_product : '商品管理'
-  submenu_order : '订单管理'
-  submenu_stats : '全部统计表'
-  submenu_operator : '运营者管理'  
-  submenu_admin : '管理者管理'
-  submenu_user : '会员管理'  
-  submenu_user_login_log : '会员登录管理'  
-  submenu_deleted_user : '注销会员管理'
-  submenu_notice : '公告'
-  submenu_faq : 'FAQ'
-  submenu_ad_type : '广告分类管理'
-  submenu_ad_file_type : '广告文件分类管理'
-  submenu_ad_log_type : '广告日志分类管理'  
-  submenu_point_type : '积点分类管理'
-  submenu_bank : '运营商管理'
-  submenu_request_setting : '现金兑换数量管理'
-  submenu_request_type : '现金兑换状态管理'
-  submenu_address : '地址管理'
-  submenu_address_section : '地址 – 号码段管理'
-  submenu_target_type : '目标分类管理'
-  submenu_target : '目标管理'
-  submenu_app_log_types: '日志分类管理'
-  submenu_store_order_statuses: '订单状态区分管理'
+  korean: '한국어'
+  chineses: '汉语'
+  english: 'english'
 
-  action_index : '目录'
-  action_show : '详情'
-  action_edit : '修改'
-  action_new : '生成'
-  link_list : '目录'
-  link_show : '详情'
-  link_new : '新建'
-  link_edit : '修改'
-  link_delete : '删除'
-  link_download_excel : '下载excel'  
-  link_point_search: '积点查询'
-  link_request_search: '现金兑换申请查询'
-  link_game_search: '游戏查询'  
-  
-  label_number : '号码' 
-  label_count : '个数'
-  label_date : '日期'
-  label_hour : '时间' 
-  label_client_point : '用户积点'
-  label_client_time : '用户时间'
-  label_user : '用户'
-  label_nick_name : '用户名'
-  label_email : 'E-Mail'
-  label_mobile_num : '手机号码'  
-  label_status : '状态'
-  label_image : '图片'
-  label_period_search : '时期搜索' 
-  label_nation_num : '国家编号'
-  label_password : '密码'
-  label_password_confirm : '密码确认'   
-  label_percentage : '概率'
-  label_get_amount : '获得数量'
-  label_bet_amount : '베팅 数量'    
-  label_sponsor : '广告主'
-  label_version : '版本'
-  label_bank : '运营商'
-  label_period : '时期'
-  label_lastlogin : '最后登录'
-  label_login_count : '登录次数'
-  label_current_password : '现在密码'
-  label_parent_address : '父地址'
-  label_address : '地址'
-  label_full_address : '全部地址' 
-  label_section : '号码段'
-  label_out_date : '注销日期'
-  label_relation_ad : '相关广告'
-  label_select : '选择' 
-  label_account_num : '账户号码'
-  label_bankname : '运营商'
-  label_request_amount : '申请金额'
-  label_update_date : '更新日期'
-  label_version : '版本'
-  label_target : '目标'
-  label_target_address : '目标地址' 
-  label_get_point : '获得积点'  
-  label_rank : '名次' 
-  label_device_id : '设备ID'
-  label_ip : 'IP'
-  label_privilege : '权限'
-  label_sign_in_count : '로그인 횟수'
-  label_last_login : '마지막 로그인'
-  label_weekday : '요일지정'
-  label_category : '分类'
-  label_manage : '管理'
-  label_title : '标题'
-  label_description : '说明'
-  label_content : '内容'
-  label_user_id : '用户账户'
-  label_point : '积点'
-  label_ad : '广告'
-  label_memo : '备注'
-  label_bank_code : '银行代码'
-  label_amount : '数量'
-  label_coupon : '优惠券'
-  label_login_id : '登录账户'
-  label_times : '倍'
-  label_message_status : '발송상태'
-  label_message_phone : '전화번호'
-  label_message_text : '메세지 내용'
-  label_message_sendtime : '요청시간'
-  label_message_rsttime : '발송시간'
-  label_description_short : '简要说明'
-  label_sale_price : '销售金额'
-  label_sale_type : '销售类型'  
-  label_stock_count : '库存数量'
-  label_order_count : '订单数量'
-  label_sale_period: '销售时期'
-  label_proirity_flag : '优先'   
-  label_flag : '使用与否'
-  label_hot_flag : '热卖'
-  label_new_flag : '新品'  
-  label_created_at : '注册日期'
-  label_updated_at : '修改日期'
-  
-  status : '状态'
-  status_use : '使用中'
-  status_stop : '终止'
-  status_wait : '待机'
-  status_live : '进行中'
-  status_end : '终了'
-  
-  stats_point : '积点统计'
-  stats_user : '会员统计'
-  stats_call : '接打电话统计'
-  stats_max_point : '达到最多积点值的会员统计'     
-  current_users : '现有用户数'
-  current_active_users : '活跃用户数'
-  current_disable_users : '休眠用户数'
-  
-  user_recommends : '나를 추천한 사용자들' 
+  search : "search"
+  submit : "submit"
 
+  search_order : "search order"
+  search_user : "search user"
+  select_user : "select user"
+  access_card : "access card"
+  name : "name"
+  phone : "phone"
+  payment_n_total : "payment, total"
+  manage : "manage"
+  image : "image"
+  check : "check"
+  transaction_date : 'transaction date'
+  display : 'display'
+  no_display : 'no display'
 
+  add_order : "add order"
+  order : "order"
+  product : "product"
+  price : "price"
+  quantity : "quantity"
+  cancel : "cancel"
+  cash : "cash"
+  credit : "credit"
+  point : "point"
+  total_price : "total price"
+  address : "address"
+  jedearoweb : 'jedearoweb'
+  payment_method : 'payment method'
+  total : 'total'
+  amount : 'amount'
 
-  
-  weekly_new_user: '一周新增会员'
-  weekly_expose_count: '一周展示次数'
-  weekly_point_count: '一周获得积点'
-  
-  total_user_count: '全部用户数'
-  active_user_count: '活跃用户数'
-  inactive_user_count: '休眠用户数'
-  active_user_point: '活跃用户积点'
+  login_first : "먼저 로그인 해주세요"
+  no_exists_order : "no exists order"
 
-  call_stats: '接打电话统计'
-  
-  weekly_outbound_call_average: '一周平均拨打次数'
-  weekly_incomming_call_average: '一周平均接听次数'
-  
-  maximum_point_leached_user_count: '达到最多积点值的会员统计'
-  weekly_maximum_point_leached_user: '一周达到最多积点值的会员'
-  
-  banner_ad: 'banner广告'
-  call_ad: '电话广告'
-  front_ad: '全屏广告'
-  app_ad: 'APP广告'
+  add : "add"
+  edit : "edit"
+  delete : "delete"
+  manage : 'manage'
 
-  active: '活跃'
-  
-  base_info: '基本信息'
-  
-  priority: '优先执行'
-  
-  more_options: '附加选择项'
-  
-  cpi_use: 'CPI使用'
-  cpi_reward_type: 'CPI奖励形态'
-  cpi_market: 'CPI市场'
-  cpi_package: 'CPI包名'
-  cpi_message: 'CPI信息'
-  web_use: 'WEB使用'
-  web_addr: 'WEB连接地址'
-  web_message: 'WEB信息'
-  callback_use: 'call back使用'
-  callback_number: 'call back号码'
-  callback_message: 'call back信息'
-  is_video: '是否使用视频'
-  is_html: 'HTML广告'
-  set_quantity: '数量设置'  
-  division: '区分'
-  target: '目标'
-  daily_limit: '期限'
-  budget: '预算'
-  cost: '费用'
-  reward: '奖励'
-  total: '总计'
-  today: '今天'
-  expose: '展示'
-  view: '视图'
-  install: '安装'
-  extra: '补充'
+  email :  "email"
+  password : "password"
+  login_p_email : "insert email, please"
+  login_p_password : "insert password, please"
+  login : "login"
+  logout : "logout"
+  remember_me : "remember me"
+  new_user: 'New user'
+  delete_user: 'Cancel membership'
 
+  all : 'all'
+  today : 'today'
+  week : 'week'
+  year : 'year'
+  all_period : 'all period'
+  current_month : 'current month'
+  next_month : 'next month'
 
-  call_ad_summary: '接打电话广告概要'
-  banner_ad_summary: 'banner广告概要'
-  front_ad_summary: '前端广告'
+  no_data : '해당 데이터가 없습니다.'
+  not_insert : '미입력'
+  there_are_n_accounts: "정산 내역이 <strong class=\"mark\">%{count}개</strong> 있습니다"
+  there_are_n_orders: "주문 내역이 <strong class=\"mark\">%{count}개</strong> 있습니다"
+  there_are_n_products : "상품 내역이 <strong class=\"mark\">%{count}개</strong> 있습니다"
+  there_are_n_product_categories : "상품분류 내역이 <strong class=\"mark\">%{count}개</strong> 있습니다"
+  there_are_n_points : "포인트가 <strong class=\"mark\">%{count}개</strong> 있습니다"
+  there_are_n_users : "사용자가 <strong class=\"mark\">%{count}명</strong> 있습니다"
+  there_are_n_operators : "관리자가 <strong class=\"mark\">%{count}명</strong> 있습니다"
 
- 
+  success_title : '처리되었습니다'
+  error_title : '죄송합니다'
+  login_page : '로그인 화면'
+  delete_confirm: '정말로삭제합니까?'
+  delete_cascade_confirm: "중대 경고!!\n이 항목을 삭제할 경우 이 항목뿐아니라 이 항목의 정보를 포함하는 모든 데이터가 삭제됩니다.\n그래도 진행하시겠습니까?"
 
-  ad_budget: '广告预算'
-  full_expose: '全部的展示'
-  today_expose: '今天的展示'
-  click_count: '点击次数'
+  link_list: 'go list'
+  link_new: 'new'
+  link_show: 'show detail'
 
-
-
-  current_total_point: '现在积累的总金额'    
-  
-
-
-  current_request_amount: '现在的总需求金额'
-  paid_amount: '支付金额'  
-  requested_amount: '申请结束'  
-  select_all: '全部选择'  
-  deselect_all: '全部解除'  
-  with_selected: '所选项' 
-  process_completed: '处理结束'  
-  request_completed: '申请结束'  
-
-
-  request_type: '需求类型'
-  bank: '银行'
-  bank_account_number: '银行账户'
-
-  prize_1st: '第1名'
-  prize_2nd: '第2名'
-  prize_3rd: '第3名'
-  prize_4th: '第4名'
-  prize_5th: '第5名'
-  prize_norank: '很遗憾'
-  odd: '概率/剩余概率'
-  recollected_point: '回收的积点'
-  prized_point: '发放的积点'
-  
-
-
-
-  
-
-  store_good: '库存商品'  
-  customer_tel: '客户电话'  
-  delivery_tel: '送货电话'  
-  delivery_zipcode: '邮政编码'  
-  delivery_address_1: '送货地址1' 
-  delivery_address_2: '送货地址2' 
-  delivery_note: '送货备注'  
-  status: '状态'  
-  label_shipping_method: '配送方法'  
-  shipping_track_number: '配送跟踪号码'  
-  shipping_time: '配送时间'  
-  shipping_flag: '配送编码'  
-  return_reason: '返还原因'  
-  return_time: '返还时间'  
-  return_flag: '返还编码'  
-  false: '错误'
-  file_prefix: '文件前缀'  
-  max_file_count: '文件计数'
-  prefix_number: '前缀编号'
-  address_id: '地址ID'
-  new_address_section: '新增地址区域'
-  new_target: '新增目标' 
+  devise:
+    confirmations:
+      confirmed: Your email address has been successfully confirmed.
+      new:
+        resend_confirmation_instructions: Resend confirmation instructions
+      send_instructions: You will receive an email with instructions for how to confirm your email address in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes.
+    failure:
+      already_authenticated: You are already signed in.
+      inactive: Your account is not activated yet.
+      invalid: Invalid email or password.
+      last_attempt: You have one more attempt before your account is locked.
+      locked: Your account is locked.
+      not_found_in_database: Invalid email address or password.
+      timeout: Your session expired. Please sign in again to continue.
+      unauthenticated: You need to sign in or sign up before continuing.
+      unconfirmed: You have to confirm your email address before continuing.
+    mailer:
+      confirmation_instructions:
+        action: Confirm my account
+        greeting: Welcome %{recipient}!
+        instruction: 'You can confirm your account email through the link below:'
+        subject: Confirmation instructions
+      password_change:
+        greeting: Hello %{recipient}!
+        message: We're contacting you to notify you that your password has been changed.
+        subject: Password Changed
+      reset_password_instructions:
+        action: Change my password
+        greeting: Hello %{recipient}!
+        instruction: Someone has requested a link to change your password, and you can do this through the link below.
+        instruction_2: If you didn't request this, please ignore this email.
+        instruction_3: Your password won't change until you access the link above and create a new one.
+        subject: Reset password instructions
+      unlock_instructions:
+        action: Unlock my account
+        greeting: Hello %{recipient}!
+        instruction: 'Click the link below to unlock your account:'
+        message: Your account has been locked due to an excessive amount of unsuccessful sign in attempts.
+        subject: Unlock instructions
+    omniauth_callbacks:
+      failure: Could not authenticate you from %{kind} because "%{reason}".
+      success: Successfully authenticated from %{kind} account.
+    passwords:
+      edit:
+        change_my_password: Change my password
+        change_your_password: Change your password
+        confirm_new_password: Confirm new password
+        new_password: New password
+      new:
+        forgot_your_password: Forgot your password?
+        send_me_reset_password_instructions: Send me reset password instructions
+      no_token: You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided.
+      send_instructions: You will receive an email with instructions on how to reset your password in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes.
+      updated: Your password has been changed successfully. You are now signed in.
+      updated_not_active: Your password has been changed successfully.
+    registrations:
+      destroyed: Bye! Your account has been successfully cancelled. We hope to see you again soon.
+      edit:
+        are_you_sure: Are you sure?
+        cancel_my_account: Cancel my account
+        currently_waiting_confirmation_for_email: 'Currently waiting confirmation for: %{email}'
+        leave_blank_if_you_don_t_want_to_change_it: leave blank if you don't want to change it
+        title: Edit %{resource}
+        unhappy: Unhappy?
+        update: Update
+        we_need_your_current_password_to_confirm_your_changes: we need your current password to confirm your changes
+      new:
+        sign_up: Sign up
+      signed_up: Welcome! You have signed up successfully.
+      signed_up_but_inactive: You have signed up successfully. However, we could not sign you in because your account is not yet activated.
+      signed_up_but_locked: You have signed up successfully. However, we could not sign you in because your account is locked.
+      signed_up_but_unconfirmed: A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.
+      update_needs_confirmation: You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirm link to confirm your new email address.
+      updated: Your account has been updated successfully.
+    sessions:
+      already_signed_out: Signed out successfully.
+      new:
+        sign_in: Sign in
+      signed_in: Signed in successfully.
+      signed_out: Signed out successfully.
+    shared:
+      links:
+        back: Back
+        didn_t_receive_confirmation_instructions: Didn't receive confirmation instructions?
+        didn_t_receive_unlock_instructions: Didn't receive unlock instructions?
+        forgot_your_password: Forgot your password?
+        sign_in: Sign in
+        sign_in_with_provider: Sign in with %{provider}
+        sign_up: Sign up
+    unlocks:
+      new:
+        resend_unlock_instructions: Resend unlock instructions
+      send_instructions: You will receive an email with instructions for how to unlock your account in a few minutes.
+      send_paranoid_instructions: If your account exists, you will receive an email with instructions for how to unlock it in a few minutes.
+      unlocked: Your account has been unlocked successfully. Please sign in to continue.
 
   views :
     pagination :
       truncate : '&nbsp;...&nbsp;'
-      previous : '上一页'
-      last : '最后一页'
-      next : '下一页'
-      first : '第一页'
+      previous : 'pre'
+      last : 'last'
+      next : 'next'
+      first : 'first'
   date:
     abbr_day_names:
-    - 日
-    - 一
-    - 二
-    - 三
-    - 四
-    - 五
-    - 六
+      - Sun
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      - Sat
     abbr_month_names:
-    - 
-    - 1月
-    - 2月
-    - 3月
-    - 4月
-    - 5月
-    - 6月
-    - 7月
-    - 8月
-    - 9月
-    - 10月
-    - 11月
-    - 12月
+      -
+      - Jan
+      - Feb
+      - Mar
+      - Apr
+      - May
+      - Jun
+      - Jul
+      - Aug
+      - Sep
+      - Oct
+      - Nov
+      - Dec
     day_names:
-    - 日
-    - 一
-    - 二
-    - 三
-    - 四
-    - 五
-    - 六
+      - Sunday
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
     formats:
       default: ! '%Y-%m-%d'
-      long: ! '%Y年%b%d日'
-      short: ! '%b%d日'
+      long: ! '%B %d, %Y'
+      short: ! '%b %d'
     month_names:
-    - 
-    - 一月
-    - 二月
-    - 三月
-    - 四月
-    - 五月
-    - 六月
-    - 七月
-    - 八月
-    - 九月
-    - 十月
-    - 十一月
-    - 十二月
+      -
+      - January
+      - February
+      - March
+      - April
+      - May
+      - June
+      - July
+      - August
+      - September
+      - October
+      - November
+      - December
     order:
-    - :year
-    - :month
-    - :day
+      - :year
+      - :month
+      - :day
   datetime:
     distance_in_words:
       about_x_hours:
-        one: 大约一小时
-        other: 大约 %{count} 小时
+        one: about 1 hour
+        other: about %{count} hours
       about_x_months:
-        one: 大约一个月
-        other: 大约 %{count} 个月
+        one: about 1 month
+        other: about %{count} months
       about_x_years:
-        one: 大约一年
-        other: 大约 %{count} 年
+        one: about 1 year
+        other: about %{count} years
       almost_x_years:
-        one: 接近一年
-        other: 接近 %{count} 年
-      half_a_minute: 半分钟
+        one: almost 1 year
+        other: almost %{count} years
+      half_a_minute: half a minute
       less_than_x_minutes:
-        one: 不到一分钟
-        other: 不到 %{count} 分钟
+        one: less than a minute
+        other: less than %{count} minutes
       less_than_x_seconds:
-        one: 不到一秒
-        other: 不到 %{count} 秒
+        one: less than 1 second
+        other: less than %{count} seconds
       over_x_years:
-        one: 一年多
-        other: ! '%{count} 年多'
+        one: over 1 year
+        other: over %{count} years
       x_days:
-        one: 一天
-        other: ! '%{count} 天'
+        one: 1 day
+        other: ! '%{count} days'
       x_minutes:
-        one: 一分钟
-        other: ! '%{count} 分钟'
+        one: 1 minute
+        other: ! '%{count} minutes'
       x_months:
-        one: 一个月
-        other: ! '%{count} 个月'
+        one: 1 month
+        other: ! '%{count} months'
       x_seconds:
-        one: 一秒
-        other: ! '%{count} 秒'
+        one: 1 second
+        other: ! '%{count} seconds'
     prompts:
-      day: 日
-      hour: 时
-      minute: 分
-      month: 月
-      second: 秒
-      year: 年
+      day: Day
+      hour: Hour
+      minute: Minute
+      month: Month
+      second: Seconds
+      year: Year
   errors: &errors
     format: ! '%{attribute} %{message}'
     messages:
-      accepted: 必须是可被接受的
-      blank: 不能为空字符
-      confirmation: 与确认值不匹配
-      empty: 不能留空
-      equal_to: 必须等于 %{count}
-      even: 必须为双数
-      exclusion: 是保留关键字
-      greater_than: 必须大于 %{count}
-      greater_than_or_equal_to: 必须大于或等于 %{count}
-      inclusion: 不包含于列表中
-      invalid: 是无效的
-      less_than: 必须小于 %{count}
-      less_than_or_equal_to: 必须小于或等于 %{count}
-      not_a_number: 不是数字
-      not_an_integer: 必须是整数
-      odd: 必须为单数
-      record_invalid: ! '验证失败: %{errors}'
-      taken: 已经被使用
-      too_long: 过长（最长为 %{count} 个字符）
-      too_short: 过短（最短为 %{count} 个字符）
-      wrong_length: 长度非法（必须为 %{count} 个字符）
+      accepted: must be accepted
+      blank: can't be blank
+      confirmation: doesn't match confirmation
+      empty: can't be empty
+      equal_to: must be equal to %{count}
+      even: must be even
+      exclusion: is reserved
+      greater_than: must be greater than %{count}
+      greater_than_or_equal_to: must be greater than or equal to %{count}
+      inclusion: is not included in the list
+      invalid: is invalid
+      less_than: must be less than %{count}
+      less_than_or_equal_to: must be less than or equal to %{count}
+      not_a_number: is not a number
+      not_an_integer: must be an integer
+      odd: must be odd
+      record_invalid: ! 'Validation failed: %{errors}'
+      taken: has already been taken
+      too_long:
+        one: is too long (maximum is 1 character)
+        other: is too long (maximum is %{count} characters)
+      too_short:
+        one: is too short (minimum is 1 character)
+        other: is too short (minimum is %{count} characters)
+      wrong_length:
+        one: is the wrong length (should be 1 character)
+        other: is the wrong length (should be %{count} characters)
+      expired: "has expired, please request a new one"
+      not_found: "not found"
+      already_confirmed: "was already confirmed, please try signing in"
+      not_locked: "was not locked"
+      not_saved:
+        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"
     template:
-      body: 如下字段出现错误：
+      body: ! 'There were problems with the following fields:'
       header:
-        one: 有 1 个错误发生导致「%{model}」无法被保存。
-        other: 有 %{count} 个错误发生导致「%{model}」无法被保存。
+        one: 1 error prohibited this %{model} from being saved
+        other: ! '%{count} errors prohibited this %{model} from being saved'
   helpers:
     select:
-      prompt: 请选择
+      prompt: Please select
     submit:
-      create: 新增%{model}
-      submit: 储存%{model}
-      update: 更新%{model}
+      create: Create %{model}
+      submit: Save %{model}
+      update: Update %{model}
   number:
     currency:
       format:
         delimiter: ! ','
-        format: ! '%u %n'
+        format: ! '%u%n'
         precision: 2
         separator: .
         significant: false
         strip_insignificant_zeros: false
-        unit: CN¥
+        unit: $
     format:
       delimiter: ! ','
       precision: 3
@@ -509,17 +355,17 @@ en:
       decimal_units:
         format: ! '%n %u'
         units:
-          billion: 十亿
-          million: 百万
-          quadrillion: 千兆
-          thousand: 千
-          trillion: 兆
+          billion: Billion
+          million: Million
+          quadrillion: Quadrillion
+          thousand: Thousand
+          trillion: Trillion
           unit: ''
       format:
         delimiter: ''
-        precision: 1
-        significant: false
-        strip_insignificant_zeros: false
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
       storage_units:
         format: ! '%n %u'
         units:
@@ -538,217 +384,106 @@ en:
         delimiter: ''
   support:
     array:
-      last_word_connector: ! ', 和 '
-      two_words_connector: ! ' 和 '
+      last_word_connector: ! ', and '
+      two_words_connector: ! ' and '
       words_connector: ! ', '
   time:
-    am: '上午'
+    am: am
     formats:
-      default: ! '%Y年%b%d日 %A %H:%M:%S %Z'
-      long: ! '%Y年%b%d日 %H:%M'
-      short: ! '%b%d日 %H:%M'
-    pm: '下午'
+      default: ! '%a, %d %b %Y %H:%M:%S %z'
+      long: ! '%B %d, %Y %H:%M'
+      short: ! '%d %b %H:%M'
+    pm: pm
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
-  activemodel:  
+
+  activemodel:
     errors:
       <<: *errors
   activerecord:
     models:
-      admin : '管理者'
-      ad_file_type : '广告文件分类'
-      ad_file : '广告文件'
-      ad_log_type : '广告日志分类'
-      ad_log : '广告日志'
-      ad_daily_stat : '之前的日期-时间段日志'
-      ad_schedule : '广告时间表'
-      ad_target_address : '广告目标地址'
-      ad_target_cid : '广告 CID'
-      ad_target : '广告 目标'
-      ad_type : '广告分类'
-      address_section : '区域编号管理'
-      address : '地址'
-      ad : '广告'
-      bank : '运营商'
-      faq : 'FAQ'
-      game_setting : '游戏设置'
-      game : '游戏'
-      game_amount : '베팅 금액 설정'      
-      notice : '公告'
-      point_type : '积点类型' 
-      point : '积点'
-      request_setting : '兑换现金设置'
-      request_type : '兑换现金类型'
-      request : '兑换需求'
-      sponsor : '广告主'
-      stats : '统计'
-      target : '目标'
-      target_type : '目标分类'
-      user_target : '用户目标'
-      user_target_address : '用户目标地址'
-      user_referral : '추천 아이디'
-      user : '用户'  
-      user_log : '登录日志'
-      operator : '运营者'
-      application_version : '版本 '
-      store_good : '商品'      
-      store_order : '订单'
-      store_good_picture : '商城商品图片'
-      message : 'message'
+      product_category: 'product category'
+      product: 'product'
+      order: 'order'
+      user: 'user'
+      account: 'account'
+      point : 'point'
+      operator : 'operator'
     attributes :
+      company :
+        title : 'company'
+      branch :
+        title : 'branch'
       admin :
-        login_id : '登录账户'
-        nickname : ' 用户名'
+        login_id : 'login id'
+        name : 'name'
+        email : 'email'
+        password : 'password'
+        password_confirmation : 'password confirmation'
+      admin_picture :
+        picture : 'picture'
+      operator :
+        login_id : 'login ID'
+        nickname : ' nickname'
         email : 'E-Mail'
-        password : '新密码'
-        password_confirmation : '新密码确认'
-        current_password : '密码'
-        photo : '图片'
-        flag : '使用与否'     
-      operator : 
-        login_id : '登录账户'
-        nickname : ' 用户名'
-        email : 'E-Mail'
-        password : '密码'
-        password_confirmation : ' 密码确认'
-      address :
-        parent_address_id : '上一级地址'
-        name : '地址'
-        full_address : '全部地址'          
-        flag : '使用与否'
-      address_section :
-        address_id : '地址'        
-        section : '号码段'
-        flag : '使用与否'         
-      ad :
-        ad_type_id : ' 分类'
-        sponsor_id : '广告主'
-        title : '标题'
-        description : '说明'
-        agent_id : '담당'
-        priority :  '우선집행'
-        flag : '使用与否'
-      ad_memo :
-        content : '备注'
-      ad_option :
-        cpi_flag : 'CPI 사용'
-        cpi_type : 'CPI 리워드 형태'
-        cpi_market : 'CPI 마켓'
-        cpi_pkg : 'CPI 패키지명'
-        cpi_comment : 'CPI 메세지'
-        web_flag : 'WEB 사용'
-        web_addr : 'WEB 연결주소' 
-        web_comment : 'WEB 메세지'
-        callback_flag : '콜백 사용'
-        callback_number : '콜백 번호'
-        callback_comment : '콜백 메세지'
-        video_flag : '영상 사용여부'
-        html_data : 'HTML 광고'
-      ad_schedule :
-        title : '标题'
-        start_time : '시작일시'
-        end_time : '종료일시'
-        expire_time : '만료일시'
-        end_hour : '시간지정'
-        cpi_only_flag : '지정번호 전용'        
-        flag : '使用与否'
-        weekday0 : 日
-        weekday1 : 一
-        weekday2 : 二
-        weekday3 : 三
-        weekday4 : 四
-        weekday5 : 五
-        weekday6 : 六        
-      ad_target_cid : 
-        cid : 'CID'
-        flag : '使用与否'
-      ad_file_type :
-        title : '标题'        
-        flag : '使用与否'        
-      ad_file :
-        ad_file_type_id : '广告文件分类'
-        photo : '图片'
-        flag : '使用与否'
-      sponsor :
-        title : '标题'
-        flag : '使用与否'
-      target_type :
-        title : '标题'
-        flag : '使用与否'        
-      target :
-        target_type_id : '目标分类'
-        title : '标题'
-        flag : '使用与否'
-      point_type :
-        title : '标题'
-        amount : '数量'
-        flag : '使用与否'        
+        password : 'password'
+        password_confirmation : 'password confirmation'
+        sign_in_count : 'sign in count'
+        enable : 'enable'
+        updated_at: 'updated at'
+        created_at: 'created at'
+      account :
+        account_category_id : 'account category'
+        user_id : 'user'
+        transaction_date : 'transaction date'
+        cash : 'cash'
+        credit : 'credit'
+        point : 'point'
+        updated_at : 'updated at'
+        created_at : 'created at'
+      product_category :
+        title : 'product category'
+        order_no : 'order no'
+        products_count : 'products count'
+        display : 'display'
+        updated_at : 'updated at'
+        created_at : 'created at'
+      product :
+        product_category_id: 'product category'
+        title : 'title'
+        price : 'price'
+        order_no : 'order no'
+        display : 'display'
+        updated_at : 'updated at'
+        created_at : 'created at'
+      product_picture :
+        picture : 'picture'
       point :
-        user_id : '用户ID'
-        point_type_id : '分类'
-        amount : '积点'  
-      request :
-        user_id : '用户ID'        
-        request_setting_id : '兑换现金设置'
-        request_type_id : '兑换现金类型'   
-        bank_id : '运营商'
-        account_number : '账户号码'
-      game :
-        user_id : '用户ID'
-        game_setting_id : '游戏设置'
-      game_setting :
-        title : '标题'
-        amount : '倍'
-      game_amount :
-        amount : '베팅금액'
-        flag : '使用与否'
-      request_setting :
-        title : '标题'
-        amount : '数量'
-        flag : '使用与否'
-      request_type :
-        title : '标题'
-        flag : '使用与否'
-      notice :
-        title : '标题'
-        flag : '使用与否'
-      notice_content :
-        content : '内容'
-      faq :
-        title : '标题'
-        flag : '使用与否'
-      faq_content :
-        content : '内容'           
+        user_id : 'user'
+        point : 'point'
+        point_logs_count : 'point logs count'
+        updated_at : 'updated at'
+        created_at : 'created at'
+      order :
+        user_id : 'user'
+        original_price : 'original price'
+        discount : 'discount'
+        price : 'price'
+        payment : 'payment'
+        transaction_date : 'transaction date'
+        updated_at : 'updated at'
+        created_at : 'created at'
       user :
-        username : '登录账户'
-        email : 'E-Mail'
-        password : '密码'
-        password_confirmation : ' 密码确认'
-        service_provider : 'Service Provider'
-        device_id : '设备ID'
-        point : '积点'
-        photo : '图片'
-        flag : '使用与否'
-      store_good :
-        title : '标题'
-        description_short : '简要说明'
-        description : '商品说明'
-        stock_count : '库存数量'
-        order_count : '订单数量'
-        sale_start_time : '판매시작시간'
-        sale_end_time : '销售终了时间'
-        sale_price : '销售金额'
-        sale_type : '销售类型'
-        proirity_flag : '优先'
-        hot_flag : '热卖'
-        new_flag : '新品'
-        flag : '使用与否'
-      store_order : 
-        store_good_id : ''
-        user_id : ''
-        amount : ''
-      store_good_picture :
-        title : '标题'
-        photo : '图片'
-        flag : '使用与否'
+        name : 'name'
+        phone : 'phone'
+        email : 'E-mail'
+        birthday : 'birthday'
+        address : 'address'
+        display : 'display'
+        updated_at : 'updated at'
+        created_at : 'created at'
     errors:
-      <<: *errors
+      models :
+        user :
+          attributes :
+            login_id :
+              not_found : '해당 이메일이 존재하지 않습니다'

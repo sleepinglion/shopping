@@ -1,26 +1,35 @@
 class Admin::AdminController < ApplicationController
-  before_action :authenticate_admin!,:only => [:index,:new,:create,:show,:edit, :update, :destroy]
-  
-  def initialize(*params)
-    super(*params)
-    
-    @style='admin/application'
+  load_and_authorize_resource except: [:create]
+
+  def current_ability
+    @current_ability ||= AdminAbility.new(current_admin)
   end
-  
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to new_admin_session_path, :alert => exception.message
-  end    
-  
-  def layout
-    if(params[:no_layout])
-      return false
+
+  def resource_name
+    :admin
+  end
+
+  def resource
+    @resource ||= Admin.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:admin]
+  end
+
+  rescue_from CanCan::AccessDenied do |_exception|
+    if current_admin
+      render file: "#{Rails.root}/public/403.html", status: 403, layout: false
     else
-      return 'admin/application'
+      redirect_to new_admin_session_path
     end
-  end  
-  
- def index  
-    
-    @script='home/index'
-  end  
+  end
+
+  def layout
+    if params[:no_layout]
+      false
+    else
+      'admin/application'
+    end
+  end
 end

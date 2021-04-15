@@ -1,2 +1,8 @@
-<%= render 'form' %>
-<%= link_to t(:link_list), admin_operators_path %>
+<section id="new-operator" class="container">
+  <div class="row">
+    <h2 class="col-12"><%= t(:new_operator) %></h2>
+    <div class="col-12">
+      <%= render 'form', operator: @operator %>
+    </div>
+  </div>
+</section>

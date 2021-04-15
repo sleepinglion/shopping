@@ -1,40 +1,17 @@
 class Admin::NoticesController < Admin::AdminController
-  load_and_authorize_resource
-  skip_load_resource :only => [:create]
   before_action :set_notice, only: [:show, :edit, :update, :destroy]
-  def initialize(*params)
-    super(*params)
-
-    @category=t(:menu_board)
-    @sub_menu=t(:submenu_notice)
-    @controller_name=t('activerecord.models.notice')
-  end
 
   # GET /notices
   # GET /notices.json
   def index
-    unless params[:per_page].present?
-      params[:per_page]=10
-    end
+    params[:per_page] = 10 unless params[:per_page].present?
 
-    if params[:search_type].present?
-      if(params[:search_type]=='content')
-        likesql='notice_contents.content like ?'
-        likep = '%'+params[:search_value].strip+'%'
-      elsif(params[:search_type]=='title')
-        likesql='notices.title like ?'
-        likep= '%'+params[:search_value].strip+'%'
-      end
-    end
+    @notice_count = Notice.count
+    @notices = Notice.page(params[:page]).per(params[:per_page]).order('id desc')
 
-    if(params[:search_type] && params[:search_value])
-      if(params[:search_type]=='content')
-        @notices = Notice.joins(:notice_content).where(likesql,likep).order('id desc').page(params[:page]).per(params[:per_page])
-      else
-        @notices = Notice.where(likesql,likep).order('id desc').page(params[:page]).per(params[:per_page])
-      end
-    else
-      @notices = Notice.order('id desc').page(params[:page]).per(params[:per_page])
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @notices }
     end
   end
 
@@ -44,17 +21,9 @@ class Admin::NoticesController < Admin::AdminController
   end
 
   # GET /notices/new
-  # GET /notices/new.json
   def new
     @notice = Notice.new
     @notice.build_notice_content
-
-    @script='boards/new'
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @notice }
-    end
   end
 
   # GET /notices/1/edit
@@ -66,15 +35,13 @@ class Admin::NoticesController < Admin::AdminController
   def create
     @notice = Notice.new(notice_params)
 
-    @script='boards/new'
-
     respond_to do |format|
       if @notice.save
-        format.html { redirect_to admin_notice_path(@notice), :notice => @controller_name +t(:message_success_insert)}
-        format.json { render :json => @notice, :status => :created, :location => @notice }
+        format.html { redirect_to [:admin, @notice], notice: t(:message_success_create) }
+        format.json { render :show, status: :created, location: @notice }
       else
-        format.html { render :action => "new" }
-        format.json { render :json => @notice.errors, :status => :unprocessable_entity }
+        format.html { render action: 'new' }
+        format.json { render json: @notice.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -84,10 +51,10 @@ class Admin::NoticesController < Admin::AdminController
   def update
     respond_to do |format|
       if @notice.update(notice_params)
-        format.html { redirect_to admin_notice_path(@notice), :notice => @controller_name +t(:message_success_update)  }
+        format.html { redirect_to [:admin, @notice], notice: t(:message_success_update) }
         format.json { render :show, status: :ok, location: @notice }
       else
-        format.html { render :edit }
+        format.html { render action: 'edit' }
         format.json { render json: @notice.errors, status: :unprocessable_entity }
       end
     end
@@ -98,7 +65,7 @@ class Admin::NoticesController < Admin::AdminController
   def destroy
     @notice.destroy
     respond_to do |format|
-      format.html { redirect_to admin_notices_path }
+      format.html { redirect_to admin_notices_url }
       format.json { head :no_content }
     end
   end
@@ -112,6 +79,6 @@ class Admin::NoticesController < Admin::AdminController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def notice_params
-    params.require(:notice).permit(:title,:enable,:notice_content_attributes=>[:id,:content])
+    params.require(:notice).permit(:title, :enable, notice_content_attributes: [:content]).merge(admin_id: current_admin.id)
   end
 end

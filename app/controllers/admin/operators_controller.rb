@@ -1,38 +1,25 @@
 class Admin::OperatorsController < Admin::AdminController
-  load_and_authorize_resource
-  skip_load_resource :only => [:create]
   before_action :set_operator, only: [:show, :edit, :update, :destroy]
-  def initialize(*params)
-    super(*params)
 
-    @category=t(:menu_user)
-    @sub_menu=t(:submenu_operator)
-    @controller_name=t('activerecord.models.operator')
-  end
-
-  # GET /admins
-  # GET /admins.json
+  # GET /users
+  # GET /users.json
   def index
-    @operators = Operator.where(:parent_id=>current_admin).order('id desc').page(params[:page]).per(10)
+    params[:per_page] = 10 unless params[:per_page].present?
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @operators }
-    end
+    condition = { enable: true }
+
+    @operator_count = Operator.where(condition).count
+    @operators = Operator.where(condition).page(params[:page]).per(params[:per_page])
   end
 
+  # GET /users/1
+  # GET /users/1.json
   def show
   end
 
-  # GET /admins/new
-  # GET /admins/new.json
+  # GET /users/new
   def new
     @operator = Operator.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @operator }
-    end
   end
 
   # GET /users/1/edit
@@ -43,37 +30,28 @@ class Admin::OperatorsController < Admin::AdminController
   # POST /users.json
   def create
     @operator = Operator.new(operator_params)
-    @operator.transaction do
-      @or=@operator.save
-      RolesAdmin.create(:role_id=>params[:role_id],:admin_id=>@operator.id)
-    end
 
     respond_to do |format|
-      if @or
-        format.html { redirect_to admin_operator_path(@operator), :notice => @controller_name +t(:message_success_insert)}
-        format.json { render :json => @operator, :status => :created, :location => @operator }
+      if @operator.save
+        format.html { redirect_to @operator, notice: 'operator was successfully created.' }
+        format.json { render :show, status: :created, location: @operator }
       else
-        format.html { render :action => "new" }
-        format.json { render :json => @operator.errors, :status => :unprocessable_entity }
+        format.html { render :new }
+        format.json { render json: @operator.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /users/1
-  # PUT /users/1.json
+  # PATCH/PUT /users/1
+  # PATCH/PUT /users/1.json
   def update
-    @operator.transaction do
-      @or=@operator.update_attributes(operator_params)
-      @operator.roles_admin[0].update_attributes(:role_id=>params[:role_id],:admin_id=>@operator.id)
-    end
-
     respond_to do |format|
-      if @or
-        format.html { redirect_to admin_operator_path(@operator), :notice => @controller_name +t(:message_success_update)}
-        format.json { head :no_content }
+      if @operator.update(operator_params)
+        format.html { redirect_to @operator, notice: 'operator was successfully updated.' }
+        format.json { render :show, status: :ok, location: @operator }
       else
-        format.html { render :action => "edit" }
-        format.json { render :json => @operator.errors, :status => :unprocessable_entity }
+        format.html { render :edit }
+        format.json { render json: @operator.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -82,9 +60,8 @@ class Admin::OperatorsController < Admin::AdminController
   # DELETE /users/1.json
   def destroy
     @operator.destroy
-
     respond_to do |format|
-      format.html { redirect_to admin_operators_path }
+      format.html { redirect_to operators_url, notice: 'operator was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -96,8 +73,8 @@ class Admin::OperatorsController < Admin::AdminController
     @operator = Operator.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
+  # Only allow a list of trusted parameters through.
   def operator_params
-    params.require(:operator).permit(:login_id,:parent_id,:nickname,:email,:password,:password_confirmation,:enable)
+    params.require(:operator).permit(:name, :email, :enable)
   end
 end

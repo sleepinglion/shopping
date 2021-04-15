@@ -1,29 +1,22 @@
-<% if notice %>
-<%= render :partial => 'layouts/notice',:locals=>{:notice=>notice} %>
-<% end %>
-<div class="sl_show">
-	<p>
-		<b><%=t(:label_title) %></b>
-		<%= @notice.title %>
-	</p>
-	<p>
-		<b><%=t(:label_content) %></b>
-		<%=simple_format @notice.notice_content.content %>
-	</p>
-	<p>
-		<b><%=t(:label_flag) %></b>
-		<%=raw flagToString(@notice.flag) %>
-	</p>
-	<p>
-  	<b><%=t(:label_created_at) %></b>
-  	<%= @notice.created_at %>
-  </p>
-  <p>
-  	<b><%=t(:label_updated_at) %></b>
-  	<%= @notice.created_at %>
-  </p>
+<div id="notices" class="container sub-main">
+  <div class="row">
+    <article class="slboard_content col-12" itemscope itemprop="article" itemtype="http://schema.org/Article">
+      <div class="sl_content_header">
+        <h3 itemprop="name"><%= @notice.title %></h3>
+        <p>작성자 :<%= @notice.admin.name %>&nbsp;&nbsp;&nbsp; 작성일 : <%= @notice.created_at %></p>
+      </div>
+      <div class="sl_content_main">
+        <div class="sl_content_text" itemprop="text"><%= simple_format(@notice.notice_content.content) %></div>
+      </div>
+    </article>
+    <div id="sl_content_bottom_menu" class="col-12">
+      <%= link_to t(:link_list), notices_path %>
+      <% if user_signed_in? %>
+        <% if current_user.admin? %>
+          &nbsp; | &nbsp; <%= link_to t(:link_edit), edit_notice_path(@notice) %> &nbsp;
+          | &nbsp; <%= link_to t(:link_delete), @notice, method: :delete, data: { confirm: t(:delete_confirm) } %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
-<% if can? :update, Notice %>		
-<%= link_to t(:link_edit), edit_notice_path(@notice) %> |
-<% end %>
-<%= link_to t(:link_list), notices_path(list_param(params)) %>

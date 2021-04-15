@@ -1,44 +1,90 @@
 <header>
-  <div id="header-top">
-    <div class="container">
-      <div class="row">
-        <h1><%=link_to t(:service_name),root_path %></h1>
-        <ul id="top-menu">
-          <% if(current_user) %>
-            <li><%= link_to edit_user_registration_path do %><%=t(:welcome) %><% end %></li>
-            <li>
-              <%= link_to destroy_user_session_path do %>
-                <i class="material-icons" style="font-size:35px;vertical-align:middle">highlight_off</i><span><%=t(:logout) %></span>
+  <div class="container">
+    <div class="row">
+      <h1 class="col-12 col-lg-3">
+        <%= link_to root_path do %>
+          <span class="logo"><%= t(:service_name) %></span>
+        <% end %>
+      </h1>
+      <nav class="col-12 col-lg-9">
+        <ul class="nav nav-pills">
+          <li class="sl-dropdown
+            <% if ['intro','location'].include? params[:controller] %> active
+            <% end %>">
+            <%= link_to intro_path do %>
+              <%= t(:menu_intro) %>
+            <% end %>
+            <ul class="sl-dropdown-menu intro_menu">
+              <li
+              <% if current_page?(intro_path) %> class="active"
+              <% end %>><%= link_to raw('<i class="material-icons">info</i>'+t(:intro,scope:[:activerecord,:models])), intro_path %></li>
+              <li
+              <% if current_page?(location_path) %> class="active"
+              <% end %>><%= link_to raw('<i class="material-icons">add_location</i>'+t(:location,scope:[:activerecord,:models])), location_path %></li>
+            </ul>
+          </li>
+          <li class="sl-dropdown
+            <% if ['info','boards','notices'].include? params[:controller] %> active
+            <% end %>">
+            <%= link_to boards_path do %>
+              <%= t(:menu_info) %>
+            <% end %>
+            <ul class="sl-dropdown-menu intro_menu">
+              <li
+                <% if current_page?(boards_path) %> class="active"
+                <% end %>><%= link_to raw('<i class="material-icons">list</i>'+t(:board,scope:[:activerecord,:models])), boards_path %></li>
+              <li
+                <% if current_page?(notices_path) %> class="active"
+                <% end %>><%= link_to raw('<i class="material-icons">list</i>'+t(:notice,scope:[:activerecord,:models])), notices_path %></li>
+              <li
+                <% if current_page?(info_path) %> class="active"
+                <% end %>><%= link_to raw('<i class="material-icons">trending_flat</i>'+t(:info,scope:[:activerecord,:models])), info_path %></li>
+            </ul>
+          </li>
+            <li class="sl-dropdown
+              <% if params[:controller] == 'products' %> active
+              <% end %>" data-turbolinks="false">
+              <%= link_to products_path do %><%= t(:menu_product) %>
               <% end %>
             </li>
-          <% else %>
-            <li>
-              <%= link_to new_user_session_path do %>
-                <i class="material-icons">login</i><span><%=t(:login) %></span>
-              <% end %>
-            </li>
+          <li class="sl-dropdown
+            <% if params[:controller] == 'faqs' || params[:controller] == 'contacts' %> active
+            <% end %>">
+            <%= link_to faqs_path do %>
+              <%= t(:menu_support) %>
+            <% end %>
+            <ul class="sl-dropdown-menu">
+              <li
+                <% if current_page?(faqs_path) %> class="active"
+                <% end %>><%= link_to raw('<i class="material-icons">question_answer</i>'+t(:menu_faq)), faqs_path %></li>
+              <li
+                <% if current_page?(contacts_path) %> class="active"
+                <% end %>><%= link_to raw('<i class="material-icons">contacts</i>'+t(:menu_contact)), contacts_path %></li>
+            </ul>
+          </li>
+          <% if user_signed_in? %>
+            <li class="sl-dropdown-menu
+              <% if current_page? users_path %> active
+              <% end %>">
+              <%= link_to t(:menu_mypage), users_path %></li>
           <% end %>
         </ul>
-      </div>
+      </nav>
     </div>
   </div>
-  <div id="header-main">
-    <div class="container">
-      <div class="row">
-        <nav id="main-menu">
-          <ul class="nav nav-pills">
-            <li <% if params[:controller]=='products' %>class="active"<% end %>><%=link_to products_path do %><%= t('activerecord.models.product') %><span class="visible-xs glyphicon glyphicon-chevron-right pull-right"></span><% end %></li>
-            <% if(current_user) %>
-              <li <% if params[:controller]=='users' %>class="active"<% end %>><%=link_to users_path do %><%= t(:menu_my_page) %><span class="visible-xs glyphicon glyphicon-chevron-right pull-right"><% end %></li>
-            <% else %>
-              <li <% if params[:controller]=='users' %>class="active"<% end %>><%=link_to new_user_registration_path do %><%= t(:menu_user_add) %><span class="visible-xs glyphicon glyphicon-chevron-right pull-right"><% end %></li>
-            <% end %>
-          </ul>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </div>
+  <ul id="top-menu">
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to destroy_user_session_path, :id => "p_logout" do %>
+          <i class="material-icons">highlight_off</i><span><%= t(:logout) %></span>
+        <% end %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to new_user_session_path do %>
+          <i class="material-icons">login</i><span><%= t(:login) %></span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
 </header>
-

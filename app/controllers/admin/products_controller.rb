@@ -1,93 +1,92 @@
 class Admin::ProductsController < Admin::AdminController
-  load_and_authorize_resource
-  skip_load_resource :only => [:create]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  def initialize(*params)
-    super(*params)
 
-    @sub_menu=t(:menu_product)
-    @controller_name=t('activerecord.models.product')
-  end
-
-  # GET /product
-  # GET /product.json
+  # GET /Products
+  # GET /Products.json
   def index
-    @products = Product.order('id desc').page(params[:page]).per(10)
+    params[:per_page] = 10 unless params[:per_page].present?
+
+    product_category_condition = { enable: true }
+
+    @product_categories = ProductCategory.where(product_category_condition)
+
+    if params[:product_category_id]
+      @product_category = ProductCategory.find(params[:product_category_id])
+    else
+      unless @product_categories.empty?
+        @product_category = @product_categories.first
+      end
+    end
+
+    condition = { }
+
+    if @product_category.present?
+      condition[:product_category_id] = @product_category.id
+    end
+
+    @product_count = Product.where(condition).count
+    @products = Product.where(condition).page(params[:page]).per(params[:per_page]).order('id desc')
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @products }
+      format.json { render json: @products }
     end
   end
 
-  # GET /product/1
-  # GET /product/1.json
+  # GET /Products/1
+  # GET /Products/1.json
   def show
-    @product = Product.find(params[:id])
-    @product_pictures=@product.product_picture.order('id asc')
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @product }
-    end
   end
 
-  # GET /product/new
-  # GET /product/new.json
+  # GET /Products/new
   def new
     @product = Product.new
-    @script='admin/new.js'
+    @product.build_product_content
+    @product.product_pictures.build
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @product }
-    end
+    @product_categories = ProductCategory.where({ enable: true })
   end
 
-  # GET /product/1/edit
+  # GET /Products/1/edit
   def edit
-    @script='admin/new.js'    
-    @product = Product.find(params[:id])
   end
 
-  # POST /product
-  # POST /product.json
+  # POST /Products
+  # POST /Products.json
   def create
     @product = Product.new(product_params)
 
     respond_to do |format|
-      if @product.save
-        format.html { redirect_to admin_product_path(@product), :notice => @controller_name +t(:message_success_insert)  }
-        format.json { render :json => @product, :status => :created, :location => @product }
+      if @product.save!
+        format.html { redirect_to [:admin, @product], notice: 'Gg was successfully created.' }
+        format.json { render :show, status: :created, location: @product }
       else
-        format.html { render :action => "new" }
-        format.json { render :json => @product.errors, :status => :unprocessable_entity }
+        format.html { render :new }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /product/1
-  # PUT /product/1.json
+  # PATCH/PUT /Products/1
+  # PATCH/PUT /Products/1.json
   def update
     respond_to do |format|
-      if @product.update_attributes(product_params)
-        format.html { redirect_to admin_product_path(@product), :notice =>@controller_name +t(:message_success_update) }
-        format.json { head :no_content }
+      if @product.update(product_params)
+        format.html { redirect_to [:admin, @product], notice: 'Product was successfully updated.' }
+        format.json { render :show, status: :ok, location: @order }
       else
-        format.html { render :action => "edit" }
-        format.json { render :json => @product.errors, :status => :unprocessable_entity }
+        format.html { render :edit }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /product/1
-  # DELETE /product/1.json
+  # DELETE /Products/1
+  # DELETE /Products/1.json
   def destroy
-    @product = Product.find(params[:id])
     @product.destroy
-
     respond_to do |format|
-      format.html { redirect_to admin_products_path }
+      format.html { redirect_to admin_products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -99,8 +98,8 @@ class Admin::ProductsController < Admin::AdminController
     @product = Product.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
+  # Only allow a list of trusted parameters through.
   def product_params
-    params.require(:product).permit(:title,:price,:shipping_price,:description,:enable)
+    params.require(:product).permit(:product_category_id, :title, :price, :enable, product_content_attributes: [:content], product_picture_attributes: [:picture])
   end
 end

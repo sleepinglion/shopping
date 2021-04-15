@@ -1,29 +1,39 @@
-<% if notice %>
-<%= render :partial => 'layouts/notice',:locals=>{:notice=>notice} %>
-<% end %>
-<div class="sl_show">
-	<p>
-		<b><%=t(:label_title) %></b>
-		<%= @faq.title %>
-	</p>
-	<p>
-		<b><%=t(:label_content) %></b>
-		<%=simple_format @faq.faq_content.content %>
-	</p>
-	<p>
-		<b><%=t(:label_flag) %></b>
-		<%=raw flagToString(@faq.enable) %>
-	</p>
-	<p>
-  	<b><%=t(:label_created_at) %></b>
-  	<%= @faq.created_at %>
-  </p>
-  <p>
-  	<b><%=t(:label_updated_at) %></b>
-  	<%= @faq.created_at %>
-  </p>
+<div id="faq-show" class="container">
+  <div class="row">
+    <article class="col-12">
+      <h3><%=@faq.title %></h3>
+      <p>
+        <b><%= t(:faq_category_id,scope:[:activerecord,:attributes,:faq]) %></b>
+        <%= @faq.faq_category.title %>
+      </p>
+      <p>
+        <b><%=t(:content,scope:[:activerecord,:attributes,:faq_content]) %></b>
+        <%=simple_format @faq.faq_content.content %>
+      </p>
+      <p>
+        <b><%=t(:enable,scope:[:activerecord,:attributes,:faq]) %></b>
+      </p>
+      <p>
+        <b><%= t(:created_at,scope:[:activerecord,:attributes,:faq]) %></b>
+        <%= @faq.created_at %>
+      </p>
+      <p>
+        <b><%= t(:updated_at,scope:[:activerecord,:attributes,:faq]) %></b>
+        <%= @faq.updated_at %>
+      </p>
+    </article>
+  </div>
+  <div class="row">
+    <div class="col-12 show-bottom-menu">
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <%=link_to t(:link_list),admin_faqs_path,:class=>"btn btn-secondary" %>
+        </div>
+        <div class="text-right col-12 col-lg-6">
+          <%=link_to t(:edit),edit_admin_faq_path(@faq),:class=>"btn btn-secondary" %>
+          <%=link_to t(:delete),admin_faq_path(@faq),:class=>"btn btn-danger" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<% if can? :update, Faq %>
-<%= link_to t(:link_edit), edit_admin_faq_path(@faq) %> |
-<% end %>
-<%= link_to t(:link_list), admin_faqs_path() %>

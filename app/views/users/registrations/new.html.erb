@@ -1,113 +1,71 @@
-<section id="sl_user_add_form" class="sl_user_form">
-	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-horizontal',:id=> 'user_form'}) do |f| %>
-	<%= devise_error_messages! %>
-	<input type="hidden" id="message_required" value="" />
-	<input type="hidden" id="message_no_email" value="" />
-	<input type="hidden" id="message_invalid_email" value="" />
-	<input type="hidden" id="message_exists_email" value="" />
-	<input type="hidden" id="message_available_email" value="<%= t(:available_email) %>" />
-	<article class="panel panel-default">
-		<div class="panel-heading">
-			<h3 class="panel-title"><%= t(:user_data_default_insert) %></h3>
-		</div>
-		<div class="panel-body">
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="sl_email"><%= t(:email) %></label>
-				<div class="col-sm-6">
-					<input type="text" class="form-control" id="sl_email" name="email" maxlength="255" value="" />
-				</div>
-				<div class="col-sm-4">
-					<input type="button" id="check_email_available_button" class="form-control btn btn-success" value="<%= t(:check_email_available) %>" />
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="sl_password"><%= t(:password) %></label>
-				<div class="col-sm-10">
-					<input type="password" class="form-control" id="sl_password" name="password" value="" maxlength="255"  />
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="sl_password_confirm"><%= t(:password_confirm) %></label>
-				<div class="col-sm-10">
-					<input type="password" class="form-control" id="sl_password_confirm" name="password_confirm" value="" maxlength="255"   maxlength="255"  />
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="sl_name"><%= t(:name) %></label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="sl_name" name="name" maxlength="60" value="" maxlength="255"  />
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="sl_phone"><%= t(:phone) %></label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="sl_phone" name="phone" value="" maxlength="255"   maxlength="255"  />
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="sl_birthday"><%= t(:birthday) %></label>
-				<div class="col-sm-10">
-					<input type="date" class="form-control datepicker" data-date-end-date="-6570d" id="sl_birthday" name="birthday" value=""  />
-				</div>
-			</div>
-			<div class="radio">
-				<label class="control-label col-sm-2" for="sl_sex"><%= t(:sex) %></label>
-				<div class="col-sm-10">
-					<label class="radio-inline"> <%= radio_button_tag(:sex,1) %><%= label_tag(:sex_1, t(:male)) %> </label>
-					<label class="radio-inline"> <%= radio_button_tag(:sex,0) %><%= label_tag(:sex_0, t(:female)) %> </label>
-				</div>
-			</div>
-		</div>
-	</article>
-	<article class="panel panel-default">
-		<div class="panel-heading">
-			<h3 class="panel-title"><%= t(:user_data_optional_insert) %></h3>
-		</div>
-		<div class="panel-body">
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="sl_height"><%= t(:height) %></label>
-				<div class="col-sm-10">
-					<input type="text" min="50" class="form-control" id="sl_height" name="height" />
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="sl_weight"><%= t(:weight) %></label>
-				<div class="col-sm-10">
-					<input type="text" min="30" class="form-control" id="sl_weight" name="weight" />
-				</div>
-			</div>
-		</div>
-	</article>
-	<article class="panel panel-default">
-		<div class="panel-heading">
-			<h3 class="panel-title"><%= t(:user_agree) %></h3>
-		</div>
-		<div class="panel-body">
-			<div class="col-md-offset-2">
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" name="agree[over_age_18]" value="1"  />
-						<span><%= t(:over_age18_agreement) %></span> </label>
-				</div>
-			</div>
-			<div class="col-md-offset-2">
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" name="agree[service]" value="1"  />
-						<span><%= t(:service_agreement) %></span> <%=link_to t(:see_it),:class=>'modal_link',:'data-toggle'=>"modal",:'data-target'=>"#myModal" %>
-				</div>
-			</div>
-			<div class="col-md-offset-2">
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" name="agree[information]" value="1"  />
-						<span><%= t(:personal_information_agreement) %></span> <%=link_to t(:see_it),'/home/popup',:class=>'modal_link',:'data-toggle'=>"modal",:'data-target'=>"#myModal" %>
-				</div>
-			</div>
-		</div>
-	</article>
-	<div class="section_bottom">
-		<%= f.submit t(:user_form_submit),:class=>"btn btn-primary btn-lg" %>
-	</div>
-	<% end %>
-</section>
+<div class="container">
+  <div class="row">
+    <section class="col-12 col-lg-8 col-xl-6 login-box">
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :post, :style => 'margin-top:10px' }) do |f| %>
+        <% if resource.errors.any? %>
+          <div id="error_explanation" class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <h2><%= pluralize(resource.errors.count, t(:user_error)) %> <%= t(:sorry_but_error) %></h2>
+            <ul>
+              <% resource.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="row">
+          <%= render :partial => 'layouts/notice', :locals => { :errors => resource.errors, :notice => notice, :alert => alert } %>
+
+          <article class="col-12">
+            <h3>로그인 정보</h3>
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.email_field :email, :class => "form-control" %>
+            </div>
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
+            <div class="form-group">
+              <%= f.label :password %>
+              <%= f.password_field :password, :class => "form-control", :autocomplete => "off" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation, :class => "form-control" %>
+            </div>
+          </article>
+          <article class="col-12">
+            <h3>회원 정보</h3>
+            <div class="form-group">
+              <%= f.label :name %>
+              <%= f.text_field :name, :class => "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :phone %>
+              <%= f.text_field :phone, :class => "form-control" %>
+            </div>
+            <%= f.fields_for :user_picture do |pp| %>
+              <div class="form-group">
+                <%= pp.label :picture %>
+                <div class="custom-file">
+                  <%= pp.file_field :picture, :class => "custom-file-input" %>
+                  <label class="custom-file-label" for="customFile" data-browse="<%= t(:browse) %>"><%= t(:choose_file) %></label>
+                </div>
+              </div>
+            <% end %>
+          </article>
+          <% if Rails.env.production? %>
+            <div class="col-12">
+              <div class="form-group">
+                <%= recaptcha_tags %>
+              </div>
+            </div>
+          <% end %>
+          <div class="form-actions col-12">
+            <%= f.submit :class => "btn btn-lg btn-block btn-primary", :'data-toggle' => "tooltip", :'data-placement' => "top", :title => t(:membership) %>
+          </div>
+        </div>
+      <% end %>
+    </section>
+  </div>
+</div>

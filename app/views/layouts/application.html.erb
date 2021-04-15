@@ -1,32 +1,89 @@
 <!DOCTYPE html>
 <html lang="<%=I18n.locale %>">
 <head>
-<meta charset="utf-8" />
-<title><%=t(:service_name)%></title>
-<meta name="description" content="<%=t(:service_name)%>" />
-<meta name="author" content="Sleeping-Lion" />
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+<meta charset="utf-8">
+<%= display_meta_tags :site => t(:service_name),
+    :title => @title,
+    :description => @meta_description,
+    :keywords => @meta_keywords,
+    :separator => t(:title_separator),
+    :viewport => 'width=device-width, initial-scale=1, shrink-to-fit=no',
+    :author=>'Sleeping-Lion',
+    :reverse => true
+%>
+<%= display_meta_tags og: {
+    title: @title,
+    description: @meta_description,
+    url: @meta_url,
+    image: @meta_image
+  } %>
+<link rel="canonical" href="<%=t(:site_full_url) %>">
+<link rel="alternate" type="application/rss+xml" title="Mask RSS Feed" href="<%= t(:site_full_url) %>/feed?format=rss">
 <%= stylesheet_link_tag "front/application", :media => "all", "data-turbolinks-track" => true %>
 <%= favicon_link_tag 'favicon.ico' %>
 <%= csrf_meta_tags %>
+<%= csp_meta_tag -%>
 <!--[if IE]>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <![endif]-->
 </head>
 <body>
-	<%= render :partial => 'layouts/header' %>
-	<div id="mom">
-		<div id="main" class="container">
-			<% if(!params[:no_layout] and !current_page?(root_path)) %>
-			<%= render :partial => 'layouts/page_header' %>
-			<% end %>
-			<div class="sub_main">
-			<%= yield %>
-			</div>
-		</div>
-	</div>
-	<%= render :partial => 'layouts/footer' %>
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"></div>
-	<%= javascript_include_tag :application, "data-turbolinks-track" => true %>
+<%= render :partial => 'layouts/header' %>
+<div id="mom">
+  <div id="main">
+    <% unless current_page?(root_path) %>
+    <%= render :partial => 'layouts/page_header' %>
+    <% end %>
+    <%= yield %>
+  </div>
+</div>
+<%= render :partial => 'layouts/footer' %>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"></div>
+<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+<% if Rails.env=='production' and params[:controller]=='location' %>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=736e858fd8b63463bd5f48792e36b50d"></script>
+  <script>
+      var container = document.getElementById('map-content');
+      var options = {
+          center: new daum.maps.LatLng(<%=@location.lat %>, <%=@location.lng %>),
+          level: 5
+      };
+
+      var map = new daum.maps.Map(container, options);
+
+      // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+      var mapTypeControl = new daum.maps.MapTypeControl();
+
+      // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+      // daum.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+      map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
+
+      // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+      var zoomControl = new daum.maps.ZoomControl();
+      map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+
+      // 지도에 마커를 생성하고 표시한다
+      var marker = new daum.maps.Marker({
+          position: new daum.maps.LatLng(<%=@location.marker_lat %>, <%=@location.marker_lng %>), // 마커의 좌표
+          map: map // 마커를 표시할 지도 객체
+      });
+
+      // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+      var iwContent = '<div style="padding:5px;"><%=t(:address) %></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+          iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+      // 인포윈도우를 생성합니다
+      var infowindow = new daum.maps.InfoWindow({
+          content : iwContent,
+          removable : iwRemoveable
+      });
+
+      // 마커에 클릭이벤트를 등록합니다
+      daum.maps.event.addListener(marker, 'click', function() {
+          // 마커 위에 인포윈도우를 표시합니다
+          infowindow.open(map, marker);
+      });
+  </script>
+<% end %>
 </body>
 </html>

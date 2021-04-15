@@ -1,2 +1,8 @@
-<%= render 'form' %>
-<%= link_to t(:link_list), admin_faqs_path %>
+<section class="container">
+  <div class="row">
+    <h2 class="col-12"><%=t(:new_faq) %></h2>
+    <div class="col-12">
+      <%= render 'form', faq: @faq %>
+    </div>
+  </div>
+</section>

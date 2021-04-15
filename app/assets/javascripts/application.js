@@ -1,72 +1,52 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// the compiled file.
-//
-// WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
-// GO AFTER THE REQUIRES BELOW.
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+//= require jquery3
+//= require jquery-ui
+//= require popper
+//= require bootstrap
+//= require jquery_ujs
+//= require i18n.js
+ */
 
-$(document).ready(function(){
-	$('#myModal').on('show.bs.modal', function (e) {
-  		if (!data) return e.preventDefault(); // stops modal from being shown  
-	
-		if($(this).attr('title')) {
-			$('#myModal .modal-header h3').text($(this).attr('title'));
-		} else {
-			$('#myModal .modal-header h3').text('사용자정보');
-		}  
-	});
-	
-	$('.btn-maximize').click(function(){
-		$(this).parent().parent().parent().find('.box-content').slideDown();
-		$(this).find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');		
-		return false;
-	});
-	
-	$(".btn-close").click(function(){
-		$(this).parent().parent().parent().remove();
-		return false;
-	});	
-	
-	$('.dropmenu').click(function(e){
-		if(!$(this).parent().find('ul:first').hasClass('d_show')) {
-			$(this).parent().parent().find('.d_show').removeClass('d_show').slideToggle();
-			$(this).parent().find('ul').addClass('d_show').slideToggle(function(){
-				$("#content").css("min-height",$('aside').height()+40);
-			});
+I18n.translations || (I18n.translations = {});
+I18n.translations["ko"] = I18n.extend((I18n.translations["ko"] || {}), {"display":"보임","hidden":"숨김"});
+I18n.translations["en"] = I18n.extend((I18n.translations["en"] || {}), {"display":"보임","hidden":"숨김"});
+I18n.translations["zh-CN"] = I18n.extend((I18n.translations["zh-CN"] || {}), {"display":"보임","hidden":"숨김"});
 
-		}		
-	});
-	
-	/* ---------- Uniform ---------- */
-	//$("input:checkbox, input:radio, input:file").not('[data-no-uniform="true"],#uniform-is-ajax').uniform();
+$(document).ready(function() {
+    $(document).on('change', '.custom-control-input', function (e) {
+        let c_checked = e.target.checked;
+
+        if(window.location.port!=80) {
+            var port=':' + window.location.port;
+        } else {
+            var port='';
+        }
+
+        if(c_checked) {
+            $(this).parent().find('.custom-control-label').text(I18n.t('display')).closest('tr').effect('highlight');
+        } else {
+            $(this).parent().find('.custom-control-label').text(I18n.t('hidden')).closest('tr').effect('highlight');
+        }
+
+        var param={_method: 'put', authenticity_token:$('meta[name="csrf-token"]').attr('content')}
+        var path=window.location.pathname.split('/')[2];
+        var url=window.location.protocol+'//'+window.location.hostname+port+'/admin/'+path+'/'+$(this).val()+'.json';
+        var aa={products:'product',product_categories:'product_category',users:'user',notices:'notice',boards:'board',faqs:'faq',faq_categories:'faq_category',contact:'contact',sliders:'slider'}
+
+        param[aa[path]]={enable:c_checked};
+        $.post(url,param,function(data){
+
+        },'json');
+    });
 });
-
-    
- function setDateInput(obj) {
-  if (obj != undefined) {
-   var datediff = -(parseInt(obj));
-   var newDate = new Date();
-   var now = new Date();
-   newDate.setDate(now.getDate()+datediff);
-   var newYear = newDate.getFullYear();
-   var newMonth = newDate.getMonth()+1;
-   if (newMonth.toString().length == 1) newMonth = "0" + newMonth;
-   
-   endMonth=now.getMonth() +1;
-   if (endMonth.toString().length == 1) endMonth = "0" + endMonth;
-   
-   var newDay = newDate.getDate();
-   if (newDay.toString().length == 1) newDay = "0" + newDay;
-   var txtSDate = newMonth + "/" + newDay +'/'+newYear;
-   endDay=now.getDate();
-   if (endDay.length == 1) endDay = "0" + endDay;
-   var txtEDate = endMonth + "/" + endDay + '/' + now.getFullYear();
-   $('input[name="start_date"]').val(txtSDate);
-   $('input[name="end_date"]').val(txtEDate);
-  } else {alert("잠시 후 이용해 주시기 바랍니다."); return false;}
- }

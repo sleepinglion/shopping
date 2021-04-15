@@ -1,45 +1,87 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  def initialize(*params)
-    super(*params)
-    
-    @category=t(:menu_user)
-    @sub_menu=t(:submenu_admin)
-    @controller_name=t(:controller_admin)
-  end
-  
-  # GET /admins
-  # GET /admins.json
-  def index   
-    @users = User.where('parent_id is null').order('id desc').page(params[:page]).per(10)
-    
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @users }
-      format.xls
-    end
-  end  
-  
-  def user_layout 
-    if user_session
-      "application"
-    else     
-      "login"
-    end
-  end
-  
-  # POST /users
-  # POST /users.json
-  def create
-    @user = User.new(params[:user])
+  def index
+    @users = User.order('id desc').page(params[:page]).per(10)
 
     respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, :notice => @controller_name +t(:message_success_insert)}
-        format.json { render :json => @user, :status => :created, :location => @user }
-      else
-        format.html { render :action => "new" }
-        format.json { render :json => @user.errors, :status => :unprocessable_entity }
-      end
+      format.html # index.html.erb
+      format.json { render :json => @notices }
     end
+  end
+
+  def show
+    @users = User.order('id desc').page(params[:page]).per(10)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render :json => @notices }
+    end
+  end
+
+  # GET /resource/sign_up
+  #  def new
+  #    resource = build_resource({})
+  #    respond_with resource
+  #  end
+
+  # POST /resource
+  def create
+    build_resource(resource_params)
+
+    if Rails.env.production?
+      result=verify_recaptcha(:model => resource) && resource.save
+    else
+      result=resource.save
+    end
+
+    if result
+      if resource.active_for_authentication?
+        set_flash_message :notice, :signed_up if is_navigational_format?
+        sign_in(resource_name, resource)
+        respond_with resource, :location => after_sign_up_path_for(resource)
+      else
+        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
+        expire_session_data_after_sign_in!
+        respond_with resource, :location => after_inactive_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      respond_with resource
+    end
+  end
+
+  def after_sign_up_path_for(resource)
+    after_sign_in_path_for(resource)
+  end
+
+  # The path used after sign up for inactive accounts. You need to overwrite
+  # this method in your own RegistrationsController.
+  def after_inactive_sign_up_path_for(resource)
+    respond_to?(:root_path) ? root_path : "/"
+  end
+
+  # The default url to be used after updating a resource. You need to overwrite
+  # this method in your own RegistrationsController.
+  def after_update_path_for(resource)
+    signed_in_root_path(resource)
+  end
+
+  #def layout
+  #  if params[:no_layout].present?
+  #    return false
+  #  else
+  #    return 'user'
+  #  end
+  #end
+
+  protected
+
+  def account_update_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password, user_picture_attributes: [:picture])
+  end
+
+  private
+
+  def resource_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password, user_picture_attributes: [:picture])
   end
 end

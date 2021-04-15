@@ -1,2 +1,7 @@
-<%= render 'form' %>
-<%= link_to t(:link_list), admin_users_path %>
+<div id="new_user" class="container">
+  <div class="row">
+    <div class="col-12">
+      <%= render 'form', user: @user %>
+    </div>
+  </div>
+</div>

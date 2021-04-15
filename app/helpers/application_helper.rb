@@ -3,52 +3,18 @@ module ApplicationHelper
     lparam[:controller]=nil
     lparam[:action]=nil
     lparam[:id]=nil
-    
-    return lparam
-  end
-  
-  def show_param(lparam)
 
-    
     return lparam
-  end  
-  
-  def flagToString(flag,no_html=false)
-    if(no_html)
-      if flag
-        return t(:flag_true)
-      else
-        return t(:flag_false)
-      end
-    else
-      if flag
-        return '<span class="flag_true">'+t(:flag_true)+'</span>'
-      else
-        return '<span class="flag_false">'+t(:flag_false)+'</span>'
-      end
-    end
   end
-  
-  def sameOrderToString(same_order,no_html=false)
-    if(no_html)
-      if same_order
-        return t(:same_order_true)
-      else
-        return t(:same_order_false)
-      end
-    else
-      if same_order
-        return '<span class="flag_true">'+t(:same_order_true)+'</span>'
-      else
-        return '<span class="flag_false">'+t(:same_order_false)+'</span>'
-      end
-    end
+
+  def show_param(lparam)
+    return lparam
   end
-  
+
   def link_to_home
     link_to('홈',root_path,:title=>'홈으로')
   end
-  
+
   def actionNameChange(action_name)
     case action_name
     when 'index'
@@ -58,22 +24,43 @@ module ApplicationHelper
     when 'edit'
       return t(:action_edit)
     when 'show'
-      return t(:action_show)   
+      return t(:action_show)
     else
     end
   end
-  
+
   def current_controller(aa)
     if aa.include?(params[:controller])
       return 'class="current"'
     end
   end
-  
+
   def manage_width(model)
-    if can?(:delete, model) && can?(:update, model)
-      return 'style="width:170px;"'
+    if can?(:delete, model) and can?(:update, model)
+      return ' style=width:170px;'
     else
-      return 'style="width:90px"'
+      return ' style=width:90px'
     end
   end
+
+  def display_payment_method(accounts)
+    payment_method=[]
+
+    accounts.each do |account|
+      unless account.cash.zero?
+        payment_method.push(t(:cash));
+      end
+
+      unless account.credit.zero?
+        payment_method.push(t(:credit));
+      end
+
+      unless account.point.zero?
+        payment_method.push(t(:point));
+      end
+    end
+
+    return payment_method.uniq.join(',')
+  end
+
 end

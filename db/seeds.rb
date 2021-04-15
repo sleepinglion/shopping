@@ -1,42 +1,77 @@
-Company.create!(id: 1, title: '피씨방')
-Company.create!(id: 2, title: '매점')
-Company.create!(id: 3, title: '임시 매점')
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+#
 
-Branch.create!(id: 1, company_id: 1, title: '피씨방', sample: true)
-Branch.create!(id: 2, company_id: 2, title: '매점')
-Branch.create!(id: 3, company_id: 3, title: '임시 매점')
+AuthenticationProvider.create!(name: 'facebook')
+AuthenticationProvider.create!(name: 'twitter')
+AuthenticationProvider.create!(name: 'google')
 
-Admin.create!(:id=>1,:branch_id=>1,:email => 'admin@sleepinglion.pe.kr',:name=>'잠자는-사자',:password => '123456', :password_confirmation => '123456',:photo=>File.open(Rails.root.join("app","assets", "images", "dog.png")))
-Admin.create!(:id=>2,:branch_id=>1,:parent_id=>1,:email=>'sub_admin@sleepinglion.pe.kr',:name=>'서브관리자',:password => 'a12345', :password_confirmation => 'a12345',:photo=>File.open(Rails.root.join("app","assets", "images", "dog.png")))
-Admin.create!(:id=>3,:branch_id=>1,:parent_id=>1,:email=>'operator@sleepinglion.pe.kr',:name=>'운영자',:password => 'a12345', :password_confirmation => 'a12345',:photo=>File.open(Rails.root.join("app","assets", "images", "dog.png")))
-Admin.create!(:id=>4,:branch_id=>1,:parent_id=>1,:email=>'clinomics@sleepinglion.pe.kr',:name=>'출력원',:password => 'a12345', :password_confirmation => 'a12345',:photo=>File.open(Rails.root.join("app","assets", "images", "dog.png")))
-Admin.create!(:id=>5,:branch_id=>1,:parent_id=>1,:email=>'reader@sleepinglion.pe.kr',:name=>'읽기전용',:password => 'a12345', :password_confirmation => 'a12345',:photo=>File.open(Rails.root.join("app","assets", "images", "dog.png")))
+Admin.create!(:id => 1, :email => 'admin@a.com', :name => '잠자는사자', :password => '123456', :password_confirmation => '123456', admin_picture_attributes: { picture: File.open(Rails.root.join("app", "assets", "images", "dog.png")) })
+#Admin.create!(:id=>2,:branch_id=>2,:email => '',:name=>'매점 관리자',:password => '123456', :password_confirmation => '123456')
+#Admin.create!(:id=>3,:branch_id=>3,:email => '',:name=>'매점 관리자',:password => '123456', :password_confirmation => '123456')
 
-Role.create!(:id=>1,:title=>'administrator')
-Role.create!(:id=>2,:title=>'operator')
-Role.create!(:id=>3,:title=>'store_manager')
-Role.create!(:id=>4,:title=>'cs_manager')
-Role.create!(:id=>5,:title=>'reader')
+Role.create!(:id => 1, :title => 'super administrator')
+#Role.create!(:id=>2,:title=>'administrator')
+#Role.create!(:id=>3,:title=>'operator')
+#Role.create!(:id=>4,:title=>'sub operator')
+#Role.create!(:id=>5,:title=>'reader')
 
-RolesAdmin.create!(:role_id=>1,:admin_id=>1)
-RolesAdmin.create!(:role_id=>1,:admin_id=>2)
-RolesAdmin.create!(:role_id=>1,:admin_id=>3)
-RolesAdmin.create!(:role_id=>2,:admin_id=>4)
-RolesAdmin.create!(:role_id=>3,:admin_id=>5)
+RolesAdmin.create!(:role_id => 1, :admin_id => 1)
 
-Payment.create!(:id=>1,:title=>'현금결제')
-Payment.create!(:id=>2,:title=>'카드결제')
-Payment.create!(:id=>3,:title=>'포인트결제')
+Intro.create!(id: 1, title: '좋은회사입니다', content: '너무나 좋은 회사입니다. <br />지금 바로 구매하세요!!')
+Location.create!(id: 1, title: '오시는길', description: '오시는 방법', address: '경기도 수원시 장안구', lat: 37.304749, lng: 127.003248, marker_lat: 37.304749, marker_lng: 127.003248)
+
+Notice.create!(id: 1, admin_id: 1, title: '공지사항1입니다', notice_content_attributes: { content: '공지사항1입니다' })
+Notice.create!(id: 2, admin_id: 1, title: '공지사항2입니다', notice_content_attributes: { content: '공지사항2입니다' })
+Notice.create!(id: 3, admin_id: 1, title: '공지사항3입니다', notice_content_attributes: { content: '공지사항3입니다' })
+Notice.create!(id: 4, admin_id: 1, title: '공지사항4입니다', notice_content_attributes: { content: '공지사항4입니다' })
+Notice.create!(id: 5, admin_id: 1, title: '공지사항5입니다', notice_content_attributes: { content: '공지사항5입니다' })
+Notice.create!(id: 6, admin_id: 1, title: '공지사항6입니다', notice_content_attributes: { content: '공지사항6입니다' })
+Notice.create!(id: 7, admin_id: 1, title: '공지사항7입니다', notice_content_attributes: { content: '공지사항7입니다' })
+Notice.create!(id: 8, admin_id: 1, title: '공지사항8입니다', notice_content_attributes: { content: '공지사항8입니다' })
+Notice.create!(id: 9, admin_id: 1, title: '공지사항9입니다', notice_content_attributes: { content: '공지사항9입니다' })
+Notice.create!(id: 10, admin_id: 1, title: '공지사항10입니다', notice_content_attributes: { content: '공지사항10입니다' })
+Notice.create!(id: 11, admin_id: 1, title: '공지사항11입니다', notice_content_attributes: { content: '공지사항11입니다' })
+Notice.create!(id: 12, admin_id: 1, title: '공지사항12입니다', notice_content_attributes: { content: '공지사항12입니다' })
+
+ProductCategory.create!(id: 1, title: '타입1', description: '타입1 마스크 입니다', bg_color: '#fff', enable: true)
+ProductCategory.create!(id: 2, title: '타입2', description: '타입1 마스크 입니다', bg_color: '#eee', enable: true)
+ProductCategory.create!(id: 3, title: '타입3', description: '타입1 마스크 입니다', bg_color: '#fff', enable: true)
+ProductCategory.create!(id: 4, title: '타입4', description: '타입1 마스크 입니다', bg_color: '#eee', enable: true)
+
+Product.create!(id: 1, product_category_id: 1, title: '타입1 제품1', description: '좋은 마스크입니다', price: 2000, enable: true, product_pictures_attributes: [{ picture: File.open(Rails.root.join("app", "assets", "images", "product.jpg")) },{ picture: File.open(Rails.root.join("app", "assets", "images", "product2.jpg")),caption: '제품의 2번째 모습' },{ picture: File.open(Rails.root.join("app", "assets", "images", "product3.jpg")) }])
+Product.create!(id: 2, product_category_id: 1, title: '타입1 제품2', description: '좋은 마스크입니다', price: 2000, enable: true, product_pictures_attributes: [{ picture: File.open(Rails.root.join("app", "assets", "images", "product.jpg")) },{ picture: File.open(Rails.root.join("app", "assets", "images", "product2.jpg")),caption: '제품의 2번째 모습' },{ picture: File.open(Rails.root.join("app", "assets", "images", "product3.jpg")) }])
+Product.create!(id: 3, product_category_id: 1, title: '타입1 제품3', description: '좋은 마스크입니다', price: 2000, enable: true, product_pictures_attributes: [{ picture: File.open(Rails.root.join("app", "assets", "images", "product.jpg")) },{ picture: File.open(Rails.root.join("app", "assets", "images", "product2.jpg")),caption: '제품의 2번째 모습' },{ picture: File.open(Rails.root.join("app", "assets", "images", "product3.jpg")) }])
+Product.create!(id: 4, product_category_id: 1, title: '타입1 제품1', description: '좋은 마스크입니다', price: 2000, enable: true, product_pictures_attributes: [{ picture: File.open(Rails.root.join("app", "assets", "images", "product.jpg")) },{ picture: File.open(Rails.root.join("app", "assets", "images", "product2.jpg")),caption: '제품의 2번째 모습' },{ picture: File.open(Rails.root.join("app", "assets", "images", "product3.jpg")) }])
+Product.create!(id: 5, product_category_id: 1, title: '타입1 제품2', description: '좋은 마스크입니다', price: 2000, enable: true, product_pictures_attributes: [{ picture: File.open(Rails.root.join("app", "assets", "images", "product.jpg")) },{ picture: File.open(Rails.root.join("app", "assets", "images", "product2.jpg")),caption: '제품의 2번째 모습' },{ picture: File.open(Rails.root.join("app", "assets", "images", "product3.jpg")) }])
+
+Product.create!(id: 7, product_category_id: 2, title: '타입2 제품3', description: '좋은 마스크입니다', price: 2000, enable: true, product_pictures_attributes: [{ picture: File.open(Rails.root.join("app", "assets", "images", "product.jpg")) },{ picture: File.open(Rails.root.join("app", "assets", "images", "product2.jpg")),caption: '제품의 2번째 모습' },{ picture: File.open(Rails.root.join("app", "assets", "images", "product3.jpg")) }])
+Product.create!(id: 8, product_category_id: 2, title: '타입2 제품1', description: '좋은 마스크입니다', price: 2000, enable: true, product_pictures_attributes: [{ picture: File.open(Rails.root.join("app", "assets", "images", "product.jpg")) },{ picture: File.open(Rails.root.join("app", "assets", "images", "product2.jpg")),caption: '제품의 2번째 모습' },{ picture: File.open(Rails.root.join("app", "assets", "images", "product3.jpg")) }])
+Product.create!(id: 9, product_category_id: 2, title: '타입2 제품2', description: '좋은 마스크입니다', price: 2000, enable: true, product_pictures_attributes: [{ picture: File.open(Rails.root.join("app", "assets", "images", "product.jpg")) },{ picture: File.open(Rails.root.join("app", "assets", "images", "product2.jpg")),caption: '제품의 2번째 모습' },{ picture: File.open(Rails.root.join("app", "assets", "images", "product3.jpg")) }])
+Product.create!(id: 10, product_category_id: 2, title: '타입2 제품1', description: '좋은 마스크입니다', price: 2000, enable: true, product_pictures_attributes: [{ picture: File.open(Rails.root.join("app", "assets", "images", "product.jpg")) },{ picture: File.open(Rails.root.join("app", "assets", "images", "product2.jpg")),caption: '제품의 2번째 모습' },{ picture: File.open(Rails.root.join("app", "assets", "images", "product3.jpg")) }])
+Product.create!(id: 11, product_category_id: 2, title: '타입2 제품2', description: '좋은 마스크입니다', price: 2000, enable: true, product_pictures_attributes: [{ picture: File.open(Rails.root.join("app", "assets", "images", "product.jpg")) },{ picture: File.open(Rails.root.join("app", "assets", "images", "product2.jpg")),caption: '제품의 2번째 모습' },{ picture: File.open(Rails.root.join("app", "assets", "images", "product3.jpg")) }])
+
+Product.create!(id: 12, product_category_id: 3, title: '타입3 제품1', description: '좋은 마스크입니다', price: 2000, enable: true, product_pictures_attributes: [{ picture: File.open(Rails.root.join("app", "assets", "images", "product.jpg")) },{ picture: File.open(Rails.root.join("app", "assets", "images", "product2.jpg")),caption: '제품의 2번째 모습' },{ picture: File.open(Rails.root.join("app", "assets", "images", "product3.jpg")) }])
+Product.create!(id: 13, product_category_id: 3, title: '타입3 제품2', description: '좋은 마스크입니다', price: 2000, enable: true, product_pictures_attributes: [{ picture: File.open(Rails.root.join("app", "assets", "images", "product.jpg")) },{ picture: File.open(Rails.root.join("app", "assets", "images", "product2.jpg")),caption: '제품의 2번째 모습' },{ picture: File.open(Rails.root.join("app", "assets", "images", "product3.jpg")) }])
+Product.create!(id: 14, product_category_id: 3, title: '타입3 제품3', description: '좋은 마스크입니다', price: 2000, enable: true, product_pictures_attributes: [{ picture: File.open(Rails.root.join("app", "assets", "images", "product.jpg")) },{ picture: File.open(Rails.root.join("app", "assets", "images", "product2.jpg")),caption: '제품의 2번째 모습' },{ picture: File.open(Rails.root.join("app", "assets", "images", "product3.jpg")) }])
+
+Product.create!(id: 15, product_category_id: 4, title: '타입4 제품1', description: '좋은 마스크입니다', price: 2000, enable: true, product_pictures_attributes: [{ picture: File.open(Rails.root.join("app", "assets", "images", "product.jpg")) },{ picture: File.open(Rails.root.join("app", "assets", "images", "product2.jpg")),caption: '제품의 2번째 모습' },{ picture: File.open(Rails.root.join("app", "assets", "images", "product3.jpg")) }])
+Product.create!(id: 16, product_category_id: 4, title: '타입4 제품2', description: '좋은 마스크입니다', price: 2000, enable: true, product_pictures_attributes: [{ picture: File.open(Rails.root.join("app", "assets", "images", "product.jpg")) },{ picture: File.open(Rails.root.join("app", "assets", "images", "product2.jpg")),caption: '제품의 2번째 모습' },{ picture: File.open(Rails.root.join("app", "assets", "images", "product3.jpg")) }])
+Product.create!(id: 17, product_category_id: 4, title: '타입4 제품3', description: '좋은 마스크입니다', price: 2000, enable: true, product_pictures_attributes: [{ picture: File.open(Rails.root.join("app", "assets", "images", "product.jpg")) },{ picture: File.open(Rails.root.join("app", "assets", "images", "product2.jpg")),caption: '제품의 2번째 모습' },{ picture: File.open(Rails.root.join("app", "assets", "images", "product3.jpg")) }])
+
+Payment.create!(:id=>1,:title=>'현금')
+Payment.create!(:id=>2,:title=>'카드')
+Payment.create!(:id=>3,:title=>'포인트')
 Payment.create!(:id=>4,:title=>'추후청구')
-Payment.create!(:id=>5,:title=>'핸드폰결제')
+Payment.create!(:id=>5,:title=>'핸드폰')
 Payment.create!(:id=>6,:title=>'계좌이체')
 Payment.create!(:id=>7,:title=>'가상계좌')
 Payment.create!(:id=>8,:title=>'무통장입금')
-
-BranchesPayment.create!(branch_id: 1, payment_id: 1)
-BranchesPayment.create!(branch_id: 1, payment_id: 2)
-BranchesPayment.create!(branch_id: 1, payment_id: 3)
-BranchesPayment.create!(branch_id: 1, payment_id: 4)
 
 AccountCategory.create!(id: 1, title: '구입', enable: true)
 AccountCategory.create!(id: 2, title: '수정', enable: true)
@@ -44,30 +79,21 @@ AccountCategory.create!(id: 3, title: '환불', enable: true)
 AccountCategory.create!(id: 4, title: '포인트충전', enable: true)
 AccountCategory.create!(id: 5, title: '포인트환불', enable: true)
 
-ProductCategory.create!(id: 1, branch_id: 1, title: '커피', enable: true)
-ProductCategory.create!(id: 2, branch_id: 1, title: '음료', enable: true)
-ProductCategory.create!(id: 3, branch_id: 1, title: '간식', enable: true)
+FaqCategory.create!(id: 1, title: '하는방법 문의1')
+FaqCategory.create!(id: 2, title: '하는방법 문의2')
+
+Faq.create!(:id => 1, :faq_category_id => 1, :title => '어떻게 하는건가요?1', faq_content_attributes: { content: '이렇게 하면 됩니다1-1' })
+Faq.create!(:id => 2, :faq_category_id => 1, :title => '어떻게 하는건가요?2', faq_content_attributes: { content: '이렇게 하면 됩니다1-2' })
+Faq.create!(:id => 3, :faq_category_id => 1, :title => '어떻게 하는건가요?3', faq_content_attributes: { content: '이렇게 하면 됩니다1-3' })
+Faq.create!(:id => 4, :faq_category_id => 2, :title => '어떻게 하는건가요?2-1', faq_content_attributes: { content: '이렇게 하면 됩니다2-1' })
+Faq.create!(:id => 5, :faq_category_id => 2, :title => '어떻게 하는건가요?2-2', faq_content_attributes: { content: '이렇게 하면 됩니다2-2' })
+
+Slider.create!(:title => '마스크1', :description => '마스크1', :link => '',:position_x=>'100',:position_y=>'100', :picture => File.open(Rails.root.join("app", "assets", "images", "1.jpg")))
+Slider.create!(:title => '마스크2', :description => '마스크1', :link => '',:position_x=>'100',:position_y=>'100', :picture => File.open(Rails.root.join("app", "assets", "images", "2.jpg")))
+Slider.create!(:title => '마스크2', :description => '마스크1', :link => '',:position_x=>'100',:position_y=>'100', :picture => File.open(Rails.root.join("app", "assets", "images", "3.jpg")))
+Slider.create!(:title => '마스크2', :description => '마스크1', :link => '',:position_x=>'100',:position_y=>'100',:picture => File.open(Rails.root.join("app", "assets", "images", "4.jpg")))
 
 
-User.create!(:id=>1,:branch_id=>1,:name=>'user1',:email => 'toughjjh@gmail.com',:password => '123456', :password_confirmation => '123456', :birthday=>'2016-07-03', :phone=>'010-4141-3726',:gender=>1,:height=>180,:weight=>80,:enable=>true)
-User.create!(:id=>2,:branch_id=>1,:name=>'user2',:email => 'toughjjh1@gmail.com',:password => '123456', :password_confirmation => '123456', :birthday=>'2016-07-03', :phone=>'010-4141-3726',:gender=>1,:enable=>true)
-User.create!(:id=>3,:branch_id=>1,:name=>'user3',:email => 'toughjjh2@gmail.com',:password => '123456', :password_confirmation => '123456', :birthday=>'2016-07-03', :phone=>'010-4141-3726',:height=>160,:weight=>55,:enable=>true)
-User.create!(:id=>4,:branch_id=>1,:name=>'user4',:email => 'toughjjh3@gmail.com',:password => '123456', :password_confirmation => '123456', :birthday=>'2016-07-03', :phone=>'010-4141-3726',:gender=>1,:enable=>true)
-User.create!(:id=>5,:branch_id=>1,:name=>'user5',:email => 'toughjjh4@gmail.com',:password => '123456', :password_confirmation => '123456', :birthday=>'2016-07-03', :phone=>'010-4141-3726',:enable=>true)
-User.create!(:id=>6,:branch_id=>1,:name=>'user6',:email => 'toughjjh5@gmail.com',:password => '123456', :password_confirmation => '123456', :birthday=>'2016-07-03', :phone=>'010-4141-3726',:height=>170,:weight=>65,:enable=>true)
+User.create!(:id=>1, :name=>'관리자',:email=>'admin@sleepinglion.pe.kr', :password => '123456', :password_confirmation => '123456');
+User.create!(:id=>2, :name=>'테스트', :email=>'admin@a.com', :password => '123456', :password_confirmation => '123456');
 
-Product.create!(:branch_id=>1,product_category_id: 1,:title=>'product1',:description=>'Good Propduct1',:price=>150001,:enable=>true)
-Product.create!(:branch_id=>1,product_category_id: 1,:title=>'product2',:description=>'Good Propduct2',:price=>150002,:enable=>true)
-Product.create!(:branch_id=>1,product_category_id: 1,:title=>'product3',:description=>'Good Propduct3',:price=>150003,:enable=>true)
-Product.create!(:branch_id=>1,product_category_id: 1,:title=>'product4',:description=>'Good Propduct4',:price=>150004,:enable=>true)
-Product.create!(:branch_id=>1,product_category_id: 2,:title=>'product5',:description=>'Good Propduct5',:price=>150005,:enable=>true)
-Product.create!(:branch_id=>1,product_category_id: 2,:title=>'product6',:description=>'Good Propduct6',:price=>150006,:enable=>true)
-Product.create!(:branch_id=>1,product_category_id: 2,:title=>'product7',:description=>'Good Propduct7',:price=>150007,:enable=>true)
-Product.create!(:branch_id=>1,product_category_id: 2,:title=>'product8',:description=>'Good Propduct8',:price=>150008,:enable=>true)
-Product.create!(:branch_id=>1,product_category_id: 3,:title=>'product9',:description=>'Good Propduct9',:price=>150009,:enable=>true)
-Product.create!(:branch_id=>1,product_category_id: 3,:title=>'product10',:description=>'Good Propduct10',:price=>150010,:enable=>true)
-Product.create!(:branch_id=>1,product_category_id: 3,:title=>'product11',:description=>'Good Propduct11',:price=>150011,:enable=>true)
-Product.create!(:branch_id=>1,product_category_id: 3,:title=>'product12',:description=>'Good Propduct12',:price=>150012,:enable=>true)
-
-#Order.create!(:id=>1,:user_id=>1,:last_transaction_date=>Date.today,:total_price=>20000,:total_discount=>2000,:total_payment=>18000 ,:enable=>true)
-#Shipping.create!(:id=>1,:order_id=>1,:name=>'정종호',:zip_code=>'123535',:address_default=>'123521',:address_detail=>'1235235',:phone=>'2351235',:email=>'123512@tgaweg.net',:enable=>true)
