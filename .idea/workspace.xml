@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ab6d49a-26e7-4e21-8cf1-87dbf9e7093c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/database.mysql.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/database.sqlite3.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/deploy.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/deploy.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -183,7 +180,7 @@
       <workItem from="1618328409950" duration="2058000" />
       <workItem from="1618421161770" duration="663000" />
       <workItem from="1618469392825" duration="9365000" />
-      <workItem from="1618645171244" duration="124000" />
+      <workItem from="1618645171244" duration="1330000" />
     </task>
     <servers />
   </component>
@@ -203,6 +200,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/shopping@Development__shopping.rcov" NAME="Development: shopping Coverage Results" MODIFIED="1618503419298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="shopping" />
+    <SUITE FILE_PATH="coverage/shopping@Development__shopping.rcov" NAME="Development: shopping Coverage Results" MODIFIED="1618646179846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="shopping" />
   </component>
 </project>
