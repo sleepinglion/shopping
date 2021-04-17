@@ -1,0 +1,46 @@
+<% breadcrumb :faqs %>
+<section id="faq_main" class="container sub-main">
+  <div class="row">
+    <h1 class="col-12 page-title"><%= raw t(:faq_description) %></h1>
+    <article class="col-12">
+      <ol id="faqCategoryList">
+        <% unless faq_categories.empty? %>
+          <% faq_categories.each do |faq_category| %>
+            <li
+            <% if (categoryId == faq_category.id) %> class="on"
+            <% end %>>
+              <%= link_to truncate(faq_category.title, :length => 20), faqs_path(:faq_category_id => faq_category.id), { :class => 'title' } %>
+            </li>
+          <% end %>
+        <% else %>
+          <li><%= t(:no_data) %></li>
+        <% end %>
+      </ol>
+    </article>
+    <article class="col-12">
+      <dl id="faqList">
+        <% unless faqs.empty? %>
+          <% faqs.each do |faq| %>
+            <dt
+            <% if faq %>
+            <% if faq.id == faq.id %> class="on"
+            <% end %>
+            <% end %>>
+              <%= link_to truncate(faq.title, :length => 80), faq_path(faq), { :class => 'title' } %>
+            </dt>
+            <% if (faq_content) %>
+              <% if (faq_content.id == faq.id) %>
+                <dd><%= simple_format(faq_content.faq_content.content) %></dd>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <dt><%= t(:no_data) %></dt>
+        <% end %>
+      </dl>
+    </article>
+    <div class="pagination">
+      <%= paginate faqs %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,77 @@
+<% breadcrumb :product, @product %>
+<div id="show-product" class="container sub-main">
+  <div class="row">
+    <h2 class="col-12 text-right"><%= @product.title %></h2>
+    <div class="col-12 col-lg-6">
+      <%
+        if @product.product_pictures.present?
+
+          if @product_picture
+            @product_picture_picture = @product_picture.picture
+          else
+            @product_picture_picture = @product.product_pictures[0].picture
+          end
+      %>
+        <%= link_to @product_picture_picture.large_thumb.url, :class => 'simple_image' do %>
+          <figure>
+            <%= image_tag @product_picture_picture.medium_thumb.url, :id=>"product-image" %>
+          </figure>
+        <% end %>
+        <ul>
+          <% @product.product_pictures.each do |product_picture| %>
+            <li>
+              <%= link_to product_path(@product, { product_picture_id: product_picture }) do %>
+                <%= image_tag product_picture.picture.small_thumb.url %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+    <div id="product-info" class="col-12 col-lg-6">
+      <% unless @product.description.empty? %>
+      <p><%=@product.description %></p>
+      <% end %>
+      <dl>
+        <dt><%= t(:price, scope: [:activerecord, :attributes, :product]) %></dt>
+        <dd><%= number_to_currency @product.price %></dd>
+        <dt><%= t(:price, scope: [:activerecord, :attributes, :product]) %></dt>
+        <dd><%= number_to_currency @product.price %></dd>
+        <dt><%= t(:quantity) %></dt>
+        <dd></dd>
+      </dl>
+      <div class="row">
+        <div class="col-12 col-lg-8">
+          <%= link_to t(:order), new_order_path(:product_id => @product), class: 'btn btn-block btn-primary' %>
+        </div>
+        <div class="col-12 col-lg-4">
+          <%= form_with(model: ShoppingCart, local: true) do |form| %>
+            <%= hidden_field_tag :product_id,@product.id %>
+            <%= form.submit t(:shopping_cart), :class => "btn btn-secondary btn-block" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav id="show-product-nav" class="navbar navbar-dark" style="background:#a9b3bc">
+  <div class="container">
+    <ul class="nav-fill row">
+      <% if @product.product_content.present? %>
+        <li class="nav-item"><%= t(:product_content, scope: [:activerecord, :models]) %></li>
+      <% end %>
+      <li class="nav-item"><%=link_to '교환 / 반품','#',:class=>'nav-link' %></li>
+    </ul>
+  </div>
+</nav>
+
+<div id="show-product-content" class="container sub-main">
+  <div class="row">
+    <% if @product.product_content.present? %>
+      <div class="col-12">
+        <%= simple_format @product.product_content.content %>
+      </div>
+    <% end %>
+  </div>
+</div>

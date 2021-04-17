@@ -1,0 +1,38 @@
+<%= form_with(model: order, local: true) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <a href="#" class="close" data-dismiss="alert">&times;</a>
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this request from being saved:</h2>
+      <ul>
+        <% order.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.hidden_field :product_id, :value => @product %>
+  <%= hidden_field_tag :payment_method,1 %>
+  <%= hidden_field_tag :product_id,@product.id %>
+  <dl>
+    <dt><%= t(:title, scope: [:activerecord, :attributes, :product]) %></dt>
+    <dd><%= @product.title %></dd>
+    <dt><%= t(:price, scope: [:activerecord, :attributes, :product]) %></dt>
+    <dd><%= @product.price %></dd>
+    <dt><%= t(:quantity) %></dt>
+    <dd>
+      <%
+        if params[:qauntity]
+          quantity = params[:qauntity]
+        else
+          quantity = 1
+        end
+      %>
+      <%= quantity %>
+    </dd>
+  </dl>
+  <div class="form-group actions">
+    <%= form.submit t(:order), :class => "btn btn-primary btn-block btn-lg" %>
+  </div>
+<% end %>

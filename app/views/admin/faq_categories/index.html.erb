@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="float-left hidden-title"><%= t(:faq_category_list) %></h2>
+      <div class="float-right">
+        <p class="summary">
+          <span id="list_count" style="display:none"><%= @faq_category_count %></span>
+          <%= raw t(:there_are_n_faq_categories, count: @faq_category_count) %>
+        </p>
+      </div>
+    </div>
+    <article class="col-12">
+      <table id="prepare_list" class="table table-striped table-hover">
+        <colgroup>
+          <col style="width:120px">
+          <col>
+          <col>
+          <col>
+          <col>
+          <% if can?(:update, FaqCategory) || can?(:delete, FaqCategory) %>
+            <col<%= manage_width(FaqCategory) %>>
+          <% end %>
+        </colgroup>
+        <thead class="thead-default">
+        <tr>
+          <th class="text-center"><%= t(:enable, scope: [:activerecord, :attributes, :faq_category]) %></th>
+          <th><%= t(:title, scope: [:activerecord, :attributes, :faq_category]) %></th>
+          <th><%= t(:order_no, scope: [:activerecord, :attributes, :faq_category]) %></th>
+          <th class="text-right"><%= t(:faqs_count, scope: [:activerecord, :attributes, :faq_category]) %></th>
+          <th class="text-right"><%= t(:updated_at, scope: [:activerecord, :attributes, :faq_category]) %></th>
+          <% if can?(:update, FaqCategory) || can?(:delete, FaqCategory) %>
+            <th class="text-center"><%= t(:manage) %></th>
+          <% end %>
+        </tr>
+        </thead>
+        <tbody>
+        <% unless @faq_categories.empty? %>
+          <% @faq_categories.each_with_index do |faq_category, index| %>
+            <tr>
+              <td>
+                <div class="custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input" id="faq_category_display<%= index %>" value="<%= faq_category.id %>"
+                         <% if faq_category.enable %> checked
+                         <% end %>>
+                  <label class="custom-control-label" for="faq_category_display<%= index %>">
+                    <% if faq_category.enable %> <%= t(:display) %>
+                      <% else %><%= t(:hidden) %>
+                    <% end %> </label>
+                </div>
+              </td>
+              <td><%= link_to faq_category.title,admin_faq_category_path(faq_category) %></td>
+              <td><%= faq_category.order_no %></td>
+              <td class="text-right">
+                <% if faq_category.faqs_count.zero? %>
+                  <%=t(:none) %>
+                <% else %>
+                  <%=link_to faq_category.faqs_count.to_s+'개',admin_faqs_path(:faq_category_id=>faq_category) %>
+                <% end  %>
+              </td>
+              <td class="text-right"><%= I18n.l faq_category.created_at.to_date, :format => :long %></td>
+              <% if can?(:update, faq_category) or can?(:delete, faq_category) %>
+                <td class="text-right">
+                  <% if can? :update, faq_category %>
+                    <%= link_to edit_admin_faq_category_path(faq_category), :class => "btn btn-secondary" do %>
+                      <%= t(:edit) %>
+                    <% end %>
+                  <% end %>
+                  <% if can? :delete, faq_category %>
+                    <%= link_to admin_faq_category_path(faq_category), :method => :delete, :data => { :confirm => t(:delete_confirm) }, :class => "btn btn-danger" do %>
+                      <%= t(:delete) %>
+                    <% end %>
+                  <% end %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="8" class="text-center"><%= t(:no_data) %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <div class="pagination justify-content-center">
+        <%= paginate @faq_categories %>
+      </div>
+      <%= link_to t(:add), new_admin_faq_category_path, :class => "btn btn-primary" %>
+    </article>
+  </div>
+</div>

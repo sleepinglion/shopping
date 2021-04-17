@@ -1,0 +1,29 @@
+<div id="product-category-show" class="container">
+  <div class="row">
+    <article class="col-12">
+      <h3><%=@product_category.title %></h3>
+      <% if @product_category.description %>
+        <p><%=@product_category.description %></p>
+      <% end %>
+      <dl>
+        <dt><%=t(:products_count,scope:[:activerecord,:attributes,:product_category]) %></dt>
+        <dd><%=@product_category.products_count %>개</dd>
+        <dt><%= t(:order_no,scope:[:activerecord,:attributes,:product_category]) %></dt>
+        <dd><%=@product_category.order_no %></dd>
+      </dl>
+    </article>
+  </div>
+  <div class="row">
+    <div class="col-12 show-bottom-menu">
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <%=link_to t(:link_list),admin_product_categories_path,:class=>"btn btn-secondary" %>
+        </div>
+        <div class="text-right col-12 col-lg-6">
+          <%=link_to t(:edit),edit_admin_product_category_path(@product_category),:class=>"btn btn-secondary" %>
+          <%=link_to t(:delete),admin_product_category_path(@product_category),:class=>"btn btn-danger" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

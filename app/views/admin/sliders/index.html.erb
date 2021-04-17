@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="float-left hidden-title"><%= t(:slider_list) %></h2>
+      <div class="float-right">
+        <p class="summary">
+          <span id="list_count" style="display:none"><%=@slider_count %></span>
+          <%=raw t(:there_are_n_sliders,count: @slider_count) %>
+        </p>
+      </div>
+    </div>
+    <article class="col-12">
+      <table id="prepare_list" class="table table-striped table-hover">
+        <colgroup>
+          <col style="width:120px">
+          <col>
+          <col>
+          <col>
+          <col>
+          <col>
+          <col>
+          <col>
+          <col style="width:200px">
+          <% if can?(:update, Slider) || can?(:delete, Slider) %>
+            <col<%=manage_width(Slider) %>>
+          <% end %>
+        </colgroup>
+        <thead class="thead-default">
+        <tr>
+          <th class="text-center"><%= t(:enable,scope:[:activerecord,:attributes,:slider]) %></th>
+          <th><%= t(:title,scope:[:activerecord,:attributes,:slider]) %></th>
+          <th><%= t(:description,scope:[:activerecord,:attributes,:slider]) %></th>
+          <th><%= t(:position_x_type,scope:[:activerecord,:attributes,:slider]) %></th>
+          <th><%= t(:position_y_type,scope:[:activerecord,:attributes,:slider]) %></th>
+          <th><%= t(:position_x,scope:[:activerecord,:attributes,:slider]) %></th>
+          <th><%= t(:position_y,scope:[:activerecord,:attributes,:slider]) %></th>
+          <th class="text-right"><%= t(:picture,scope:[:activerecord,:attributes,:slider]) %></th>
+          <th class="text-right"><%= t(:updated_at,scope:[:activerecord,:attributes,:slider]) %></th>
+          <% if can?(:update, Slider) || can?(:delete, Slider) %>
+            <th class="text-center"><%= t(:manage) %></th>
+          <% end %>
+        </tr>
+        </thead>
+        <tbody>
+        <% unless @sliders.empty? %>
+          <% @sliders.each_with_index do |slider,index| %>
+            <tr>
+              <td>
+                <div class="custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input" id="slider_display<%=index %>" value="<%=slider.id %>" <% if slider.enable %> checked<% end %>>
+                  <label class="custom-control-label" for="slider_display<%=index %>"><% if slider.enable %> <%=t(:display) %><% else %><%=t(:hidden) %><% end %> </label>
+                </div>
+              </td>
+              <td><%= slider.title %></td>
+              <td><%= slider.description %></td>
+              <td><%= slider.position_x_type %></td>
+              <td><%= slider.position_y_type %></td>
+              <td><%= slider.position_x %></td>
+              <td><%= slider.position_y %></td>
+              <td class="text-right"><%=image_tag slider.picture.small_thumb.url %></td>
+              <td class="text-right"><%= I18n.l slider.created_at.to_date, :format => :long %></td>
+              <% if can?(:update, Slider) or can?(:delete, Slider) %>
+                <td class="text-right">
+                  <% if can? :update, Slider %>
+                    <%= link_to edit_admin_slider_path(slider), :class => "btn btn-secondary" do %>
+                     <%= t(:edit) %>
+                    <% end %>
+                  <% end %>
+                  <% if can? :delete, Slider %>
+                    <%= link_to admin_slider_path(slider), :method => :delete, :data => { :confirm => t(:delete_confirm) }, :class => "btn btn-danger" do %>
+                     <%= t(:delete) %>
+                    <% end %>
+                  <% end %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="10" class="text-center"><%= t(:no_data) %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <div class="pagination justify-content-center">
+        <%= paginate @sliders %>
+      </div>
+      <%= link_to t(:add), new_admin_slider_path, :class => "btn btn-primary" %>
+    </article>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<% breadcrumb :contacts %>
+<section id="contact" class="container sub-main">
+  <div class="row">
+    <h1 class="col-12 page-title"><%=t(:contact_description) %></h1>
+    <div id="contact-form" class="col-12">
+      <%= render 'form',:contact =>@contact  %>
+    </div>
+  </div>
+</section>

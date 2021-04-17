@@ -1,0 +1,42 @@
+<section id="main-products">
+  <% if @product_categories.count %>
+    <% @product_categories.each_with_index do |product_category, index| %>
+      <div
+        <% if product_category.bg_color.present? %> style="background-color:<%= product_category.bg_color %>"
+        <% end %>>
+        <section class="product-category container">
+          <div class="row">
+            <div class="product-category-head col-12">
+              <h2><%= product_category.title %></h2>
+              <p><%= product_category.description %></p>
+              <%= link_to t(:link_more), products_path(:product_category_id => product_category), class: 'more' %>
+            </div>
+          </div>
+          <div class="products row">
+            <% if product_category.products_count %>
+              <% product_category.products.each_with_index do |product, index2| %>
+                <article class="product col-12 col-md-6 col-lg-4 col-xl-3">
+                  <%= link_to product_path(product) do %>
+                      <figure>
+                    <% if product.product_pictures.present? %>
+                      <%= image_tag product.product_pictures[0].picture.medium_thumb.url %>
+                    <% end %>
+                  </figure>
+                    <% end %>
+                  <h3><%= link_to product.title, product_path(product) %></h3>
+                  <% if product.description.present? %>
+                    <p><%= link_to product.description, product_path(product) %></p>
+                  <% end %>
+                  <p><%= number_to_currency product.price %></p>
+                </article>
+              <% end %>
+            <% end %>
+          </div>
+        </section>
+    <% end %>
+  <% else %>
+    <div class="product-category col-12">
+      <%= t(:no_data) %>
+    </div>
+  <% end %>
+</section>

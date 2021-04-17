@@ -1,0 +1,26 @@
+<%= form_with(model: cart, local: true) do |form| %>
+  <% if cart.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <a href="#" class="close" data-dismiss="alert">&times;</a>
+      <h2><%= pluralize(cart.errors.count, "error") %> prohibited this request from being saved:</h2>
+      <ul>
+        <% cart.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="card">
+    <div class="card-body">
+      <div class="form-group">
+        <%= form.label :title %>
+        <%= form.text_field :title, :class => "form-control", :required => "required" %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group actions">
+    <%= form.submit :class => "btn btn-primary btn-block btn-lg" %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<div class="col-12">
+  <nav class="sub_nav">
+    <ul class="nav nav-pills">
+      <% unless @faq_categories.empty? %>
+        <% @faq_categories.each do |faq_category|
+          a_class='nav-link'
+
+          if @faq_category.present?
+            if @faq_category.id==faq_category.id
+              a_class+=' active'
+            end
+          end
+        %>
+          <li class="nav-item"><%=link_to faq_category.title,url_for(:faq_category_id=>faq_category),{:class=>a_class} %></li>
+      <% end %>
+      <% end %>
+    </ul>
+  </nav>
+</div>

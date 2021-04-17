@@ -1,0 +1,25 @@
+<div id="location" class="container">
+  <div class="row">
+    <article class="col-12">
+      <dl>
+        <dt>제목</dt>
+        <dd><%=@location.title %></dd>
+        <dt>설명</dt>
+        <dd><%=@location.description %></dd>
+        <dt>주소</dt>
+        <dd><%=@location.address %></dd>
+        <dt>지도 중앙 위도</dt>
+        <dd><%=@location.lat %></dd>
+        <dt>지도 중앙 경도</dt>
+        <dd><%=@location.lng %></dd>
+        <dt>마커 위도</dt>
+        <dd><%=@location.marker_lat %></dd>
+        <dt>마커 경도</dt>
+        <dd><%=@location.marker_lng %></dd>
+      </dl>
+    </article>
+    <div class="col-12">
+        <%= link_to t(:link_edit), edit_admin_location_path(@location) %> &nbsp;
+    </div>
+  </div>
+</div>

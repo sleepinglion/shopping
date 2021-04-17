@@ -1,0 +1,13 @@
+<article class="col-12 col-lg-6">
+  <h3><%=t(:board,scope:[:activerecord,:models]) %></h3>
+  <% unless @boards.empty? %>
+    <ul>
+      <% @boards.each do |board| %>
+        <li><%=board.admin.name %> : <%=link_to(board.title,notice) %> <span class="float-right text-secondary d-none d-sm-block"><%= board.created_at.to_date %></span></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p><%=t(:no_data) %></p>
+  <% end %>
+  <%=link_to t(:link_more),boards_path,:class=>'more none_more',:title=>'게시판 더보기' %>
+</article>

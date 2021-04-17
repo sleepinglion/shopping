@@ -1,0 +1,24 @@
+<% breadcrumb :location %>
+<section id="location" class="container sub-main">
+  <div class="row">
+    <h1 class="col-12 page-title"><%= @location.title %></h1>
+    <p class="col-12 page-description"><%= @location.description %></p>
+    <div class="col-12 col-lg-6">
+      <div id="map-content" class="col-12"
+        <% if Rails.env == 'production' %> style="height:500px"
+      <% else %> style="height:500px;background:#ff0000"
+      <% end %>>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+    <article>
+      <h3>대중교통 이용시</h3>
+      <p>버스정류장에서 걸어옵니다.</p>
+    </article>
+    <article>
+      <h3>차량이용시</h3>
+      <p>사거리에서 우회전뒤 직진</p>
+    </article>
+    </div>
+  </div>
+</section>

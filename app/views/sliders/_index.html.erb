@@ -1,0 +1,38 @@
+<section id="main-slide" class="carousel slide" data-ride="carousel" style="width:100%">
+  <% unless @slider.empty? %>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <% @slider.each_with_index do |slider,index| %>
+          <div class="carousel-item<% if index.zero? %> active<% end %>" style="position:relative">
+            <%=link_to slider.link do %>
+              <figure itemprop="image">
+                <%=image_tag slider.picture.large_thumb.url,:width=>"100%" %>
+              </figure>
+            <% end %>
+            <article style="position:absolute;<% if(slider.position_x_type=='top') %>top<% else %>bottom<% end %>:<%=slider.position_x %>px;<% if(slider.position_y_type=='left') %>left<% else %>right<% end %>:<%=slider.position_y %>px">
+              <h4 itemprop="name"><%=link_to slider.title,slider.link %></h4>
+              <p itemprop="description">
+              <%=link_to slider.link do %>
+                <%=simple_format(slider.description) %>
+              <% end %>
+              </p>
+            </article>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  <% end %>
+</section>
